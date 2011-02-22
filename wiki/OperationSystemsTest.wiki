@@ -17,7 +17,7 @@
 == Linux ==
 === OpenSuse x86_64 ===
   * Leonardo Costa
-  * Rafael Medeiros
+  * Rafael Medeiros 11.2 Emerald (kernel, 2.6.31.14-0.6)
 
 === Ubuntu x86 ===
   * Leonardo Costa
