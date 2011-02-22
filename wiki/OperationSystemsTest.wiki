@@ -1,0 +1,30 @@
+#summary One-sentence summary of this page.
+#labels Phase-QA
+
+= Testers by Operation System =
+
+== Windows ==
+=== XP ===
+  * Marcos Moura
+
+=== Vista ===
+  * Marcos Moura
+
+=== 7 ===
+  * Leonardo Costa
+
+
+== Linux ==
+=== OpenSuse x86_64 ===
+  * Leonardo Costa
+  * Rafael Medeiros
+
+=== Ubuntu x86 ===
+  * Leonardo Costa
+
+=== Debian ===
+  * Marcos Moura
+
+== MacOSX ==
+=== 10.6.6 ==
+  * Leonardo Costa
