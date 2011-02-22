@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+class QGraphicsScene;
+
 namespace Ui {
     class MainWindow;
 }
@@ -15,8 +17,13 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void addTable();
+
 private:
     Ui::MainWindow *ui;
+
+    QGraphicsScene *scene;
 };
 
 #endif // MAINWINDOW_H
