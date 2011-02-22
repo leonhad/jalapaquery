@@ -1,30 +1,29 @@
 #summary One-sentence summary of this page.
-#labels Phase-QA
+#labels Phase-QA,Phase-Requirements
 
 = Testers by Operation System =
 
 == Windows ==
 === XP ===
-  * Marcos Moura
+  * Marcos Moura (x86)
 
 === Vista ===
-  * Marcos Moura
+  * Marcos Moura (x86)
 
 === 7 ===
-  * Leonardo Costa
-
+  * Leonardo Costa (x86)
+  * Rafael Medeiros (x86_64)
 
 == Linux ==
-=== OpenSuse x86_64 ===
-  * Leonardo Costa
-  * Rafael Medeiros 11.2 Emerald (kernel, 2.6.31.14-0.6)
+=== OpenSuse ===
+  * Leonardo Costa 11.2 Emerald (x86)
+  * Rafael Medeiros 11.2 Emerald (x86_64, kernel 2.6.31.14-0.6)
 
-=== Ubuntu x86 ===
-  * Leonardo Costa
+=== Ubuntu ===
+  * Leonardo Costa 10.04 (x86)
 
 === Debian ===
   * Marcos Moura
 
 == MacOSX ==
-=== 10.6.6 ==
-  * Leonardo Costa
+  * Leonardo Costa 10.6.6 (x86_64)
