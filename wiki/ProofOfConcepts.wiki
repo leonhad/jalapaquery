@@ -1,0 +1,14 @@
+#summary Proof of Concepts
+#labels Phase-QA,Phase-Requirements
+
+= Introduction =
+
+This page aim to be a Proof of Concepts list. Based on the tests, the requirements can be done/solved.
+
+= Details =
+
+ # Table designer (using GraphicsView. In progress)
+ # Plugin architecture (use QPluginLoader in first test)
+ # File format with ZIP and XML support (to be done)
+ # Rich text editor (to be done)
+ # Database conector (use QSql)
