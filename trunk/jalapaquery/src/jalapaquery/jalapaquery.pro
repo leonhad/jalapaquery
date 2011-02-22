@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-TARGET = jalapadesign
+TARGET = JalapaDesign
 TEMPLATE = app
 DESTDIR = ../../bin
 
