@@ -49,7 +49,7 @@
     <property name="title">
      <string>&amp;Model</string>
     </property>
-    <addaction name="actionAdd_Table"/>
+    <addaction name="actionAddTable"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -82,7 +82,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionAdd_Table"/>
+   <addaction name="actionAddTable"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAbout">
@@ -95,7 +95,7 @@
     <string>E&amp;xit</string>
    </property>
   </action>
-  <action name="actionAdd_Table">
+  <action name="actionAddTable">
    <property name="text">
     <string>Add Table</string>
    </property>
@@ -111,8 +111,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>305</x>
-     <y>201</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>305</x>

@@ -11,8 +11,10 @@ TEMPLATE = app
 DESTDIR = ../../bin
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    testitem.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    testitem.h
 
 FORMS    += mainwindow.ui
