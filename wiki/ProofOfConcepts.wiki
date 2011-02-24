@@ -1,5 +1,5 @@
 #summary Proof of Concepts
-#labels Phase-QA,Phase-Requirements
+#labels Phase-QA,Phase-Requirements,Featured
 
 = Introduction =
 
