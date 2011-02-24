@@ -11,8 +11,8 @@ Finished.
 
 = Details =
 
- * Designer tablet: Use QGraphicsView from QtGui module.
- * Table creation and drag: Use QGraphicsItem from QtGui module.
+ * Designer tablet: Use QGraphicsView from !QtGui module.
+ * Table creation and drag: Use QGraphicsItem from !QtGui module.
   * Use the QPainter::drawText(QRectF,int,QString) for text drawing.
   * For text size, use QGraphicsTextItem.
  * Connections: Use QGraphicsPathItem for line drawing
