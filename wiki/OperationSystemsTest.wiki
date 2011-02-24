@@ -1,5 +1,5 @@
 #summary Operation System Testers
-#labels Phase-QA,Phase-Requirements
+#labels Phase-QA,Phase-Requirements,Featured
 
 = Testers by Operation System =
 
@@ -15,7 +15,7 @@
   * Rafael Medeiros (x86_64)
 
 == Linux ==
-=== OpenSuse ===
+=== !OpenSuse ===
   * Leonardo Costa 11.2 Emerald (x86)
   * Rafael Medeiros 11.2 Emerald (x86_64, kernel 2.6.31.14-0.6)
 
