@@ -1,5 +1,5 @@
 #summary Designer Proof of Concept
-#labels Phase-Design,Phase-QA,Featured
+#labels Phase-Design,Phase-QA
 
 = Introduction =
 
