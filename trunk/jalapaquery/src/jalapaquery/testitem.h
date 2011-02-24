@@ -15,6 +15,9 @@ public:
     //void mouseMoveEvent(QGraphicsSceneMouseEvent *event);
     //void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
+    //QList<QGraphicsItem *> childItems () const;
+    //QRectF childrenBoundingRect () const;
+
 private:
     bool m_drag;
 };
