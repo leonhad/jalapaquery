@@ -16,4 +16,4 @@ Finished.
   * Use the QPainter::drawText(QRectF,int,QString) for text drawing.
   * For text size, use QGraphicsTextItem.
  * Connections: Use QGraphicsPathItem for line drawing
-  * For line breaking (redesign), use mouseEvents and redraw the linePath (delete and reisert).
+  * For line breaking (redesign), use mouseEvents and redraw it with linePath (delete and reinsert it).
