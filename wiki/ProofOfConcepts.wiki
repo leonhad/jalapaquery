@@ -7,7 +7,7 @@ This page aim to be a Proof of Concepts list. Based on the tests, the requiremen
 
 = Details =
 
- # Table designer: DesignerProofOfConcept (done)
+ # Table designer: [DesignerProofOfConcept Designer Proof of Concept] (done)
  # Plugin architecture (use QPluginLoader in first test)
  # File format with ZIP and XML support (to be done)
  # Rich text editor (to be done)
