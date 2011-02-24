@@ -1,0 +1,19 @@
+#summary Designer Proof of Concept
+#labels Phase-Design,Phase-QA
+
+= Introduction =
+
+This proof of concept aims to study the designer module creation.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+ * Designer tablet: Use QGraphicsView from QtGui module.
+ * Table creation and drag: Use QGraphicsItem from QtGui module.
+  * Use the QPainter::drawText(QRectF,int,QString) for text drawing.
+  * For text size, use QGraphicsTextItem.
+ * Connections: Use QGraphicsPathItem for line drawing
+  * For line breaking (redesign), use mouseEvents and redraw the linePath (delete and reisert).
