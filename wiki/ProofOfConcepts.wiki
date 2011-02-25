@@ -12,3 +12,4 @@ This page aim to be a Proof of Concepts list. Based on the tests, the requiremen
  # File format with ZIP and XML support (to be done)
  # Rich text editor (to be done)
  # Database conector (use QSql)
+ # Undo Management (see Qt Undo Framework, to be done)
