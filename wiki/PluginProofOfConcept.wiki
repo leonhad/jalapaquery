@@ -1,0 +1,18 @@
+#summary Plugin Proof of Concept
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This proof of concept aims to study the plugin module creation.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+  * Create a interface class (pure virtual methods) and use Q_DECLARE_INTERFACE.
+  * Create a library and add the plugin tag in CONFIG
+  * Put the Q_OBJECT and Q_INTERFACES on plugin header class
+  * Load the plugins with QPluginLoader
+  * Use QDir and qApp->applicationDirPath() to search the path
