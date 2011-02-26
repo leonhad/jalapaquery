@@ -64,8 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
         QObject *plugin = pluginLoader.instance();
         if (plugin) {
             test = qobject_cast<TestInterface *>(plugin);
+            cout << test->getName().toStdString() << endl;
         }
-        cout << test->getName().toStdString() << endl;
     }
 }
 
