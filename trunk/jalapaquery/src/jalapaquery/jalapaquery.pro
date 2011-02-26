@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-TARGET = JalapaDesign
+TARGET = JalapaQuery
 TEMPLATE = app
 DESTDIR = ../../bin
 
@@ -15,6 +15,7 @@ SOURCES += main.cpp\
     testitem.cpp
 
 HEADERS  += mainwindow.h \
-    testitem.h
+    testitem.h \
+    testinterface.h
 
 FORMS    += mainwindow.ui

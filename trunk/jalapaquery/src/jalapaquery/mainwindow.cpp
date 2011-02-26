@@ -1,15 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "testitem.h"
+#include "testinterface.h"
 #include <QGraphicsPathItem>
 #include <QGraphicsTextItem>
+#include <QDir>
+#include <QPluginLoader>
 #include <iostream>
 
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+        QMainWindow(parent),
+        ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -42,6 +45,28 @@ MainWindow::MainWindow(QWidget *parent) :
     cout << text->boundingRect().width() << endl;
 
     //scene->addItem(text);
+
+    // plugins
+    QDir pluginsDir(qApp->applicationDirPath());
+#if defined(Q_OS_MAC)
+    if (pluginsDir.dirName() == "MacOS") {
+        pluginsDir.cdUp();
+        //pluginsDir.cdUp();
+        //pluginsDir.cdUp();
+        pluginsDir.cd("PlugIns");
+    }
+#endif
+    TestInterface *test;
+
+    pluginsDir.cd("plugins");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+        QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
+        QObject *plugin = pluginLoader.instance();
+        if (plugin) {
+            test = qobject_cast<TestInterface *>(plugin);
+        }
+        cout << test->getName().toStdString() << endl;
+    }
 }
 
 MainWindow::~MainWindow()
