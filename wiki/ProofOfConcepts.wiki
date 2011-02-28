@@ -15,3 +15,4 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements c
  # Undo Management (see Qt Undo Framework)
  # Dock Widget (see Dock Widget demo)
  # !TreeView
+ # PDF native creation [PDFProofOfConcept PDF Proof of Concept] (done, OK)
