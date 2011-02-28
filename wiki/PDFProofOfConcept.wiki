@@ -1,0 +1,16 @@
+#summary PDF Proof of Concept
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This proof of concept aims to study the PDF native creation.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+  * Use Qt Print System (QPrinter)
+  * Set the setOutputFormat(QPrinter::PdfFormat)
+ 
