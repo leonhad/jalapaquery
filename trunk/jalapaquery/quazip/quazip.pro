@@ -8,29 +8,24 @@ DESTDIR = ../bin
 DLLDESTDIR = ../bin
 TARGET = quazip
 
+VERSION=1.0.0
 
-VERSION=1
-
-win32: {
-    RC_FILE = dat_resource.rc
-    LIBS += -lio
-}
 mac: {
     CONFIG += lib_bundle
     FRAMEWORK_HEADERS.version = Versions
     FRAMEWORK_HEADERS.files = \
-    zip.h \
-    unzip.h \
-    quazipnewinfo.h \
-    quazipfileinfo.h \
-    quazipfile.h \
-    quazip.h \
-    quacrc32.h \
-    quachecksum32.h \
-    quaadler32.h \
-    JlCompress.h \
-    ioapi.h \
-    crypt.h
+        zip.h \
+        unzip.h \
+        quazipnewinfo.h \
+        quazipfileinfo.h \
+        quazipfile.h \
+        quazip.h \
+        quacrc32.h \
+        quachecksum32.h \
+        quaadler32.h \
+        JlCompress.h \
+        ioapi.h \
+        crypt.h
     FRAMEWORK_HEADERS.path = Headers
     QMAKE_BUNDLE_DATA += FRAMEWORK_HEADERS
 }
