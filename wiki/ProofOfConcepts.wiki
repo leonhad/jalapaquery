@@ -14,4 +14,4 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements c
  # Database conector (see QSql)
  # Undo Management (see Qt Undo Framework)
  # Dock Widget (see Dock Widget demo)
- # TreeView
+ # !TreeView
