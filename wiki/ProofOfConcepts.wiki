@@ -9,7 +9,7 @@ This page aim to be a Proof of Concepts list. Based on the tests, the requiremen
 
  # Table designer: [DesignerProofOfConcept Designer Proof of Concept] (done)
  # Plugin architecture [PluginProofOfConcept Plugin Proof of Concept] (done)
- # File format with ZIP and XML support (to be done)
- # Rich text editor (to be done)
+ # File format with ZIP and XML support [XmlProofOfConcept XML and ZIP Proof of Concept] (done)
+ # Rich text editor (to be made)
  # Database conector (use QSql)
- # Undo Management (see Qt Undo Framework, to be done)
+ # Undo Management (see Qt Undo Framework, to be made)
