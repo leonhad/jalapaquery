@@ -12,5 +12,5 @@ Finished.
 = Details =
 
   * Use Qt Print System (QPrinter)
-  * Set the setOutputFormat(QPrinter::PdfFormat)
+  * Set the setOutputFormat(QPrinter::!PdfFormat)
  
