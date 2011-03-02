@@ -12,7 +12,7 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements c
  # File format with ZIP and XML support [XmlProofOfConcept XML and ZIP Proof of Concept] (done, OK)
  # Rich text editor [RichTextProofOfConcept Rich Text Proof of Concept] (done, OK)
  # Database conector (see QSql)
- # Undo Management (see Qt Undo Framework)
+ # Undo Management [UndoManagementProofOfConcept Undo Management Proof of Concept] (done, OK)
  # Dock Widget (see Dock Widget demo)
  # !TreeView
  # PDF native creation [PDFProofOfConcept PDF Proof of Concept] (done, OK)
