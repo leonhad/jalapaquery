@@ -17,9 +17,9 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements c
  # !TreeView
  # PDF native creation [PDFProofOfConcept PDF Proof of Concept] (done, OK)
 
-= Operation System Specific Tests = 
+= OS Specific Tests = 
 
-By now, these test shall not be realized.
+By now, these test will not be realized.
 
 == Windows ==
 
