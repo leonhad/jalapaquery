@@ -16,3 +16,20 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements c
  # Dock Widget (see Dock Widget demo)
  # !TreeView
  # PDF native creation [PDFProofOfConcept PDF Proof of Concept] (done, OK)
+
+= Operation System Specific Tests = 
+
+By now, these test shall not be realized.
+
+== Windows ==
+
+ # Taskbar progress
+ # Start Menu / Taskbar recent files
+
+== Mac ==
+ # Dock notification
+ # Dock progress
+ # Growl notifications
+
+== Linux ==
+ # Unity integrations (in analysis)
