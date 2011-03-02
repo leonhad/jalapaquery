@@ -1,0 +1,17 @@
+#summary Tree View Proof of Concept
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This proof of concept aims to study the !TreeView model and its possibilities.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+  * For !TreeView, use the QTreeWidget class
+  * All items are QTreeWidgetItem. 
+  * The hierarchy are done with parents (Widgets)
+  * To add a icon, use the setIcon method.
