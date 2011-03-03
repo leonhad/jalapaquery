@@ -11,7 +11,7 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements i
  # Plugin architecture [PluginProofOfConcept Plugin Proof of Concept] (done, OK)
  # File format with ZIP and XML support [XmlProofOfConcept XML and ZIP Proof of Concept] (done, OK)
  # Rich text editor [RichTextProofOfConcept Rich Text Proof of Concept] (done, OK)
- # Database conector (see QSql)
+ # Database conector [DatabaseProofOfConcept Database Proof of Concept] (done, OK)
  # Undo Management [UndoManagementProofOfConcept Undo Management Proof of Concept] (done, OK)
  # Dock Widget [DockWidgetProofOfConcept Dock Widget Proof of Concept] (done, OK)
  # !TreeView [TreeViewProofOfConcept Tree View Proof of Concept] (done, OK)
