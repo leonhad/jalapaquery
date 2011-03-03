@@ -1,0 +1,16 @@
+#summary Dock Widget Proof of Concept
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This proof of concept aims to study the Dock Widget in Qt.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+  * Use the QDockWidget to create docks.
+  * In QMainWindow, use addDockWidget() method to add the dock widget.
+  * For more info, see the Qt Dock Widget Example.
