@@ -1,0 +1,18 @@
+#summary Database Proof of Concept
+#labels Phase-Requirements,Phase-Design
+
+= Introduction =
+
+This proof of concept aims to study the Database connector and Database metadata recovery.
+
+= Current Status =
+
+Finished.
+
+= Details =
+
+  * In QSqlDatabase class, use the method tables() to get table names.
+  * Use the method record() to get field metadata from QSqlDatabase class.
+  * There is no method to get indexes and foreign keys metadata.
+   * One solution is to use database specifics SQL
+   * Use other database connection classes (use this only if there is no solution to QSqlDatabase).
