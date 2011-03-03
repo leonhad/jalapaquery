@@ -3,7 +3,7 @@
 
 = Introduction =
 
-This page aim to be a Proof of Concepts list. Based on tests, the requirements can be possible (OK) or refused (Fail).
+This page aim to be a Proof of Concepts list. Based on tests, the requirements is possible (OK) or impossible/refused (Fail).
 
 = Details =
 
