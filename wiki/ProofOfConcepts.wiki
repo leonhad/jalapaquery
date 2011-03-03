@@ -13,7 +13,7 @@ This page aim to be a Proof of Concepts list. Based on tests, the requirements i
  # Rich text editor [RichTextProofOfConcept Rich Text Proof of Concept] (done, OK)
  # Database conector (see QSql)
  # Undo Management [UndoManagementProofOfConcept Undo Management Proof of Concept] (done, OK)
- # Dock Widget (see Dock Widget demo)
+ # Dock Widget [DockWidgetProofOfConcept Dock Widget Proof of Concept] (done, OK)
  # !TreeView [TreeViewProofOfConcept Tree View Proof of Concept] (done, OK)
  # PDF native creation [PDFProofOfConcept PDF Proof of Concept] (done, OK)
 
