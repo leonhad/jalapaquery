@@ -11,8 +11,8 @@ Finished.
 
 = Details =
 
-  * Create a interface class (pure virtual methods) and use Q_DECLARE_INTERFACE.
-  * Create a library and add the plugin tag in CONFIG
+  * Create a interface class (pure virtual methods) and use <a href="http://doc.qt.nokia.com/4.7-snapshot/qtplugin.html#Q_DECLARE_INTERFACE">Q_DECLARE_INTERFACE</a>.
+  * Create a library and add the plugin tag in <a href="http://doc.qt.nokia.com/4.7/qtconfig.html">CONFIG</a>
   * Put the Q_OBJECT and Q_INTERFACES on plugin header class
-  * Load the plugins with QPluginLoader
-  * Use QDir and qApp->applicationDirPath() to search the path
+  * Load the plugins with <a href="http://doc.qt.nokia.com/latest/qpluginloader.html">QPluginLoader</a>
+  * Use QDir and <a href="http://doc.qt.nokia.com/latest/qcoreapplication.html#applicationDirPath">qApp->applicationDirPath()</a> to search the path
