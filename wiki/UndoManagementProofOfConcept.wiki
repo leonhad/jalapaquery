@@ -11,6 +11,6 @@ Finished.
 
 = Details =
 
-  * The Qt provide a undo management based on Command pattern (vide GoF patterns).
-  * Use QUndoGroup
-  * More info in Qt Undo Framework Example
+  * The Qt provide a undo management based on <a href="http://pt.wikipedia.org/wiki/Command">Command pattern (vide GoF patterns)</a>.
+  * Use <a href="http://doc.qt.nokia.com/4.7-snapshot/qundogroup.html#QUndoGroup">QUndoGroup</a>
+  * More info in <a href="http://doc.qt.nokia.com/latest/tools-undoframework.html">Qt Undo Framework Example</a>
