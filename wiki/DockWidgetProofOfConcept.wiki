@@ -11,6 +11,6 @@ Finished.
 
 = Details =
 
-  * Use the QDockWidget to create docks.
-  * In QMainWindow, use addDockWidget() method to add the dock widget.
-  * For more info, see the Qt Dock Widget Example.
+  * Use the <a href="http://doc.qt.nokia.com/latest/qdockwidget.html">QDockWidget</a> to create docks.
+  * In <a href="http://doc.qt.nokia.com/latest/qmainwindow.html">QMainWindow</a>, use <a href="http://doc.qt.nokia.com/latest/qmainwindow.html#addDockWidget">addDockWidget()</a> method to add the dock widget.
+  * For more info, see the <a href="http://doc.qt.nokia.com/4.7-snapshot/mainwindows-dockwidgets.html">Qt Dock Widget Example</a>.
