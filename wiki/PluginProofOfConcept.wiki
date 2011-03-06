@@ -15,4 +15,4 @@ Finished.
   * Create a library and add the plugin tag in <a href="http://doc.qt.nokia.com/4.7/qtconfig.html">CONFIG</a>
   * Put the Q_OBJECT and Q_INTERFACES on plugin header class
   * Load the plugins with <a href="http://doc.qt.nokia.com/latest/qpluginloader.html">QPluginLoader</a>
-  * Use QDir and <a href="http://doc.qt.nokia.com/latest/qcoreapplication.html#applicationDirPath">qApp->applicationDirPath()</a> to search the path
+  * Use <a href="http://doc.qt.nokia.com/latest/qdir.html">QDir</a> and <a href="http://doc.qt.nokia.com/latest/qcoreapplication.html#applicationDirPath">qApp->applicationDirPath()</a> to search the path
