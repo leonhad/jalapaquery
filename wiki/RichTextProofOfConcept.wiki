@@ -11,6 +11,6 @@ Finished.
 
 = Details =
 
-  * Use QTextEdit
-  * Use toHtml to get the formatted text
+  * Use <a href="http://doc.qt.nokia.com/latest/qtextedit.html">QTextEdit</a>
+  * Use <a href="http://doc.qt.nokia.com/latest/qtextedit.html#html-prop">toHtml</a> to get the formatted text
   * See Text Edit demo for more info.
