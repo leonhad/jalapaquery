@@ -4,26 +4,26 @@
 = Testers by Operation System =
 
 == Windows ==
-=== XP ===
+=== <a href="http://www.microsoft.com/brasil/windows/windows-xp/">XP</a> ===
   * Marcos Moura (x86)
 
-=== Vista ===
+=== <a href="http://windows.microsoft.com/en-US/windows-vista/products/home">Vista</a> ===
   * Marcos Moura (x86)
 
-=== 7 ===
+=== <a href="http://www.microsoft.com/windows/windows-7/default.aspx">7</a> ===
   * Leonardo Costa (x86)
   * Rafael Medeiros (x86_64)
 
 == Linux ==
-=== !OpenSuse ===
+=== <a href="http://www.opensuse.org/pt-br/">!OpenSuse</a> ===
   * Leonardo Costa 11.2 Emerald (x86)
   * Rafael Medeiros 11.2 Emerald (x86_64, kernel 2.6.31.14-0.6)
 
-=== Ubuntu ===
+=== <a href="http://www.ubuntu.com">Ubuntu</a> ===
   * Leonardo Costa 10.04 (x86)
 
-=== Debian ===
+=== <a href="http://www.debian.org/">Debian</a> ===
   * Marcos Moura
 
-== MacOSX ==
+== <a href="http://www.apple.com/macosx/">MacOSX</a> ==
   * Leonardo Costa 10.6.6 (x86_64)
