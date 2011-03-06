@@ -11,7 +11,7 @@ Finished.
 
 = Details =
 
-  * For !TreeView, use the QTreeWidget class
-  * All items are QTreeWidgetItem. 
+  * For !TreeView, use the <a href="http://doc.qt.nokia.com/latest/qtreewidget.html">QTreeWidget</a> class
+  * All items are <a href="http://doc.qt.nokia.com/latest/qtreewidgetitem.html">QTreeWidgetItem</a>. 
   * The hierarchy are done with parents (Widgets)
   * To add a icon, use the setIcon method.
