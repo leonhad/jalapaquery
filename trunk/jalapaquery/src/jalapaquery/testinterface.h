@@ -3,11 +3,14 @@
 
 #include <QString>
 #include <QtPlugin>
+#include "mainwindow.h"
 
 class TestInterface
 {
 public:
     virtual ~TestInterface() { }
+
+    virtual void setMainWindow(MainWindow *m) = 0;
 
     virtual QString getName() = 0;
 };

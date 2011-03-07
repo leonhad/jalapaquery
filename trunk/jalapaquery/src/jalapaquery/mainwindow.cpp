@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setUnifiedTitleAndToolBarOnMac(true);
+
     scene = new QGraphicsScene;
     ui->mainView->setScene(scene);
 
