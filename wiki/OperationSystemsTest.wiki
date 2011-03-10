@@ -25,5 +25,12 @@
 === <a href="http://www.debian.org/">Debian</a> ===
   * Marcos Moura
 
+=== [http://www.linuxmint.com LinuxMint] ===
+  * Brian Gunning
+
 == <a href="http://www.apple.com/macosx/">MacOSX</a> ==
-  * Leonardo Costa 10.6.6 (x86_64)
+10.6 (Snow Leopard)
+  * Leonardo Costa
+
+10.7 (Lion)
+  * Leonardo Costa
