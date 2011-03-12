@@ -1,12 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "testitem.h"
 #include "testinterface.h"
 #include <QGraphicsPathItem>
 #include <QGraphicsTextItem>
 #include <QDir>
 #include <QPluginLoader>
-#include <iostream>
 
 using namespace std;
 
@@ -18,9 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setUnifiedTitleAndToolBarOnMac(true);
 
-    scene = new QGraphicsScene;
-    ui->mainView->setScene(scene);
-
+    m_scene = new QGraphicsScene;
+    ui->mainView->setScene(m_scene);
+    /*
     connect(ui->actionAddTable, SIGNAL(triggered()), this, SLOT(addTable()));
 
     TestItem *item1 = new TestItem;
@@ -69,17 +67,13 @@ MainWindow::MainWindow(QWidget *parent) :
             cout << test->getName().toStdString() << endl;
         }
     }
+    */
 }
 
 MainWindow::~MainWindow()
 {
-    if (scene) {
-        delete scene;
+    if (m_scene) {
+        delete m_scene;
     }
     delete ui;
-}
-
-void MainWindow::addTable()
-{
-    scene->addItem(new TestItem);
 }
