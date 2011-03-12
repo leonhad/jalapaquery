@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include <QMainWindow>
 
 class QGraphicsScene;
@@ -17,12 +18,11 @@ public:
     ~MainWindow();
 
 public slots:
-    void addTable();
 
 private:
     Ui::MainWindow *ui;
 
-    QGraphicsScene *scene;
+    QGraphicsScene *m_scene;
 };
 
 #endif // MAINWINDOW_H
