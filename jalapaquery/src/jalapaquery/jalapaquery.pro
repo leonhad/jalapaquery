@@ -19,3 +19,6 @@ HEADERS  += mainwindow.h \
     testinterface.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resources.qrc
