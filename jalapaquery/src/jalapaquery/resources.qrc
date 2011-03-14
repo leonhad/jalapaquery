@@ -12,5 +12,6 @@
         <file>resources/undo.png</file>
         <file>resources/zoom_in.png</file>
         <file>resources/zoom_out.png</file>
+        <file>resources/help.png</file>
     </qresource>
 </RCC>
