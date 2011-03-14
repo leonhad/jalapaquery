@@ -17,8 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setUnifiedTitleAndToolBarOnMac(true);
 
-    m_scene = new QGraphicsScene;
-    ui->mainView->setScene(m_scene);
+    //m_scene = new QGraphicsScene;
+    //ui->mainView->setScene(m_scene);
 
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
 
@@ -101,7 +101,7 @@ void MainWindow::appClose()
 MainWindow::~MainWindow()
 {
     if (m_scene) {
-        delete m_scene;
+        //delete m_scene;
     }
     delete ui;
 }
