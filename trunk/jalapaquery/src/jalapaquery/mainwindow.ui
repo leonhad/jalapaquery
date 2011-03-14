@@ -33,7 +33,7 @@
      <x>0</x>
      <y>0</y>
      <width>623</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -238,7 +238,7 @@
           <x>0</x>
           <y>0</y>
           <width>150</width>
-          <height>255</height>
+          <height>262</height>
          </rect>
         </property>
         <attribute name="label">
@@ -266,6 +266,12 @@
   <widget class="QToolBar" name="editingToolBar">
    <property name="windowTitle">
     <string>Editing</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>

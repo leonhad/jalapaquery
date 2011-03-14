@@ -5,6 +5,7 @@
 #include <QGraphicsTextItem>
 #include <QDir>
 #include <QPluginLoader>
+#include <QSettings>
 
 using namespace std;
 
@@ -18,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     m_scene = new QGraphicsScene;
     ui->mainView->setScene(m_scene);
+
+    connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
+
     /*
     connect(ui->actionAddTable, SIGNAL(triggered()), this, SLOT(addTable()));
 
@@ -68,6 +72,30 @@ MainWindow::MainWindow(QWidget *parent) :
         }
     }
     */
+
+    QSettings settings;
+    settings.beginGroup("state");
+    QByteArray geometry = settings.value("geometry").toByteArray();
+    QByteArray state = settings.value("state").toByteArray();
+    settings.endGroup();
+    if (!geometry.isNull()) {
+        restoreGeometry(geometry);
+    }
+    if (!state.isNull()) {
+        restoreState(state);
+    }
+}
+
+void MainWindow::appClose()
+{
+    QByteArray geometry = saveGeometry();
+    QByteArray state = saveState();
+
+    QSettings settings;
+    settings.beginGroup("state");
+    settings.setValue("geometry", geometry);
+    settings.setValue("state", state);
+    settings.endGroup();
 }
 
 MainWindow::~MainWindow()

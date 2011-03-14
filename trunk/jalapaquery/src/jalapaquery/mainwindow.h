@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void appClose();
 
 private:
     Ui::MainWindow *ui;
