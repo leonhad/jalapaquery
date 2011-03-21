@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 
+class QDockWidget;
 class QMenu;
+class QToolBar;
 class QTabWidget;
 
 class AppWindow : public QMainWindow
@@ -33,6 +35,8 @@ private:
     QMenu *m_help;
 
     QTabWidget *m_mainWidget;
+    QDockWidget *m_projectDock;
+    QDockWidget *m_toolsDock;
 };
 
 #endif // APPWINDOW_H
