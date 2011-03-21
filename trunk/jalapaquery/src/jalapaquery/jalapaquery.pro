@@ -12,11 +12,13 @@ DESTDIR = ../../bin
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    testitem.cpp
+    testitem.cpp \
+    appwindow.cpp
 
 HEADERS  += mainwindow.h \
     testitem.h \
-    testinterface.h
+    testinterface.h \
+    appwindow.h
 
 FORMS    += mainwindow.ui
 
