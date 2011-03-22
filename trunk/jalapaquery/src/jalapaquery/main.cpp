@@ -1,5 +1,5 @@
 #include <QtGui/QApplication>
-#include "appwindow.h"
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("jalapaquery.org");
     QCoreApplication::setApplicationName("jalapaquery");
 
-    AppWindow w;
+    MainWindow w;
     w.show();
 
     return a.exec();

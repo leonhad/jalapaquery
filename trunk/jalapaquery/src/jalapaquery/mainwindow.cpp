@@ -6,6 +6,7 @@
 #include <QDir>
 #include <QPluginLoader>
 #include <QSettings>
+#include <QCloseEvent>
 
 using namespace std;
 
@@ -14,13 +15,21 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    setUnifiedTitleAndToolBarOnMac(true);
+    resize(800, 600);
+    //setUnifiedTitleAndToolBarOnMac(true);
 
     //m_scene = new QGraphicsScene;
     //ui->mainView->setScene(m_scene);
 
+    ui->menuDocks->addAction(ui->projectDock->toggleViewAction());
+    ui->menuDocks->addAction(ui->toolsDock->toggleViewAction());
+
+    ui->menuToolbars->addAction(ui->fileToolBar->toggleViewAction());
+    ui->menuToolbars->addAction(ui->editingToolBar->toggleViewAction());
+    ui->menuToolbars->addAction(ui->helpToolBar->toggleViewAction());
+
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
+    //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
     /*
     connect(ui->actionAddTable, SIGNAL(triggered()), this, SLOT(addTable()));
@@ -75,15 +84,24 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QSettings settings;
     settings.beginGroup("state");
-    QByteArray geometry = settings.value("geometry").toByteArray();
-    QByteArray state = settings.value("state").toByteArray();
+    restoreGeometry(settings.value("geometry").toByteArray());
+    restoreState(settings.value("state").toByteArray());
     settings.endGroup();
-    if (!geometry.isNull()) {
-        restoreGeometry(geometry);
-    }
-    if (!state.isNull()) {
-        restoreState(state);
-    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    event->accept();
+    // ignore if canceled
+}
+
+void MainWindow::newFile()
+{
+
+}
+
+void MainWindow::closeTab(int)
+{
+
 }
 
 void MainWindow::appClose()

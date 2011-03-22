@@ -8,12 +8,10 @@ TEMPLATE = app
 DESTDIR = ../../bin
 SOURCES += main.cpp \
     mainwindow.cpp \
-    testitem.cpp \
-    appwindow.cpp
+    testitem.cpp
 HEADERS += mainwindow.h \
     testitem.h \
-    testinterface.h \
-    appwindow.h
+    testinterface.h
 FORMS += mainwindow.ui
 RESOURCES += resources.qrc \
     icons.qrc

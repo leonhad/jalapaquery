@@ -18,7 +18,12 @@ public:
     ~MainWindow();
 
 public slots:
+    void newFile();
+    void closeTab(int);
     void appClose();
+
+protected:
+    virtual void closeEvent(QCloseEvent *);
 
 private:
     Ui::MainWindow *ui;

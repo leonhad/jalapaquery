@@ -20,6 +20,9 @@
     </property>
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
       </property>
@@ -35,16 +38,6 @@
       <property name="movable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -70,10 +63,10 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
-    <addaction name="actionSave_All"/>
+    <addaction name="actionSaveAll"/>
     <addaction name="actionClose"/>
     <addaction name="separator"/>
-    <addaction name="actionPage_Setup"/>
+    <addaction name="actionPageSetup"/>
     <addaction name="actionPrint"/>
     <addaction name="separator"/>
     <addaction name="actionImport"/>
@@ -96,7 +89,7 @@
     <addaction name="separator"/>
     <addaction name="actionFind"/>
     <addaction name="separator"/>
-    <addaction name="actionSelect_All"/>
+    <addaction name="actionSelectAll"/>
     <addaction name="separator"/>
     <addaction name="actionPreferences"/>
    </widget>
@@ -113,9 +106,9 @@
      <property name="title">
       <string>Zoom</string>
      </property>
-     <addaction name="actionZoom_In"/>
-     <addaction name="actionZoom_Out"/>
-     <addaction name="actionFit_To_Window"/>
+     <addaction name="actionZoomIn"/>
+     <addaction name="actionZoomOut"/>
+     <addaction name="actionFitToWindow"/>
      <addaction name="separator"/>
      <addaction name="action50"/>
      <addaction name="action75"/>
@@ -125,9 +118,15 @@
      <addaction name="action175"/>
      <addaction name="action200"/>
     </widget>
+    <widget class="QMenu" name="menuDocks">
+     <property name="title">
+      <string>Docks</string>
+     </property>
+    </widget>
     <addaction name="menuZoom"/>
     <addaction name="separator"/>
     <addaction name="menuToolbars"/>
+    <addaction name="menuDocks"/>
    </widget>
    <widget class="QMenu" name="menuModel">
     <property name="title">
@@ -165,8 +164,8 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>16</width>
-     <height>16</height>
+     <width>24</width>
+     <height>24</height>
     </size>
    </property>
    <attribute name="toolBarArea">
@@ -180,7 +179,7 @@
    <addaction name="actionSave"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QDockWidget" name="dockWidget">
+  <widget class="QDockWidget" name="projectDock">
    <property name="minimumSize">
     <size>
      <width>150</width>
@@ -210,7 +209,7 @@
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget_2">
+  <widget class="QDockWidget" name="toolsDock">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
      <horstretch>0</horstretch>
@@ -253,8 +252,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>150</width>
-          <height>262</height>
+          <width>102</width>
+          <height>254</height>
          </rect>
         </property>
         <attribute name="label">
@@ -266,8 +265,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>150</width>
-          <height>262</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -304,12 +303,12 @@
    <addaction name="separator"/>
    <addaction name="actionFind"/>
    <addaction name="separator"/>
-   <addaction name="actionZoom_In"/>
-   <addaction name="actionZoom_Out"/>
+   <addaction name="actionZoomIn"/>
+   <addaction name="actionZoomOut"/>
   </widget>
-  <widget class="QToolBar" name="toolBar">
+  <widget class="QToolBar" name="helpToolBar">
    <property name="windowTitle">
-    <string>toolBar</string>
+    <string>Help</string>
    </property>
    <property name="iconSize">
     <size>
@@ -366,8 +365,8 @@
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/resources/newfile.png</normaloff>:/resources/newfile.png</iconset>
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/new.png</normaloff>:/icons/new.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
@@ -396,8 +395,11 @@
     <string>Close</string>
    </property>
   </action>
-  <action name="actionSave_All">
+  <action name="actionSaveAll">
    <property name="text">
+    <string>Save As...</string>
+   </property>
+   <property name="toolTip">
     <string>Save As...</string>
    </property>
   </action>
@@ -406,7 +408,7 @@
     <string>Print</string>
    </property>
   </action>
-  <action name="actionPage_Setup">
+  <action name="actionPageSetup">
    <property name="text">
     <string>Page Setup</string>
    </property>
@@ -475,12 +477,12 @@
     <string>Find...</string>
    </property>
   </action>
-  <action name="actionSelect_All">
+  <action name="actionSelectAll">
    <property name="text">
     <string>Select All</string>
    </property>
   </action>
-  <action name="actionZoom_In">
+  <action name="actionZoomIn">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/resources/zoom_in.png</normaloff>:/resources/zoom_in.png</iconset>
@@ -489,7 +491,7 @@
     <string>Zoom In</string>
    </property>
   </action>
-  <action name="actionZoom_Out">
+  <action name="actionZoomOut">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/resources/zoom_out.png</normaloff>:/resources/zoom_out.png</iconset>
@@ -498,7 +500,7 @@
     <string>Zoom Out</string>
    </property>
   </action>
-  <action name="actionFit_To_Window">
+  <action name="actionFitToWindow">
    <property name="text">
     <string>Fit To Window</string>
    </property>
@@ -541,6 +543,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
+  <include location="icons.qrc"/>
   <include location="resources.qrc"/>
  </resources>
  <connections>
