@@ -27,9 +27,14 @@ By now, these test will not be realized.
  # Start Menu / Taskbar recent files
 
 == Mac ==
+
  # Dock notification
  # Dock progress
  # Growl notifications
+ # Lion
+  # Fullscreen App
+  # Versions
 
 == Linux ==
+
  # Unity integrations (in analysis)
