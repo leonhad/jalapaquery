@@ -18,6 +18,7 @@ public:
     ~MainWindow();
 
 public slots:
+    void aboutDialog();
     void newFile();
     void closeTab(int);
     void appClose();
