@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     Q_INIT_RESOURCE(icons);
 
@@ -11,8 +11,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("jalapaquery.org");
     QCoreApplication::setApplicationName("jalapaquery");
 
+    app.setAttribute(Qt::AA_DontShowIconsInMenus);
+
     MainWindow w;
     w.show();
 
-    return a.exec();
+    return app.exec();
 }

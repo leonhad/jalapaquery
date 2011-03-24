@@ -8,12 +8,18 @@ TEMPLATE = app
 DESTDIR = ../../bin
 SOURCES += main.cpp \
     mainwindow.cpp \
-    testitem.cpp
+    testitem.cpp \
+    aboutdialog.cpp \
+    newfiledialog.cpp
 HEADERS += mainwindow.h \
     testitem.h \
-    testinterface.h
+    testinterface.h \
+    aboutdialog.h \
+    newfiledialog.h
 
-FORMS += mainwindow.ui
+FORMS += mainwindow.ui \
+    aboutdialog.ui \
+    newfiledialog.ui
 RESOURCES += resources.qrc \
     icons.qrc
 macx: {

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "testinterface.h"
+#include "aboutdialog.h"
+#include "newfiledialog.h"
 #include <QGraphicsPathItem>
 #include <QGraphicsTextItem>
 #include <QDir>
@@ -29,11 +31,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->menuToolbars->addAction(ui->helpToolBar->toggleViewAction());
 
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
+    connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutDialog()));
+    connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
+
     //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
     /*
-    connect(ui->actionAddTable, SIGNAL(triggered()), this, SLOT(addTable()));
-
     TestItem *item1 = new TestItem;
     TestItem *item2 = new TestItem;
 
@@ -89,6 +92,13 @@ MainWindow::MainWindow(QWidget *parent) :
     settings.endGroup();
 }
 
+void MainWindow::aboutDialog()
+{
+    AboutDialog *dialog = new AboutDialog(this);
+    dialog->setWindowIcon(windowIcon());
+    dialog->show();
+}
+
 void MainWindow::closeEvent(QCloseEvent *event) {
     event->accept();
     // ignore if canceled
@@ -96,7 +106,10 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 
 void MainWindow::newFile()
 {
+    NewFileDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
 
+    }
 }
 
 void MainWindow::closeTab(int)
