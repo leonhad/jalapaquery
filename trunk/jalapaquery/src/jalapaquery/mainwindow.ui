@@ -58,7 +58,7 @@
      <x>0</x>
      <y>0</y>
      <width>623</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -263,7 +263,7 @@
           <x>0</x>
           <y>0</y>
           <width>102</width>
-          <height>254</height>
+          <height>255</height>
          </rect>
         </property>
         <attribute name="label">
@@ -275,8 +275,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>102</width>
-          <height>254</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -508,7 +508,7 @@
     <string>Paste</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+P</string>
+    <string>Ctrl+V</string>
    </property>
   </action>
   <action name="actionFind">
