@@ -13,7 +13,7 @@ public:
     TestPlugin();
     virtual ~TestPlugin();
     virtual QString getName();
-    virtual void setMainWindow(MainWindow *m) {}
+    virtual void setMainWindow(MainWindow *) {}
 };
 
 #endif // TESTPLUGIN_H
