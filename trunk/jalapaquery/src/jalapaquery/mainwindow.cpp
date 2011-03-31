@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "testinterface.h"
 #include "aboutdialog.h"
 #include "newfiledialog.h"
 #include "modelinterface.h"
