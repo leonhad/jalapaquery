@@ -14,16 +14,6 @@
    <string>New</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" rowspan="2">
-    <widget class="QListView" name="projectType">
-     <property name="maximumSize">
-      <size>
-       <width>200</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
@@ -34,11 +24,21 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" rowspan="2">
+    <widget class="QListWidget" name="projectType">
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>16777215</height>
+      </size>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
-    <widget class="QListView" name="fileType"/>
+    <widget class="QListWidget" name="fileType"/>
    </item>
    <item row="1" column="1">
-    <widget class="QListView" name="description"/>
+    <widget class="QListWidget" name="description"/>
    </item>
   </layout>
  </widget>

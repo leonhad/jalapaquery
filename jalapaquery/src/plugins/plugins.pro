@@ -1,4 +1,4 @@
 TEMPLATE  = subdirs
 CONFIG   += ordered
 
-SUBDIRS = testplugin
+SUBDIRS = databaseplugin umlplugin
