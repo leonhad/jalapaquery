@@ -2,8 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QList>
 
 class QGraphicsScene;
+class ModelInterface;
 
 namespace Ui {
     class MainWindow;
@@ -27,9 +29,14 @@ protected:
     virtual void closeEvent(QCloseEvent *);
 
 private:
-    Ui::MainWindow *ui;
+    void loadPlugins();
+    void loadModelPlugins();
 
+private:
+    Ui::MainWindow *ui;
     QGraphicsScene *m_scene;
+
+    QList<ModelInterface *> m_model_plugins;
 };
 
 #endif // MAINWINDOW_H

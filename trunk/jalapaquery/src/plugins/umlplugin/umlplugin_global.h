@@ -1,0 +1,12 @@
+#ifndef UMLPLUGIN_GLOBAL_H
+#define UMLPLUGIN_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(UMLPLUGIN_LIBRARY)
+#  define UMLPLUGINSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define UMLPLUGINSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // UMLPLUGIN_GLOBAL_H

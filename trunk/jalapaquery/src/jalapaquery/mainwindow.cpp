@@ -3,12 +3,14 @@
 #include "testinterface.h"
 #include "aboutdialog.h"
 #include "newfiledialog.h"
+#include "modelinterface.h"
 #include <QGraphicsPathItem>
 #include <QGraphicsTextItem>
 #include <QDir>
 #include <QPluginLoader>
 #include <QSettings>
 #include <QCloseEvent>
+#include <QDebug>
 
 using namespace std;
 
@@ -36,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
+    loadPlugins();
+
     /*
     TestItem *item1 = new TestItem;
     TestItem *item2 = new TestItem;
@@ -61,28 +65,6 @@ MainWindow::MainWindow(QWidget *parent) :
     cout << text->boundingRect().width() << endl;
 
     //scene->addItem(text);
-
-    // plugins
-    QDir pluginsDir(qApp->applicationDirPath());
-#if defined(Q_OS_MAC)
-    if (pluginsDir.dirName() == "MacOS") {
-        pluginsDir.cdUp();
-        //pluginsDir.cdUp();
-        //pluginsDir.cdUp();
-        pluginsDir.cd("PlugIns");
-    }
-#endif
-    TestInterface *test;
-
-    pluginsDir.cd("plugins");
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
-        QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
-        QObject *plugin = pluginLoader.instance();
-        if (plugin) {
-            test = qobject_cast<TestInterface *>(plugin);
-            cout << test->getName().toStdString() << endl;
-        }
-    }
     */
 
     QSettings settings;
@@ -106,7 +88,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
 
 void MainWindow::newFile()
 {
-    NewFileDialog dialog(this);
+    NewFileDialog dialog(m_model_plugins, this);
     if (dialog.exec() == QDialog::Accepted) {
 
     }
@@ -131,8 +113,44 @@ void MainWindow::appClose()
 
 MainWindow::~MainWindow()
 {
+    foreach (ModelInterface *mi, m_model_plugins) {
+        delete mi;
+    }
     if (m_scene) {
         //delete m_scene;
     }
     delete ui;
+}
+
+void MainWindow::loadPlugins()
+{
+    loadModelPlugins();
+}
+
+void MainWindow::loadModelPlugins()
+{
+
+    // plugins
+    QDir pluginsDir(qApp->applicationDirPath());
+#if defined(Q_OS_MAC)
+    if (pluginsDir.dirName() == "MacOS") {
+        pluginsDir.cdUp();
+        pluginsDir.cd("PlugIns");
+    }
+#else
+    pluginsDir.cd("plugins");
+#endif
+    ModelInterface *interface;
+
+    pluginsDir.cd("model");
+    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+        QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
+        QObject *plugin = pluginLoader.instance();
+        if (plugin) {
+            interface = qobject_cast<ModelInterface *>(plugin);
+            if (interface) {
+                m_model_plugins.append(interface);
+            }
+        }
+    }
 }
