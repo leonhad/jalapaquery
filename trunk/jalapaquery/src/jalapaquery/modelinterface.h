@@ -4,8 +4,9 @@
 #include <QString>
 #include <QtPlugin>
 #include "mainwindow.h"
+#include "plugininterface.h"
 
-class ModelInterface
+class ModelInterface : public PluginInterface
 {
 public:
     virtual ~ModelInterface() {}

@@ -15,6 +15,10 @@ public:
     DatabasePlugin();
     virtual ~DatabasePlugin();
     virtual QString getModelName();
+
+    virtual QString getPluginName();
+    virtual QString getPluginVersion();
+    virtual QString getPluginVendor();
 };
 
 #endif // DATABASEPLUGIN_H

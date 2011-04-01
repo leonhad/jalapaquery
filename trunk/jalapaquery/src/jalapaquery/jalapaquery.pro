@@ -15,7 +15,8 @@ HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
     newfiledialog.h \
-    modelinterface.h
+    modelinterface.h \
+    plugininterface.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
     newfiledialog.ui
