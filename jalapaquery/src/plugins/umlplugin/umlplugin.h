@@ -15,6 +15,10 @@ public:
     UmlPlugin();
     virtual ~UmlPlugin();
     virtual QString getModelName();
+
+    virtual QString getPluginName();
+    virtual QString getPluginVersion();
+    virtual QString getPluginVendor();
 };
 
 #endif // UMLPLUGIN_H

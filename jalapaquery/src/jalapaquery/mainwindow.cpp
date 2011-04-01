@@ -148,6 +148,7 @@ void MainWindow::loadModelPlugins()
         if (plugin) {
             interface = qobject_cast<ModelInterface *>(plugin);
             if (interface) {
+                qDebug() << interface->getPluginName() << interface->getPluginVersion() << interface->getPluginVendor();
                 m_model_plugins.append(interface);
             }
         }
