@@ -58,7 +58,7 @@
      <x>0</x>
      <y>0</y>
      <width>623</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -152,8 +152,10 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <addaction name="actionAbout"/>
     <addaction name="actionIndex"/>
+    <addaction name="separator"/>
+    <addaction name="actionAboutPlugins"/>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -264,7 +266,7 @@
           <x>0</x>
           <y>0</y>
           <width>102</width>
-          <height>255</height>
+          <height>254</height>
          </rect>
         </property>
         <attribute name="label">
@@ -276,8 +278,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>102</width>
-          <height>255</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -592,6 +594,14 @@
   <action name="action200">
    <property name="text">
     <string>200%</string>
+   </property>
+  </action>
+  <action name="actionAboutPlugins">
+   <property name="text">
+    <string>About Plugins...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::ApplicationSpecificRole</enum>
    </property>
   </action>
  </widget>

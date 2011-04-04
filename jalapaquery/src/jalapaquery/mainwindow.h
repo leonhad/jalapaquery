@@ -21,6 +21,7 @@ public:
 
 public slots:
     void aboutDialog();
+    void pluginDialog();
     void newFile();
     void closeTab(int);
     void appClose();
