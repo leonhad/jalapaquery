@@ -10,16 +10,19 @@ SOURCES += main.cpp \
     mainwindow.cpp \
     testitem.cpp \
     aboutdialog.cpp \
-    newfiledialog.cpp
+    newfiledialog.cpp \
+    plugindialog.cpp
 HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
     newfiledialog.h \
     modelinterface.h \
-    plugininterface.h
+    plugininterface.h \
+    plugindialog.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
-    newfiledialog.ui
+    newfiledialog.ui \
+    plugindialog.ui
 RESOURCES += resources.qrc \
     icons.qrc
 macx: { 

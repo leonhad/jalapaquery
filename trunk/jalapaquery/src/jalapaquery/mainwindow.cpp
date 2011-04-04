@@ -3,6 +3,7 @@
 #include "aboutdialog.h"
 #include "newfiledialog.h"
 #include "modelinterface.h"
+#include "plugindialog.h"
 #include <QGraphicsPathItem>
 #include <QGraphicsTextItem>
 #include <QDir>
@@ -33,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutDialog()));
+    connect(ui->actionAboutPlugins, SIGNAL(triggered()), this, SLOT(pluginDialog()));
     connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
 
     //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
@@ -73,10 +75,15 @@ MainWindow::MainWindow(QWidget *parent) :
     settings.endGroup();
 }
 
+void MainWindow::pluginDialog()
+{
+    PluginDialog *dialog = new PluginDialog(this);
+    dialog->show();
+}
+
 void MainWindow::aboutDialog()
 {
     AboutDialog *dialog = new AboutDialog(this);
-    dialog->setWindowIcon(windowIcon());
     dialog->show();
 }
 
@@ -148,7 +155,7 @@ void MainWindow::loadModelPlugins()
         if (plugin) {
             interface = qobject_cast<ModelInterface *>(plugin);
             if (interface) {
-                qDebug() << interface->getPluginName() << interface->getPluginVersion() << interface->getPluginVendor();
+                //qDebug() << interface->getPluginName() << interface->getPluginVersion() << interface->getPluginVendor();
                 m_model_plugins.append(interface);
             }
         }
