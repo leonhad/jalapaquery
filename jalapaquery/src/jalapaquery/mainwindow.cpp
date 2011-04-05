@@ -78,6 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::pluginDialog()
 {
     PluginDialog *dialog = new PluginDialog(this);
+    dialog->setModelPlugins(m_model_plugins);
     dialog->show();
 }
 
