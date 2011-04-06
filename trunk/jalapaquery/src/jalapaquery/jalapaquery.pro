@@ -1,11 +1,9 @@
-# -------------------------------------------------
-# Project created by QtCreator 2011-02-18T10:55:17
-# -------------------------------------------------
 QT += core \
     gui
 TARGET = JalapaQuery
 TEMPLATE = app
 DESTDIR = ../../bin
+INCLUDEPATH = ../interface
 SOURCES += main.cpp \
     mainwindow.cpp \
     testitem.cpp \
@@ -16,8 +14,6 @@ HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
     newfiledialog.h \
-    modelinterface.h \
-    plugininterface.h \
     plugindialog.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \

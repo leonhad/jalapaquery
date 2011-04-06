@@ -11,7 +11,7 @@ SOURCES += databaseplugin.cpp
 HEADERS += databaseplugin.h \
     databaseplugin_global.h
 
-INCLUDEPATH = ../../jalapaquery
+INCLUDEPATH = ../../interface
 
 mac: {
     DESTDIR = ../../../bin/JalapaQuery.app/Contents/PlugIns/model
