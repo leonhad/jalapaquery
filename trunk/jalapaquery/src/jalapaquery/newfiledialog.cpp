@@ -18,19 +18,29 @@ NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
         new QListWidgetItem(mi->modelName(), ui->projectType, loop);
     }
     connect(ui->projectType, SIGNAL(itemSelectionChanged()), this, SLOT(modelChanged()));
-    //QListWidgetItem *item = new QListWidgetItem(QIcon(":/icons/icon128.png"), "teste", ui->fileType);
 }
 
 void NewFileDialog::modelChanged()
 {
     ModelInterface *mi = m_models.at(ui->projectType->currentItem()->type());
-    ui->fileType->clear();;
+
+    disconnect(ui->fileType, SIGNAL(itemSelectionChanged()), this, SLOT(modelSelected()));
+    ui->fileType->clear();
+    ui->details->clear();
 
     int loop;
     for (loop = 0; loop < mi->types().size(); loop++) {
         TypeModel *type = mi->types().at(loop);
         new QListWidgetItem(type->icon(), type->name(), ui->fileType, loop);
-    }
+    }    
+    connect(ui->fileType, SIGNAL(itemSelectionChanged()), this, SLOT(modelSelected()));
+}
+
+void NewFileDialog::modelSelected()
+{
+    ModelInterface *mi = m_models.at(ui->projectType->currentItem()->type());
+    TypeModel *type = mi->types().at(ui->fileType->currentItem()->type());
+    ui->details->setPlainText(type->description());
 }
 
 NewFileDialog::~NewFileDialog()

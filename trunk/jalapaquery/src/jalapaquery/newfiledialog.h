@@ -20,6 +20,7 @@ public:
 
 private slots:
     void modelChanged();
+    void modelSelected();
 
 private:
     Ui::NewFileDialog *ui;
