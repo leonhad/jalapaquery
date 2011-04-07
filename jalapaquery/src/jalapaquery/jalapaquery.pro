@@ -40,4 +40,5 @@ OTHER_FILES += App.rc \
     AppInfo.plist
 TRANSLATIONS = \
     jalapaquery_pt.ts \
-    jalapaquery_en.ts
+    jalapaquery_en.ts \
+    jalapaquery_en_IE.ts
