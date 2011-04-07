@@ -14,11 +14,12 @@ class UMLPLUGINSHARED_EXPORT UmlPlugin : public QObject, public ModelInterface
 public:
     UmlPlugin();
     virtual ~UmlPlugin();
-    virtual QString getModelName();
+    virtual QString modelName();
+    virtual QList<TypeModel *> types();
 
-    virtual QString getPluginName();
-    virtual QString getPluginVersion();
-    virtual QString getPluginVendor();
+    virtual QString pluginName();
+    virtual QString pluginVersion();
+    virtual QString pluginVendor();
 };
 
 #endif // UMLPLUGIN_H

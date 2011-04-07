@@ -8,22 +8,27 @@ UmlPlugin::~UmlPlugin()
 {
 }
 
-QString UmlPlugin::getModelName()
+QList<TypeModel *> UmlPlugin::types()
+{
+    return QList<TypeModel *>();
+}
+
+QString UmlPlugin::modelName()
 {
     return QString("UML");
 }
 
-QString UmlPlugin::getPluginName()
+QString UmlPlugin::pluginName()
 {
     return "UML Plugin";
 }
 
-QString UmlPlugin::getPluginVersion()
+QString UmlPlugin::pluginVersion()
 {
     return "0.1";
 }
 
-QString UmlPlugin::getPluginVendor()
+QString UmlPlugin::pluginVendor()
 {
     return "JalapaQuery.org";
 }

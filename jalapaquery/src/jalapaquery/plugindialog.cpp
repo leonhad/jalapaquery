@@ -25,9 +25,9 @@ void PluginDialog::setModelPlugins(QList<ModelInterface *> list)
 
     foreach(ModelInterface *model, list) {
         QTreeWidgetItem *modelItem = new QTreeWidgetItem(root);
-        modelItem->setText(0, model->getPluginName());
-        modelItem->setText(1, model->getPluginVersion());
-        modelItem->setText(2, model->getPluginVendor());
+        modelItem->setText(0, model->pluginName());
+        modelItem->setText(1, model->pluginVersion());
+        modelItem->setText(2, model->pluginVendor());
     }
     root->setExpanded(true);
 }
