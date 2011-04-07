@@ -11,10 +11,13 @@ SOURCES += databaseplugin.cpp
 HEADERS += databaseplugin.h \
     databaseplugin_global.h
 
-INCLUDEPATH = ../../interface
+INCLUDEPATH = ../../jalapaquery/interface
 
 mac: {
     DESTDIR = ../../../bin/JalapaQuery.app/Contents/PlugIns/model
 } else {
     DESTDIR = ../../../bin/plugins/model
 }
+
+RESOURCES += \
+    resources.qrc

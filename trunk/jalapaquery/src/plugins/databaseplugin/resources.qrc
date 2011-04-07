@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/dictionary16.png</file>
+        <file>resources/dictionary64.png</file>
+    </qresource>
+</RCC>

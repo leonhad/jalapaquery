@@ -18,6 +18,9 @@ public:
     explicit NewFileDialog(QList<ModelInterface *> models, QWidget *parent = 0);
     ~NewFileDialog();
 
+private slots:
+    void modelChanged();
+
 private:
     Ui::NewFileDialog *ui;
     QList<ModelInterface *> m_models;

@@ -12,7 +12,7 @@ SOURCES += umlplugin.cpp
 HEADERS += umlplugin.h\
         umlplugin_global.h
 
-INCLUDEPATH = ../../interface
+INCLUDEPATH = ../../jalapaquery/interface
 
 mac: {
     DESTDIR = ../../../bin/JalapaQuery.app/Contents/PlugIns/model

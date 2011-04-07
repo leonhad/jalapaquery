@@ -3,7 +3,7 @@ QT += core \
 TARGET = JalapaQuery
 TEMPLATE = app
 DESTDIR = ../../bin
-INCLUDEPATH = ../interface
+INCLUDEPATH = interface
 SOURCES += main.cpp \
     mainwindow.cpp \
     testitem.cpp \
@@ -14,7 +14,10 @@ HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
     newfiledialog.h \
-    plugindialog.h
+    plugindialog.h \
+    interface/plugininterface.h \
+    interface/modelinterface.h \
+    interface/typemodel.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
     newfiledialog.ui \

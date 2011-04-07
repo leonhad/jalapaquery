@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     resize(800, 600);
-    //setUnifiedTitleAndToolBarOnMac(true);
+    setUnifiedTitleAndToolBarOnMac(true);
 
     //m_scene = new QGraphicsScene;
     //ui->mainView->setScene(m_scene);
