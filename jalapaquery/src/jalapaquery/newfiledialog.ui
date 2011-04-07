@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>526</width>
-    <height>397</height>
+    <width>666</width>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,14 +45,17 @@
      <property name="tabKeyNavigation">
       <bool>true</bool>
      </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectItems</enum>
+     <property name="dragDropMode">
+      <enum>QAbstractItemView::NoDragDrop</enum>
      </property>
      <property name="iconSize">
       <size>
        <width>64</width>
        <height>64</height>
       </size>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
      </property>
      <property name="spacing">
       <number>4</number>
@@ -63,7 +66,11 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPlainTextEdit" name="details"/>
+    <widget class="QPlainTextEdit" name="details">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
