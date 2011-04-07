@@ -38,3 +38,6 @@ macx: {
 win32::RC_FILE = App.rc
 OTHER_FILES += App.rc \
     AppInfo.plist
+TRANSLATIONS = \
+    jalapaquery_pt.ts \
+    jalapaquery_en.ts
