@@ -335,7 +335,7 @@
     <message>
         <location filename="mainwindow.ui" line="601"/>
         <source>About Plugins...</source>
-        <translation>Sobre Plugins...</translation>
+        <translation>Sobre os Plugins...</translation>
     </message>
 </context>
 <context>

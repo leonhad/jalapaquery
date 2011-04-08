@@ -1,6 +1,8 @@
 #include <QtGui/QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QDir>
+#include <QLocale>
 #include <QDebug>
 #include "mainwindow.h"
 
@@ -21,8 +23,18 @@ int main(int argc, char *argv[])
                       QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&qtTranslator);
 
+    QDir translationDir(app.applicationDirPath());
+#if defined(Q_OS_MAC)
+    if (translationDir.dirName() == "MacOS") {
+        translationDir.cdUp();
+        translationDir.cd("Resources");
+    }
+#else
+    translationDir.cd("resources");
+#endif
+
     QTranslator myappTranslator;
-    myappTranslator.load("jalapaquery_" + QLocale::system().name());
+    myappTranslator.load("jalapaquery_" + QLocale::system().name(), translationDir.absolutePath());
     app.installTranslator(&myappTranslator);
 
     qDebug() << QLocale::system().name();
