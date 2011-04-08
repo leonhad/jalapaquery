@@ -27,8 +27,7 @@ RESOURCES += resources.qrc \
 macx: { 
     CONFIG += x86_64
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
-    
-    # FILEICONS.version = Versions
+
     FILEICONS.files = dbmodel.icns
     FILEICONS.path = Contents/Resources
     QMAKE_BUNDLE_DATA += FILEICONS
@@ -41,4 +40,5 @@ OTHER_FILES += App.rc \
 TRANSLATIONS = \
     jalapaquery_pt.ts \
     jalapaquery_en.ts \
-    jalapaquery_en_IE.ts
+    jalapaquery_en_IE.ts \
+    jalapaquery_ga.ts
