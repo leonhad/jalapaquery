@@ -24,6 +24,13 @@ FORMS += mainwindow.ui \
     plugindialog.ui
 RESOURCES += resources.qrc \
     icons.qrc
+
+TRANSLATIONSINSTALL.files = \
+    jalapaquery_pt.qm \
+    jalapaquery_en.qm \
+    jalapaquery_en_IE.qm \
+    jalapaquery_ga.qm
+
 macx: { 
     CONFIG += x86_64
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
@@ -33,7 +40,12 @@ macx: {
     QMAKE_BUNDLE_DATA += FILEICONS
     ICON = AppIcon.icns
     QMAKE_INFO_PLIST = AppInfo.plist
+
+    TRANSLATIONSINSTALL.path = Contents/Resources
+} else {
+    TRANSLATIONSINSTALL.path = resources
 }
+QMAKE_BUNDLE_DATA += TRANSLATIONSINSTALL
 win32::RC_FILE = App.rc
 OTHER_FILES += App.rc \
     AppInfo.plist
