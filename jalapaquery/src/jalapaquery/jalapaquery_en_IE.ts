@@ -53,7 +53,8 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="133"/>
-        <source>Docks</source>
+        <source>Views</source>
+        <oldsource>Docks</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -349,11 +350,6 @@
 <context>
     <name>PluginDialog</name>
     <message>
-        <location filename="plugindialog.ui" line="14"/>
-        <source>Dialog</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="plugindialog.cpp" line="14"/>
         <source>Name</source>
         <translation type="unfinished"></translation>
@@ -366,6 +362,11 @@
     <message>
         <location filename="plugindialog.cpp" line="14"/>
         <source>Vendor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="plugindialog.ui" line="14"/>
+        <source>About Plugins</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

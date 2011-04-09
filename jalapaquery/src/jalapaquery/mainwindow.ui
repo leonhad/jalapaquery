@@ -130,7 +130,7 @@
     </widget>
     <widget class="QMenu" name="menuDocks">
      <property name="title">
-      <string>Docks</string>
+      <string>Views</string>
      </property>
     </widget>
     <addaction name="menuZoom"/>
@@ -278,8 +278,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>98</width>
-          <height>28</height>
+          <width>102</width>
+          <height>254</height>
          </rect>
         </property>
         <attribute name="label">
@@ -374,6 +374,9 @@
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionNew">

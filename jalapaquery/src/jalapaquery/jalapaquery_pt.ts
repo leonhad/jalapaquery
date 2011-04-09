@@ -6,7 +6,7 @@
     <message>
         <location filename="aboutdialog.ui" line="14"/>
         <source>About JalapaQuery</source>
-        <translation>Sobre JalapaQuery</translation>
+        <translation>Sobre o JalapaQuery</translation>
     </message>
     <message>
         <location filename="aboutdialog.ui" line="33"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="mainwindow.ui" line="108"/>
         <source>&amp;View</source>
-        <translation>&amp;Visão</translation>
+        <translation>E&amp;xibir</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="112"/>
@@ -53,8 +53,9 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="133"/>
-        <source>Docks</source>
-        <translation></translation>
+        <source>Views</source>
+        <oldsource>Docks</oldsource>
+        <translation>Visões</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="143"/>
@@ -285,12 +286,12 @@
     <message>
         <location filename="mainwindow.ui" line="547"/>
         <source>Zoom In</source>
-        <translation></translation>
+        <translation>Ampliar Zoom</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="556"/>
         <source>Zoom Out</source>
-        <translation></translation>
+        <translation>Diminuir Zoom</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="561"/>
@@ -350,9 +351,8 @@
 <context>
     <name>PluginDialog</name>
     <message>
-        <location filename="plugindialog.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Diálogo</translation>
+        <translation type="obsolete">Diálogo</translation>
     </message>
     <message>
         <location filename="plugindialog.cpp" line="14"/>
@@ -368,6 +368,11 @@
         <location filename="plugindialog.cpp" line="14"/>
         <source>Vendor</source>
         <translation>Fornecedor</translation>
+    </message>
+    <message>
+        <location filename="plugindialog.ui" line="14"/>
+        <source>About Plugins</source>
+        <translation>Sobre os Plugins</translation>
     </message>
 </context>
 </TS>
