@@ -11,6 +11,8 @@
 #include <QSettings>
 #include <QCloseEvent>
 #include <QDebug>
+#include <QIcon>
+#include <QTreeWidgetItem>
 
 using namespace std;
 
@@ -39,6 +41,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
     loadPlugins();
+
+    m_workspace = new QTreeWidgetItem(ui->projectWidget);
+    m_workspace->setText(0, tr("Workspace"));
+    m_workspace->setIcon(0, QIcon(":/icons/desktop.png"));
 
     /*
     TestItem *item1 = new TestItem;
@@ -121,9 +127,6 @@ MainWindow::~MainWindow()
 {
     foreach (ModelInterface *mi, m_model_plugins) {
         delete mi;
-    }
-    if (m_scene) {
-        //delete m_scene;
     }
     delete ui;
 }

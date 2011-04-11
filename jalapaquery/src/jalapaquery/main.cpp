@@ -10,8 +10,6 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    Q_INIT_RESOURCE(icons);
-
     QCoreApplication::setOrganizationName("jalapaquery");
     QCoreApplication::setOrganizationDomain("jalapaquery.org");
     QCoreApplication::setApplicationName("jalapaquery");
