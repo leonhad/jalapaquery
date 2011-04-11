@@ -42,10 +42,10 @@ macx: {
     QMAKE_INFO_PLIST = AppInfo.plist
 
     TRANSLATIONSINSTALL.path = Contents/Resources
+    QMAKE_BUNDLE_DATA += TRANSLATIONSINSTALL
 } else {
     TRANSLATIONSINSTALL.path = resources
 }
-QMAKE_BUNDLE_DATA += TRANSLATIONSINSTALL
 win32::RC_FILE = App.rc
 OTHER_FILES += App.rc \
     AppInfo.plist

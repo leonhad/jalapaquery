@@ -4,7 +4,8 @@
 #include <QMainWindow>
 #include <QList>
 
-class QGraphicsScene;
+//class QGraphicsScene;
+class QTreeWidgetItem;
 class ModelInterface;
 
 namespace Ui {
@@ -35,7 +36,8 @@ private:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *m_scene;
+    //QGraphicsScene *m_scene;
+    QTreeWidgetItem *m_workspace;
 
     QList<ModelInterface *> m_model_plugins;
 };
