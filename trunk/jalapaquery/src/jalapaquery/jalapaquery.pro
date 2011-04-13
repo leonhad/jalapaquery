@@ -25,12 +25,6 @@ FORMS += mainwindow.ui \
 RESOURCES += resources.qrc \
     icons.qrc
 
-TRANSLATIONSINSTALL.files = \
-    jalapaquery_pt.qm \
-    jalapaquery_en.qm \
-    jalapaquery_en_IE.qm \
-    jalapaquery_ga.qm
-
 macx: { 
     CONFIG += x86_64
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
@@ -41,10 +35,13 @@ macx: {
     ICON = AppIcon.icns
     QMAKE_INFO_PLIST = AppInfo.plist
 
+    TRANSLATIONSINSTALL.files = \
+        jalapaquery_pt.qm \
+        jalapaquery_en.qm \
+        jalapaquery_en_IE.qm \
+        jalapaquery_ga.qm
     TRANSLATIONSINSTALL.path = Contents/Resources
     QMAKE_BUNDLE_DATA += TRANSLATIONSINSTALL
-} else {
-    TRANSLATIONSINSTALL.path = resources
 }
 win32::RC_FILE = App.rc
 OTHER_FILES += App.rc \
