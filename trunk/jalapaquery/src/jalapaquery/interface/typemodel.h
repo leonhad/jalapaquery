@@ -12,7 +12,6 @@ class TypeModel {
 public:
     TypeModel(QIcon icon, QString name, QString description) {
         m_icon = icon;
-        m_smallIcon = icon;
         m_name = name;
         m_description = description;
     }
