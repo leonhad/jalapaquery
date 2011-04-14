@@ -1,5 +1,4 @@
-QT += sql \
-    xml
+QT += xml
 TARGET = umlplugin
 TEMPLATE = lib
 CONFIG   += plugin

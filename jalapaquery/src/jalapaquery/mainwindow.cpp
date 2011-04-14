@@ -157,6 +157,7 @@ void MainWindow::loadModelPlugins()
     pluginsDir.cd("model");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
         QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
+        //pluginLoader.setLoadHints(QLibrary::ExportExternalSymbolsHint);
         QObject *plugin = pluginLoader.instance();
         if (plugin) {
             interface = qobject_cast<ModelInterface *>(plugin);

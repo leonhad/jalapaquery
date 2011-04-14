@@ -14,6 +14,7 @@ HEADERS += databaseplugin.h \
 INCLUDEPATH = ../../jalapaquery/interface
 
 mac: {
+    QMAKE_LFLAGS_SONAME  = -Wl,-install_name,@executable_path/../Frameworks/
     DESTDIR = ../../../bin/JalapaQuery.app/Contents/PlugIns/model
 } else {
     DESTDIR = ../../../bin/plugins/model
