@@ -14,17 +14,7 @@
    <string>New</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" rowspan="2">
+   <item row="1" column="0" rowspan="4">
     <widget class="QListWidget" name="projectType">
      <property name="maximumSize">
       <size>
@@ -37,7 +27,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="1" column="1" colspan="2">
     <widget class="QListWidget" name="fileType">
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -65,10 +55,37 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1" colspan="2">
     <widget class="QPlainTextEdit" name="details">
      <property name="readOnly">
       <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLabel" name="projectNameLabel">
+     <property name="text">
+      <string>Project Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLineEdit" name="projectName"/>
+   </item>
+   <item row="5" column="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="templateLabel">
+     <property name="text">
+      <string>Choose a project template:</string>
      </property>
     </widget>
    </item>

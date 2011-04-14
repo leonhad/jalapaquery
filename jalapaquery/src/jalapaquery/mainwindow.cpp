@@ -45,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_workspace = new QTreeWidgetItem(ui->projectWidget);
     m_workspace->setText(0, tr("Workspace"));
     m_workspace->setIcon(0, QIcon(":/icons/desktop.png"));
+    m_workspace->setExpanded(true);
 
     /*
     TestItem *item1 = new TestItem;
@@ -102,7 +103,9 @@ void MainWindow::newFile()
 {
     NewFileDialog dialog(m_model_plugins, this);
     if (dialog.exec() == QDialog::Accepted) {
-
+        QTreeWidgetItem *itemTest = new QTreeWidgetItem(m_workspace);
+        itemTest->setText(0, dialog.projectName());
+        itemTest->setIcon(0, dialog.typeModel()->smallIcon());
     }
 }
 
