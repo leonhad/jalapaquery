@@ -8,7 +8,7 @@
 AppId={{4F2FC751-AAE7-45A9-BE7B-43758C03D16F}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -18,7 +18,7 @@ DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 LicenseFile=COPYING
 OutputDir=out
-OutputBaseFilename=setup
+OutputBaseFilename=jalapaquery-{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 
@@ -27,15 +27,17 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}";
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 0,6.1
 
 [Files]
 Source: "JalapaQuery.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "*.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "plugins\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "resources\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "libgcc_s_dw2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "mingwm10.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "QtCore4.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "QtGui4.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "plugins\*"; DestDir: "{app}\plugins"; Excludes: "*.a";Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "resources\*"; DestDir: "{app}\resources"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
