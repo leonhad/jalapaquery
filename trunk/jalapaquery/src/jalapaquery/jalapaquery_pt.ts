@@ -344,8 +344,7 @@
     <message>
         <location filename="newfiledialog.ui" line="14"/>
         <source>New</source>
-        <translation>Novo
-</translation>
+        <translation>Novo</translation>
     </message>
 </context>
 <context>
@@ -362,7 +361,7 @@
     <message>
         <location filename="plugindialog.cpp" line="14"/>
         <source>Version</source>
-        <translation>Vers~ao</translation>
+        <translation type="unfinished">Versão</translation>
     </message>
     <message>
         <location filename="plugindialog.cpp" line="14"/>
