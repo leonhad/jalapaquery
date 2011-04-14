@@ -3,7 +3,7 @@
 #include "modelinterface.h"
 #include <QListWidgetItem>
 #include <QIcon>
-#include <QDebug>
+#include <QMessageBox>
 
 NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
     QDialog(parent),
@@ -18,6 +18,40 @@ NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
         new QListWidgetItem(mi->modelName(), ui->projectType, loop);
     }
     connect(ui->projectType, SIGNAL(itemSelectionChanged()), this, SLOT(modelChanged()));
+}
+
+void NewFileDialog::done(int value)
+{
+    if(QDialog::Accepted == value) {
+        if (ui->fileType->selectedItems().size() == 0) {
+            QMessageBox message(this);
+            message.setText(tr("Select a template first."));
+            message.setIcon(QMessageBox::Warning);
+            message.exec();
+        } else if(ui->projectName->text().size() > 0) {
+            ModelInterface *mi = m_models.at(ui->projectType->currentItem()->type());
+            m_type = mi->types().at(ui->fileType->currentItem()->type());
+            m_projectName = ui->projectName->text();
+            QDialog::done(value);
+        } else {
+            QMessageBox message(this);
+            message.setText(tr("The project name is mandatory."));
+            message.setIcon(QMessageBox::Warning);
+            message.exec();
+        }
+    } else  {
+        QDialog::done(value);
+    }
+}
+
+QString NewFileDialog::projectName()
+{
+    return m_projectName;
+}
+
+TypeModel *NewFileDialog::typeModel()
+{
+    return m_type;
 }
 
 void NewFileDialog::modelChanged()

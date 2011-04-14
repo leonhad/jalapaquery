@@ -19,6 +19,7 @@ public:
     ~PluginDialog();
 
     void setModelPlugins(QList<ModelInterface *> list);
+
 private:
     Ui::PluginDialog *ui;
 };

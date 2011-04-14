@@ -2,8 +2,10 @@
 
 DatabasePlugin::DatabasePlugin()
 {
-    m_types.append(new TypeModel(QIcon(":/resources/dictionary64.png"), tr("Data Dictionary"),
-                                 tr("File containing informations about the tables and relationships between them.")));
+    TypeModel *model = new TypeModel(QIcon(":/resources/dictionary64.png"), tr("Data Dictionary"),
+                                 tr("File containing informations about the tables and relationships between them."));
+    model->setSmallIcon(QIcon(":/resources/dictionary16.png"));
+    m_types.append(model);
 }
 
 DatabasePlugin::~DatabasePlugin()

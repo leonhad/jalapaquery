@@ -5,8 +5,8 @@
 #include <QTreeWidgetItem>
 
 PluginDialog::PluginDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::PluginDialog)
+        QDialog(parent),
+        ui(new Ui::PluginDialog)
 {
     ui->setupUi(this);
 
@@ -18,10 +18,11 @@ PluginDialog::PluginDialog(QWidget *parent) :
     ui->pluginList->setColumnWidth(0, 300);
 }
 
+
 void PluginDialog::setModelPlugins(QList<ModelInterface *> list)
 {
     QTreeWidgetItem *root = new QTreeWidgetItem(ui->pluginList);
-    root->setText(0, "Modeling Tool");
+    root->setText(0, tr("Modeling Tools"));
 
     foreach(ModelInterface *model, list) {
         QTreeWidgetItem *modelItem = new QTreeWidgetItem(root);
