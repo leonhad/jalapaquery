@@ -16,9 +16,7 @@
 
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent) :
-        QMainWindow(parent),
-        ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     resize(800, 600);
@@ -36,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutDialog()));
     connect(ui->actionAboutPlugins, SIGNAL(triggered()), this, SLOT(pluginDialog()));
-    connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
+    connect(ui->actionNewProject, SIGNAL(triggered()), this, SLOT(newFile()));
 
     //connect(m_mainWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 
