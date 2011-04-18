@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("jalapaquery.org");
     QCoreApplication::setApplicationName("jalapaquery");
 
+#ifdef Q_OS_MAC
     app.setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
 
     QTranslator qtTranslator;
     qtTranslator.load("qt_" + QLocale::system().name(),
@@ -22,7 +24,7 @@ int main(int argc, char *argv[])
     app.installTranslator(&qtTranslator);
 
     QDir translationDir(app.applicationDirPath());
-#if defined(Q_OS_MAC)
+#ifdef Q_OS_MAC
     if (translationDir.dirName() == "MacOS") {
         translationDir.cdUp();
         translationDir.cd("Resources");

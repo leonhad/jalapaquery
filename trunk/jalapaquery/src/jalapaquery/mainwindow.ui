@@ -58,7 +58,7 @@
      <x>0</x>
      <y>0</y>
      <width>623</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -70,7 +70,14 @@
       <string>Recent Files</string>
      </property>
     </widget>
-    <addaction name="actionNew"/>
+    <widget class="QMenu" name="menuNew">
+     <property name="title">
+      <string>New</string>
+     </property>
+     <addaction name="actionNewProject"/>
+     <addaction name="actionNew"/>
+    </widget>
+    <addaction name="menuNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
     <addaction name="actionSaveAs"/>
@@ -186,6 +193,7 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNewProject"/>
    <addaction name="actionNew"/>
    <addaction name="actionOpen"/>
    <addaction name="actionSave"/>
@@ -284,7 +292,7 @@
           <x>0</x>
           <y>0</y>
           <width>102</width>
-          <height>254</height>
+          <height>280</height>
          </rect>
         </property>
         <attribute name="label">
@@ -297,7 +305,7 @@
           <x>0</x>
           <y>0</y>
           <width>102</width>
-          <height>254</height>
+          <height>280</height>
          </rect>
         </property>
         <attribute name="label">
@@ -359,9 +367,6 @@
    <property name="text">
     <string>&amp;About</string>
    </property>
-   <property name="menuRole">
-    <enum>QAction::AboutRole</enum>
-   </property>
   </action>
   <action name="actionExit">
    <property name="text">
@@ -370,16 +375,10 @@
    <property name="shortcut">
     <string>Ctrl+Q</string>
    </property>
-   <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
-   </property>
   </action>
   <action name="actionPreferences">
    <property name="text">
     <string>&amp;Preferences</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionIndex">
@@ -397,16 +396,19 @@
     <enum>QAction::NoRole</enum>
    </property>
   </action>
-  <action name="actionNew">
+  <action name="actionNewProject">
    <property name="icon">
     <iconset resource="resources.qrc">
-     <normaloff>:/resources/newfile.png</normaloff>:/resources/newfile.png</iconset>
+     <normaloff>:/resources/newproject.png</normaloff>:/resources/newproject.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;New</string>
+    <string>&amp;New Project</string>
+   </property>
+   <property name="toolTip">
+    <string>New Project</string>
    </property>
    <property name="shortcut">
-    <string>Ctrl+N</string>
+    <string>Ctrl+Shift+N</string>
    </property>
   </action>
   <action name="actionOpen">
@@ -623,6 +625,18 @@
    </property>
    <property name="menuRole">
     <enum>QAction::ApplicationSpecificRole</enum>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/resources/newfile.png</normaloff>:/resources/newfile.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New Diagram</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
  </widget>

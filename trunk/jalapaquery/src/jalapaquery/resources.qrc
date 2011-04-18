@@ -14,5 +14,6 @@
         <file>resources/zoom_out.png</file>
         <file>resources/help.png</file>
         <file>resources/print.png</file>
+        <file>resources/newproject.png</file>
     </qresource>
 </RCC>
