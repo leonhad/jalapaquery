@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     testitem.cpp \
     aboutdialog.cpp \
     newfiledialog.cpp \
-    plugindialog.cpp
+    plugindialog.cpp \
+    constants.cpp
 HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
@@ -17,7 +18,8 @@ HEADERS += mainwindow.h \
     plugindialog.h \
     interface/plugininterface.h \
     interface/modelinterface.h \
-    interface/typemodel.h
+    interface/typemodel.h \
+    constants.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
     newfiledialog.ui \

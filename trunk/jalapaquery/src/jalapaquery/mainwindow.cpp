@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->menuToolbars->addAction(ui->helpToolBar->toggleViewAction());
 
     connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(appClose()));
+    //connect(ui->actionExit, SIGNAL(a))
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(aboutDialog()));
     connect(ui->actionAboutPlugins, SIGNAL(triggered()), this, SLOT(pluginDialog()));
     connect(ui->actionNewProject, SIGNAL(triggered()), this, SLOT(newFile()));
