@@ -24,10 +24,12 @@ void NewFileDialog::done(int value)
 {
     if(QDialog::Accepted == value) {
         if (ui->fileType->selectedItems().size() == 0) {
-            QMessageBox message(this);
-            message.setText(tr("Select a template first."));
-            message.setIcon(QMessageBox::Warning);
-            message.exec();
+            QMessageBox *message = new QMessageBox(this);
+            message->setText(tr("Select a template first."));
+            message->setIcon(QMessageBox::Warning);
+            message->setWindowFlags(Qt::Sheet);
+            message->setWindowModality(Qt::WindowModal);
+            message->exec();
         } else if(ui->projectName->text().size() > 0) {
             ModelInterface *mi = m_models.at(ui->projectType->currentItem()->type());
             m_type = mi->types().at(ui->fileType->currentItem()->type());
@@ -37,6 +39,8 @@ void NewFileDialog::done(int value)
             QMessageBox message(this);
             message.setText(tr("The project name is mandatory."));
             message.setIcon(QMessageBox::Warning);
+            message.setWindowFlags(Qt::Sheet);
+            message.setWindowModality(Qt::WindowModal);
             message.exec();
         }
     } else  {

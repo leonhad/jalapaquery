@@ -29,7 +29,7 @@ macx: {
     CONFIG += x86_64
     QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
 
-    FILEICONS.files = dbmodel.icns
+    FILEICONS.files = dbmodel.icns jalapamodel.icns
     FILEICONS.path = Contents/Resources
     QMAKE_BUNDLE_DATA += FILEICONS
     ICON = AppIcon.icns
