@@ -304,8 +304,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>102</width>
-          <height>280</height>
+          <width>98</width>
+          <height>28</height>
          </rect>
         </property>
         <attribute name="label">
@@ -648,7 +648,7 @@
  <connections>
   <connection>
    <sender>actionExit</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>MainWindow</receiver>
    <slot>close()</slot>
    <hints>
@@ -657,8 +657,8 @@
      <y>-1</y>
     </hint>
     <hint type="destinationlabel">
-     <x>305</x>
-     <y>201</y>
+     <x>311</x>
+     <y>213</y>
     </hint>
    </hints>
   </connection>
