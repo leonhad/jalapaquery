@@ -11,6 +11,7 @@ NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
 {
     ui->setupUi(this);
     m_models = models;
+    setWindowFlags(Qt::Sheet);
 
     int loop;
     for (loop = 0; loop < m_models.size(); loop++) {
@@ -36,12 +37,12 @@ void NewFileDialog::done(int value)
             m_projectName = ui->projectName->text();
             QDialog::done(value);
         } else {
-            QMessageBox message(this);
-            message.setText(tr("The project name is mandatory."));
-            message.setIcon(QMessageBox::Warning);
-            message.setWindowFlags(Qt::Sheet);
-            message.setWindowModality(Qt::WindowModal);
-            message.exec();
+            QMessageBox *message = new QMessageBox(this);
+            message->setText(tr("The project name is mandatory."));
+            message->setIcon(QMessageBox::Warning);
+            message->setWindowFlags(Qt::Sheet);
+            message->setWindowModality(Qt::WindowModal);
+            message->exec();
         }
     } else  {
         QDialog::done(value);
