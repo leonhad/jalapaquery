@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>294</width>
-    <height>192</height>
+    <width>390</width>
+    <height>382</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,9 +15,9 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="sizeConstraint">
-    <enum>QLayout::SetFixedSize</enum>
+    <enum>QLayout::SetMinimumSize</enum>
    </property>
-   <item row="0" column="0" rowspan="3">
+   <item row="0" column="0" rowspan="3" colspan="2">
     <widget class="QLabel" name="appIcon">
      <property name="text">
       <string notr="true"/>
@@ -25,16 +25,12 @@
      <property name="pixmap">
       <pixmap resource="icons.qrc">:/icons/icon128.png</pixmap>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="appName">
-     <property name="text">
-      <string notr="true">JalapaQuery (version)</string>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="6" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -44,20 +40,47 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="copyright">
-     <property name="text">
-      <string notr="true">Copyright</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
+   <item row="5" column="0" colspan="2">
     <widget class="QPlainTextEdit" name="thanks">
      <property name="enabled">
       <bool>true</bool>
      </property>
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
+     </property>
+     <property name="plainText">
+      <string>All copyright are under GPL3 license.
+This program comes with ABSOLUTELY NO WARRANTY
+
+Special Thanks:
+
+Brian Gunning &lt;brian.p.gunning@gmail.com&gt;
+Leonardo Alves da Costa &lt;leonhad@gmail.com&gt;
+Rafael Nunes Medeiros &lt;mederafael@gmail.com&gt;
+Thiago Peixoto &lt;thiago.guinho@gmail.com&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="QLabel" name="copyright">
+     <property name="text">
+      <string>JalapaQuery Copyright (2011)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QLabel" name="appName">
+     <property name="text">
+      <string notr="true">JalapaQuery (version)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
