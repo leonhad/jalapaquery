@@ -34,10 +34,6 @@ Thiago Peixoto &lt;thiago.guinho@gmail.com&gt;</translation>
         <source>JalapaQuery Copyright (2011)</source>
         <translation></translation>
     </message>
-    <message>
-        <source>JalapaQuery (version)</source>
-        <translation type="obsolete">JalapaQuery (versão)</translation>
-    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -161,10 +157,6 @@ Thiago Peixoto &lt;thiago.guinho@gmail.com&gt;</translation>
         <location filename="mainwindow.ui" line="396"/>
         <source>F1</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>&amp;New</source>
-        <translation type="obsolete">&amp;Novo</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="642"/>
@@ -396,41 +388,33 @@ Thiago Peixoto &lt;thiago.guinho@gmail.com&gt;</translation>
 <context>
     <name>NewFileDialog</name>
     <message>
-        <source>New</source>
-        <translation type="obsolete">Novo</translation>
-    </message>
-    <message>
-        <location filename="newfiledialog.ui" line="14"/>
+        <location filename="newfiledialog.ui" line="17"/>
         <source>New Project</source>
         <translation>Novo Projeto</translation>
     </message>
     <message>
-        <location filename="newfiledialog.ui" line="68"/>
+        <location filename="newfiledialog.ui" line="71"/>
         <source>Project Name:</source>
         <translation>Nome do Projeto:</translation>
     </message>
     <message>
-        <location filename="newfiledialog.ui" line="88"/>
+        <location filename="newfiledialog.ui" line="91"/>
         <source>Choose a project template:</source>
         <translation>Selecione um modelo de projeto:</translation>
     </message>
     <message>
-        <location filename="newfiledialog.cpp" line="28"/>
+        <location filename="newfiledialog.cpp" line="29"/>
         <source>Select a template first.</source>
         <translation>Selecione um modelo primeiro.</translation>
     </message>
     <message>
-        <location filename="newfiledialog.cpp" line="40"/>
+        <location filename="newfiledialog.cpp" line="41"/>
         <source>The project name is mandatory.</source>
         <translation>O nome do projeto é obrigatório.</translation>
     </message>
 </context>
 <context>
     <name>PluginDialog</name>
-    <message>
-        <source>Dialog</source>
-        <translation type="obsolete">Diálogo</translation>
-    </message>
     <message>
         <location filename="plugindialog.cpp" line="14"/>
         <source>Name</source>

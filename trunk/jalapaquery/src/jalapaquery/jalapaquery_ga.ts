@@ -380,27 +380,27 @@ Thiago Peixoto &lt;thiago.guinho@gmail.com&gt;</source>
 <context>
     <name>NewFileDialog</name>
     <message>
-        <location filename="newfiledialog.ui" line="14"/>
+        <location filename="newfiledialog.ui" line="17"/>
         <source>New Project</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="newfiledialog.ui" line="68"/>
+        <location filename="newfiledialog.ui" line="71"/>
         <source>Project Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="newfiledialog.ui" line="88"/>
+        <location filename="newfiledialog.ui" line="91"/>
         <source>Choose a project template:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="newfiledialog.cpp" line="28"/>
+        <location filename="newfiledialog.cpp" line="29"/>
         <source>Select a template first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="newfiledialog.cpp" line="40"/>
+        <location filename="newfiledialog.cpp" line="41"/>
         <source>The project name is mandatory.</source>
         <translation type="unfinished"></translation>
     </message>
