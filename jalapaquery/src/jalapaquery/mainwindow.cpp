@@ -127,9 +127,7 @@ void MainWindow::appClose()
 
 MainWindow::~MainWindow()
 {
-    foreach (ModelInterface *mi, m_model_plugins) {
-        delete mi;
-    }
+    qDeleteAll(m_model_plugins);
     delete ui;
 }
 
