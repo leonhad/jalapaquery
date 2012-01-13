@@ -15,6 +15,24 @@
 
 @SET_MAKE@
 
+# Makerules.
+# This file is part of AutoTroll.
+# Copyright (C) 2006  Benoit Sigoure.
+#
+# AutoTroll is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
@@ -33,11 +51,14 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
+build_triplet = @build@
+host_triplet = @host@
+DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(top_srcdir)/autotroll.mk COPYING
 subdir = quazip
-DIST_COMMON = README $(libquazip_a_HEADERS) $(srcdir)/Makefile.am \
-	$(srcdir)/Makefile.in COPYING
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/configure.in
+am__aclocal_m4_deps = $(top_srcdir)/autotroll.m4 \
+	$(top_srcdir)/configure.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
@@ -65,38 +86,48 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libquazip_adir)"
-LIBRARIES = $(lib_LIBRARIES)
-AR = ar
-ARFLAGS = cru
-libquazip_a_AR = $(AR) $(ARFLAGS)
-libquazip_a_LIBADD =
-am_libquazip_a_OBJECTS = zip.$(OBJEXT) unzip.$(OBJEXT) \
-	quazipnewinfo.$(OBJEXT) quazipfile.$(OBJEXT) quazip.$(OBJEXT) \
-	quacrc32.$(OBJEXT) quaadler32.$(OBJEXT) JlCompress.$(OBJEXT) \
-	ioapi.$(OBJEXT)
-libquazip_a_OBJECTS = $(am_libquazip_a_OBJECTS)
+am__installdirs = "$(DESTDIR)$(libdir)"
+LTLIBRARIES = $(lib_LTLIBRARIES)
+libquazip_la_LIBADD =
+am_libquazip_la_OBJECTS = libquazip_la-zip.lo libquazip_la-unzip.lo \
+	libquazip_la-quazipnewinfo.lo libquazip_la-quazipfile.lo \
+	libquazip_la-quazip.lo libquazip_la-quacrc32.lo \
+	libquazip_la-quaadler32.lo libquazip_la-JlCompress.lo \
+	libquazip_la-ioapi.lo
+libquazip_la_OBJECTS = $(am_libquazip_la_OBJECTS)
+libquazip_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(libquazip_la_CXXFLAGS) \
+	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
-LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
 CXXLD = $(CXX)
-CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
-	-o $@
-SOURCES = $(libquazip_a_SOURCES)
-DIST_SOURCES = $(libquazip_a_SOURCES)
-HEADERS = $(libquazip_a_HEADERS)
+CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
+SOURCES = $(libquazip_la_SOURCES)
+DIST_SOURCES = $(libquazip_la_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
+AR = @AR@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -107,29 +138,43 @@ CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
+CXXCPP = @CXXCPP@
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@
 DEFS = @DEFS@
 DEPDIR = @DEPDIR@
+DSYMUTIL = @DSYMUTIL@
+DUMPBIN = @DUMPBIN@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
 ECHO_T = @ECHO_T@
 EGREP = @EGREP@
 EXEEXT = @EXEEXT@
+FGREP = @FGREP@
 GREP = @GREP@
 INSTALL = @INSTALL@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
 INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
+LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
+LIBTOOL = @LIBTOOL@
+LIPO = @LIPO@
+LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKDIR_P = @MKDIR_P@
+MOC = @MOC@
+NM = @NM@
+NMEDIT = @NMEDIT@
+OBJDUMP = @OBJDUMP@
 OBJEXT = @OBJEXT@
+OTOOL = @OTOOL@
+OTOOL64 = @OTOOL64@
 PACKAGE = @PACKAGE@
 PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
 PACKAGE_NAME = @PACKAGE_NAME@
@@ -138,10 +183,25 @@ PACKAGE_TARNAME = @PACKAGE_TARNAME@
 PACKAGE_URL = @PACKAGE_URL@
 PACKAGE_VERSION = @PACKAGE_VERSION@
 PATH_SEPARATOR = @PATH_SEPARATOR@
+QMAKE = @QMAKE@
+QT_CFLAGS = @QT_CFLAGS@
+QT_CPPFLAGS = @QT_CPPFLAGS@
+QT_CXXFLAGS = @QT_CXXFLAGS@
+QT_DEFINES = @QT_DEFINES@
+QT_INCPATH = @QT_INCPATH@
+QT_LDFLAGS = @QT_LDFLAGS@
+QT_LFLAGS = @QT_LFLAGS@
+QT_LIBS = @QT_LIBS@
+QT_PATH = @QT_PATH@
+QT_VERSION_MAJOR = @QT_VERSION_MAJOR@
 RANLIB = @RANLIB@
+RCC = @RCC@
+SED = @SED@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 STRIP = @STRIP@
+TMPDIR = @TMPDIR@
+UIC = @UIC@
 VERSION = @VERSION@
 abs_builddir = @abs_builddir@
 abs_srcdir = @abs_srcdir@
@@ -149,20 +209,29 @@ abs_top_builddir = @abs_top_builddir@
 abs_top_srcdir = @abs_top_srcdir@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@
+ac_ct_DUMPBIN = @ac_ct_DUMPBIN@
 am__include = @am__include@
 am__leading_dot = @am__leading_dot@
 am__quote = @am__quote@
 am__tar = @am__tar@
 am__untar = @am__untar@
 bindir = @bindir@
+build = @build@
 build_alias = @build_alias@
+build_cpu = @build_cpu@
+build_os = @build_os@
+build_vendor = @build_vendor@
 builddir = @builddir@
 datadir = @datadir@
 datarootdir = @datarootdir@
 docdir = @docdir@
 dvidir = @dvidir@
 exec_prefix = @exec_prefix@
+host = @host@
 host_alias = @host_alias@
+host_cpu = @host_cpu@
+host_os = @host_os@
+host_vendor = @host_vendor@
 htmldir = @htmldir@
 includedir = @includedir@
 infodir = @infodir@
@@ -171,6 +240,7 @@ libdir = @libdir@
 libexecdir = @libexecdir@
 localedir = @localedir@
 localstatedir = @localstatedir@
+lt_ECHO = @lt_ECHO@
 mandir = @mandir@
 mkdir_p = @mkdir_p@
 oldincludedir = @oldincludedir@
@@ -186,8 +256,15 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-lib_LIBRARIES = libquazip.a
-libquazip_a_SOURCES = \
+
+# See autotroll.m4 :)
+SUFFIXES = .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh \
+           .ui .ui.h .ui.hh \
+           .qrc .qrc.cpp .qrc.cc .qrc.cxx .qrc.C
+
+DISTCLEANFILES = $(BUILT_SOURCES)
+lib_LTLIBRARIES = libquazip.la
+libquazip_la_SOURCES = \
     zip.c \
     unzip.c \
     quazipnewinfo.cpp \
@@ -198,26 +275,13 @@ libquazip_a_SOURCES = \
     JlCompress.cpp \
     ioapi.c
 
-libquazip_adir = quazip
-libquazip_a_HEADERS = \
-    zip.h \
-    unzip.h \
-    quazipnewinfo.h \
-    quazipfileinfo.h \
-    quazipfile.h \
-    quazip.h \
-    quacrc32.h \
-    quachecksum32.h \
-    quaadler32.h \
-    JlCompress.h \
-    ioapi.h \
-    crypt.h
-
+libquazip_la_CXXFLAGS = $(QT_CXXFLAGS) $(AM_CXXFLAGS)
+libquazip_la_CPPFLAGS = $(QT_CPPFLAGS) $(AM_CPPFLAGS)
 all: all-am
 
 .SUFFIXES:
-.SUFFIXES: .c .cpp .o .obj
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+.SUFFIXES: .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh .ui .ui.h .ui.hh .qrc .qrc.cpp .qrc.cc .qrc.cxx .qrc.C .c .cpp .lo .o .obj
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/autotroll.mk $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -226,9 +290,9 @@ $(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu quazip/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign quazip/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu quazip/Makefile
+	  $(AUTOMAKE) --foreign quazip/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -247,42 +311,39 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
-install-libLIBRARIES: $(lib_LIBRARIES)
+install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
 	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
 	list2=; for p in $$list; do \
 	  if test -f $$p; then \
 	    list2="$$list2 $$p"; \
 	  else :; fi; \
 	done; \
 	test -z "$$list2" || { \
-	  echo " $(INSTALL_DATA) $$list2 '$(DESTDIR)$(libdir)'"; \
-	  $(INSTALL_DATA) $$list2 "$(DESTDIR)$(libdir)" || exit $$?; }
-	@$(POST_INSTALL)
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
+	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(libdir)'"; \
+	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(libdir)"; \
+	}
+
+uninstall-libLTLIBRARIES:
+	@$(NORMAL_UNINSTALL)
+	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
 	for p in $$list; do \
-	  if test -f $$p; then \
-	    $(am__strip_dir) \
-	    echo " ( cd '$(DESTDIR)$(libdir)' && $(RANLIB) $$f )"; \
-	    ( cd "$(DESTDIR)$(libdir)" && $(RANLIB) $$f ) || exit $$?; \
-	  else :; fi; \
+	  $(am__strip_dir) \
+	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(libdir)/$$f'"; \
+	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(libdir)/$$f"; \
 	done
 
-uninstall-libLIBRARIES:
-	@$(NORMAL_UNINSTALL)
-	@list='$(lib_LIBRARIES)'; test -n "$(libdir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	test -n "$$files" || exit 0; \
-	echo " ( cd '$(DESTDIR)$(libdir)' && rm -f "$$files" )"; \
-	cd "$(DESTDIR)$(libdir)" && rm -f $$files
-
-clean-libLIBRARIES:
-	-test -z "$(lib_LIBRARIES)" || rm -f $(lib_LIBRARIES)
-libquazip.a: $(libquazip_a_OBJECTS) $(libquazip_a_DEPENDENCIES) 
-	-rm -f libquazip.a
-	$(libquazip_a_AR) libquazip.a $(libquazip_a_OBJECTS) $(libquazip_a_LIBADD)
-	$(RANLIB) libquazip.a
+clean-libLTLIBRARIES:
+	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
+	@list='$(lib_LTLIBRARIES)'; for p in $$list; do \
+	  dir="`echo $$p | sed -e 's|/[^/]*$$||'`"; \
+	  test "$$dir" != "$$p" || dir=.; \
+	  echo "rm -f \"$${dir}/so_locations\""; \
+	  rm -f "$${dir}/so_locations"; \
+	done
+libquazip.la: $(libquazip_la_OBJECTS) $(libquazip_la_DEPENDENCIES) 
+	$(libquazip_la_LINK) -rpath $(libdir) $(libquazip_la_OBJECTS) $(libquazip_la_LIBADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -290,15 +351,15 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/JlCompress.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ioapi.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quaadler32.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quacrc32.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quazip.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quazipfile.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/quazipnewinfo.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/unzip.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/zip.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-JlCompress.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-ioapi.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-quaadler32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-quacrc32.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-quazip.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-quazipfile.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-quazipnewinfo.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-unzip.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libquazip_la-zip.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -314,6 +375,34 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(COMPILE) -c `$(CYGPATH_W) '$<'`
 
+.c.lo:
+@am__fastdepCC_TRUE@	$(LTCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ $<
+
+libquazip_la-zip.lo: zip.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libquazip_la-zip.lo -MD -MP -MF $(DEPDIR)/libquazip_la-zip.Tpo -c -o libquazip_la-zip.lo `test -f 'zip.c' || echo '$(srcdir)/'`zip.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-zip.Tpo $(DEPDIR)/libquazip_la-zip.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='zip.c' object='libquazip_la-zip.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libquazip_la-zip.lo `test -f 'zip.c' || echo '$(srcdir)/'`zip.c
+
+libquazip_la-unzip.lo: unzip.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libquazip_la-unzip.lo -MD -MP -MF $(DEPDIR)/libquazip_la-unzip.Tpo -c -o libquazip_la-unzip.lo `test -f 'unzip.c' || echo '$(srcdir)/'`unzip.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-unzip.Tpo $(DEPDIR)/libquazip_la-unzip.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='unzip.c' object='libquazip_la-unzip.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libquazip_la-unzip.lo `test -f 'unzip.c' || echo '$(srcdir)/'`unzip.c
+
+libquazip_la-ioapi.lo: ioapi.c
+@am__fastdepCC_TRUE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libquazip_la-ioapi.lo -MD -MP -MF $(DEPDIR)/libquazip_la-ioapi.Tpo -c -o libquazip_la-ioapi.lo `test -f 'ioapi.c' || echo '$(srcdir)/'`ioapi.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-ioapi.Tpo $(DEPDIR)/libquazip_la-ioapi.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='ioapi.c' object='libquazip_la-ioapi.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL)  --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libquazip_la-ioapi.lo `test -f 'ioapi.c' || echo '$(srcdir)/'`ioapi.c
+
 .cpp.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
 @am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
@@ -327,26 +416,61 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
-install-libquazip_aHEADERS: $(libquazip_a_HEADERS)
-	@$(NORMAL_INSTALL)
-	test -z "$(libquazip_adir)" || $(MKDIR_P) "$(DESTDIR)$(libquazip_adir)"
-	@list='$(libquazip_a_HEADERS)'; test -n "$(libquazip_adir)" || list=; \
-	for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  echo "$$d$$p"; \
-	done | $(am__base_list) | \
-	while read files; do \
-	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(libquazip_adir)'"; \
-	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(libquazip_adir)" || exit $$?; \
-	done
 
-uninstall-libquazip_aHEADERS:
-	@$(NORMAL_UNINSTALL)
-	@list='$(libquazip_a_HEADERS)'; test -n "$(libquazip_adir)" || list=; \
-	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
-	test -n "$$files" || exit 0; \
-	echo " ( cd '$(DESTDIR)$(libquazip_adir)' && rm -f" $$files ")"; \
-	cd "$(DESTDIR)$(libquazip_adir)" && rm -f $$files
+.cpp.lo:
+@am__fastdepCXX_TRUE@	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
+
+libquazip_la-quazipnewinfo.lo: quazipnewinfo.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-quazipnewinfo.lo -MD -MP -MF $(DEPDIR)/libquazip_la-quazipnewinfo.Tpo -c -o libquazip_la-quazipnewinfo.lo `test -f 'quazipnewinfo.cpp' || echo '$(srcdir)/'`quazipnewinfo.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-quazipnewinfo.Tpo $(DEPDIR)/libquazip_la-quazipnewinfo.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='quazipnewinfo.cpp' object='libquazip_la-quazipnewinfo.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-quazipnewinfo.lo `test -f 'quazipnewinfo.cpp' || echo '$(srcdir)/'`quazipnewinfo.cpp
+
+libquazip_la-quazipfile.lo: quazipfile.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-quazipfile.lo -MD -MP -MF $(DEPDIR)/libquazip_la-quazipfile.Tpo -c -o libquazip_la-quazipfile.lo `test -f 'quazipfile.cpp' || echo '$(srcdir)/'`quazipfile.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-quazipfile.Tpo $(DEPDIR)/libquazip_la-quazipfile.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='quazipfile.cpp' object='libquazip_la-quazipfile.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-quazipfile.lo `test -f 'quazipfile.cpp' || echo '$(srcdir)/'`quazipfile.cpp
+
+libquazip_la-quazip.lo: quazip.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-quazip.lo -MD -MP -MF $(DEPDIR)/libquazip_la-quazip.Tpo -c -o libquazip_la-quazip.lo `test -f 'quazip.cpp' || echo '$(srcdir)/'`quazip.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-quazip.Tpo $(DEPDIR)/libquazip_la-quazip.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='quazip.cpp' object='libquazip_la-quazip.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-quazip.lo `test -f 'quazip.cpp' || echo '$(srcdir)/'`quazip.cpp
+
+libquazip_la-quacrc32.lo: quacrc32.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-quacrc32.lo -MD -MP -MF $(DEPDIR)/libquazip_la-quacrc32.Tpo -c -o libquazip_la-quacrc32.lo `test -f 'quacrc32.cpp' || echo '$(srcdir)/'`quacrc32.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-quacrc32.Tpo $(DEPDIR)/libquazip_la-quacrc32.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='quacrc32.cpp' object='libquazip_la-quacrc32.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-quacrc32.lo `test -f 'quacrc32.cpp' || echo '$(srcdir)/'`quacrc32.cpp
+
+libquazip_la-quaadler32.lo: quaadler32.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-quaadler32.lo -MD -MP -MF $(DEPDIR)/libquazip_la-quaadler32.Tpo -c -o libquazip_la-quaadler32.lo `test -f 'quaadler32.cpp' || echo '$(srcdir)/'`quaadler32.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-quaadler32.Tpo $(DEPDIR)/libquazip_la-quaadler32.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='quaadler32.cpp' object='libquazip_la-quaadler32.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-quaadler32.lo `test -f 'quaadler32.cpp' || echo '$(srcdir)/'`quaadler32.cpp
+
+libquazip_la-JlCompress.lo: JlCompress.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -MT libquazip_la-JlCompress.lo -MD -MP -MF $(DEPDIR)/libquazip_la-JlCompress.Tpo -c -o libquazip_la-JlCompress.lo `test -f 'JlCompress.cpp' || echo '$(srcdir)/'`JlCompress.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libquazip_la-JlCompress.Tpo $(DEPDIR)/libquazip_la-JlCompress.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='JlCompress.cpp' object='libquazip_la-JlCompress.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libquazip_la_CPPFLAGS) $(CPPFLAGS) $(libquazip_la_CXXFLAGS) $(CXXFLAGS) -c -o libquazip_la-JlCompress.lo `test -f 'JlCompress.cpp' || echo '$(srcdir)/'`JlCompress.cpp
+
+mostlyclean-libtool:
+	-rm -f *.lo
+
+clean-libtool:
+	-rm -rf .libs _libs
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -432,9 +556,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LIBRARIES) $(HEADERS)
+all-am: Makefile $(LTLIBRARIES)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(libquazip_adir)"; do \
+	for dir in "$(DESTDIR)$(libdir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -458,13 +582,15 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libLIBRARIES mostlyclean-am
+clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
+	mostlyclean-am
 
 distclean: distclean-am
 	-rm -rf ./$(DEPDIR)
@@ -484,13 +610,13 @@ info: info-am
 
 info-am:
 
-install-data-am: install-libquazip_aHEADERS
+install-data-am:
 
 install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am: install-libLIBRARIES
+install-exec-am: install-libLTLIBRARIES
 
 install-html: install-html-am
 
@@ -519,7 +645,8 @@ maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-compile mostlyclean-generic
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
 
 pdf: pdf-am
 
@@ -529,25 +656,96 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLIBRARIES uninstall-libquazip_aHEADERS
+uninstall-am: uninstall-libLTLIBRARIES
 
 .MAKE: install-am install-strip
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libLIBRARIES ctags distclean distclean-compile \
-	distclean-generic distclean-tags distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLIBRARIES \
-	install-libquazip_aHEADERS install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
+	clean-libLTLIBRARIES clean-libtool ctags distclean \
+	distclean-compile distclean-generic distclean-libtool \
+	distclean-tags distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am \
+	install-libLTLIBRARIES install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
-	mostlyclean-generic pdf pdf-am ps ps-am tags uninstall \
-	uninstall-am uninstall-libLIBRARIES \
-	uninstall-libquazip_aHEADERS
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-libLTLIBRARIES
 
+
+ # ------------- #
+ # DOCUMENTATION #
+ # ------------- #
+
+# --- #
+# MOC #
+# --- #
+
+.hh.moc.cpp:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cpp:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.cc:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cc:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.cxx:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cxx:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.C:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.C:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+# --- #
+# UIC #
+# --- #
+
+.ui.ui.hh:
+	$(UIC) $< -o $@
+
+.ui.ui.h:
+	$(UIC) $< -o $@
+
+# --- #
+# RCC #
+# --- #
+
+.qrc.qrc.cpp:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.cc:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.cxx:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.C:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+# libquazip_a_LIBFLAGS  = $(QT_LDFLAGS) $(LDFLAGS)
+# libquazip_a_LIBADD    = $(QT_LIBS) $(LDADD) -lz
+
+#libquazip_ladir = quazip
+
+#libquazip_la_HEADERS = \
+#    zip.h \
+#    unzip.h \
+#    quazipnewinfo.h \
+#    quazipfileinfo.h \
+#    quazipfile.h \
+#    quazip.h \
+#    quacrc32.h \
+#    quachecksum32.h \
+#    quaadler32.h \
+#    JlCompress.h \
+#    ioapi.h \
+#    crypt.h
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
