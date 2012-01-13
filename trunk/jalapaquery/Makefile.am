@@ -1,0 +1,1 @@
+SUBDIRS = quazip src test doc
