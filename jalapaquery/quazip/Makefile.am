@@ -1,5 +1,7 @@
-lib_LIBRARIES = libquazip.a
-libquazip_a_SOURCES = \
+include $(top_srcdir)/autotroll.mk
+
+lib_LTLIBRARIES = libquazip.la
+libquazip_la_SOURCES = \
     zip.c \
     unzip.c \
     quazipnewinfo.cpp \
@@ -10,11 +12,14 @@ libquazip_a_SOURCES = \
     JlCompress.cpp \
     ioapi.c
 
-LIBS += -lz
+libquazip_la_CXXFLAGS = $(QT_CXXFLAGS) $(AM_CXXFLAGS)
+libquazip_la_CPPFLAGS = $(QT_CPPFLAGS) $(AM_CPPFLAGS)
+# libquazip_a_LIBFLAGS  = $(QT_LDFLAGS) $(LDFLAGS)
+# libquazip_a_LIBADD    = $(QT_LIBS) $(LDADD) -lz
 
-libquazip_adir = quazip
+#libquazip_ladir = quazip
 
-libquazip_a_HEADERS = \
+#libquazip_la_HEADERS = \
     zip.h \
     unzip.h \
     quazipnewinfo.h \
