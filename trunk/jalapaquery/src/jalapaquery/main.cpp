@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     myappTranslator.load("jalapaquery_" + QLocale::system().name(), translationDir.absolutePath());
     app.installTranslator(&myappTranslator);
 
-    qDebug() << QLocale::system().name();
+    //qDebug() << QLocale::system().name();
 
     MainWindow w;
     w.show();
