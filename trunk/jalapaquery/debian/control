@@ -1,0 +1,14 @@
+Source: jalapaquery
+Section: development
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Leonardo Alves da Costa <leonhad@gmail.com>
+Homepage: http://code.google.com/p/jalapaquery/
+Build-Depends: debhelper (>= 7), autotools-dev, autoconf, zlib1g-dev
+Standards-Version: 3.9.1
+
+Package: jalapaquery
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Jalapaquery is a QT based modeling tool for GNU/Linux, MacOS X and Windows environments. Jalapaquery is being developed under the GNU GPL v3 license.
+
