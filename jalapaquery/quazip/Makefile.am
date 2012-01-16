@@ -17,9 +17,14 @@ libquazip_la_CPPFLAGS = $(QT_CPPFLAGS) $(AM_CPPFLAGS)
 # libquazip_a_LIBFLAGS  = $(QT_LDFLAGS) $(LDFLAGS)
 # libquazip_a_LIBADD    = $(QT_LIBS) $(LDADD) -lz
 
-#libquazip_ladir = quazip
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = quazip.pc
 
-#libquazip_la_HEADERS = \
+QUAZIP_LIBRARY_VERSION=1:0:0
+libquazip_la_LDFLAGS = -version-info $(QUAZIP_LIBRARY_VERSION)
+
+library_includedir=$(includedir)/quazip
+library_include_HEADERS = \
     zip.h \
     unzip.h \
     quazipnewinfo.h \

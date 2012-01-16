@@ -34,6 +34,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
 # USA.
 
+
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
@@ -53,7 +55,8 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+DIST_COMMON = README $(library_include_HEADERS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in $(srcdir)/quazip.pc.in \
 	$(top_srcdir)/autotroll.mk COPYING
 subdir = quazip
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -63,7 +66,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = quazip.pc
 CONFIG_CLEAN_VPATH_FILES =
 am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
 am__vpath_adj = case $$p in \
@@ -86,7 +89,8 @@ am__nobase_list = $(am__nobase_strip_setup); \
 am__base_list = \
   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
   sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__installdirs = "$(DESTDIR)$(libdir)"
+am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgconfigdir)" \
+	"$(DESTDIR)$(library_includedir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libquazip_la_LIBADD =
 am_libquazip_la_OBJECTS = libquazip_la-zip.lo libquazip_la-unzip.lo \
@@ -97,7 +101,7 @@ am_libquazip_la_OBJECTS = libquazip_la-zip.lo libquazip_la-unzip.lo \
 libquazip_la_OBJECTS = $(am_libquazip_la_OBJECTS)
 libquazip_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(libquazip_la_CXXFLAGS) \
-	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+	$(CXXFLAGS) $(libquazip_la_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -122,6 +126,8 @@ CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(LDFLAGS) -o $@
 SOURCES = $(libquazip_la_SOURCES)
 DIST_SOURCES = $(libquazip_la_SOURCES)
+DATA = $(pkgconfig_DATA)
+HEADERS = $(library_include_HEADERS)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -277,6 +283,27 @@ libquazip_la_SOURCES = \
 
 libquazip_la_CXXFLAGS = $(QT_CXXFLAGS) $(AM_CXXFLAGS)
 libquazip_la_CPPFLAGS = $(QT_CPPFLAGS) $(AM_CPPFLAGS)
+# libquazip_a_LIBFLAGS  = $(QT_LDFLAGS) $(LDFLAGS)
+# libquazip_a_LIBADD    = $(QT_LIBS) $(LDADD) -lz
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = quazip.pc
+QUAZIP_LIBRARY_VERSION = 1:0:0
+libquazip_la_LDFLAGS = -version-info $(QUAZIP_LIBRARY_VERSION)
+library_includedir = $(includedir)/quazip
+library_include_HEADERS = \
+    zip.h \
+    unzip.h \
+    quazipnewinfo.h \
+    quazipfileinfo.h \
+    quazipfile.h \
+    quazip.h \
+    quacrc32.h \
+    quachecksum32.h \
+    quaadler32.h \
+    JlCompress.h \
+    ioapi.h \
+    crypt.h
+
 all: all-am
 
 .SUFFIXES:
@@ -311,6 +338,8 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
+quazip.pc: $(top_builddir)/config.status $(srcdir)/quazip.pc.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 install-libLTLIBRARIES: $(lib_LTLIBRARIES)
 	@$(NORMAL_INSTALL)
 	test -z "$(libdir)" || $(MKDIR_P) "$(DESTDIR)$(libdir)"
@@ -471,6 +500,46 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
+install-pkgconfigDATA: $(pkgconfig_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(pkgconfigdir)" || $(MKDIR_P) "$(DESTDIR)$(pkgconfigdir)"
+	@list='$(pkgconfig_DATA)'; test -n "$(pkgconfigdir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_DATA) $$files '$(DESTDIR)$(pkgconfigdir)'"; \
+	  $(INSTALL_DATA) $$files "$(DESTDIR)$(pkgconfigdir)" || exit $$?; \
+	done
+
+uninstall-pkgconfigDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(pkgconfig_DATA)'; test -n "$(pkgconfigdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(pkgconfigdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(pkgconfigdir)" && rm -f $$files
+install-library_includeHEADERS: $(library_include_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(library_includedir)" || $(MKDIR_P) "$(DESTDIR)$(library_includedir)"
+	@list='$(library_include_HEADERS)'; test -n "$(library_includedir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(library_includedir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(library_includedir)" || exit $$?; \
+	done
+
+uninstall-library_includeHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(library_include_HEADERS)'; test -n "$(library_includedir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(library_includedir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(library_includedir)" && rm -f $$files
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
@@ -556,9 +625,9 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile $(LTLIBRARIES)
+all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)"; do \
+	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(pkgconfigdir)" "$(DESTDIR)$(library_includedir)"; do \
 	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
 	done
 install: install-am
@@ -610,7 +679,7 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-library_includeHEADERS install-pkgconfigDATA
 
 install-dvi: install-dvi-am
 
@@ -656,7 +725,8 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLTLIBRARIES
+uninstall-am: uninstall-libLTLIBRARIES \
+	uninstall-library_includeHEADERS uninstall-pkgconfigDATA
 
 .MAKE: install-am install-strip
 
@@ -667,12 +737,14 @@ uninstall-am: uninstall-libLTLIBRARIES
 	install install-am install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am \
-	install-libLTLIBRARIES install-man install-pdf install-pdf-am \
+	install-libLTLIBRARIES install-library_includeHEADERS \
+	install-man install-pdf install-pdf-am install-pkgconfigDATA \
 	install-ps install-ps-am install-strip installcheck \
 	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags uninstall uninstall-am uninstall-libLTLIBRARIES
+	tags uninstall uninstall-am uninstall-libLTLIBRARIES \
+	uninstall-library_includeHEADERS uninstall-pkgconfigDATA
 
 
  # ------------- #
@@ -728,24 +800,6 @@ uninstall-am: uninstall-libLTLIBRARIES
 
 .qrc.qrc.C:
 	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
-# libquazip_a_LIBFLAGS  = $(QT_LDFLAGS) $(LDFLAGS)
-# libquazip_a_LIBADD    = $(QT_LIBS) $(LDADD) -lz
-
-#libquazip_ladir = quazip
-
-#libquazip_la_HEADERS = \
-#    zip.h \
-#    unzip.h \
-#    quazipnewinfo.h \
-#    quazipfileinfo.h \
-#    quazipfile.h \
-#    quazip.h \
-#    quacrc32.h \
-#    quachecksum32.h \
-#    quaadler32.h \
-#    JlCompress.h \
-#    ioapi.h \
-#    crypt.h
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

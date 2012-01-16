@@ -6,6 +6,9 @@ AM_INIT_AUTOMAKE([foreign -Wall tar-ustar])
 AC_CONFIG_SRCDIR([INSTALL])
 AC_CONFIG_HEADER([config.h])
 
+LT_INIT
+LT_LANG([C++])
+
 # Checks for programs.
 AC_LANG_CPLUSPLUS
 AC_PROG_CXX
@@ -13,7 +16,7 @@ AC_PROG_CPP
 AC_PROG_CC
 AM_PROG_CC_C_O
 AC_PROG_LN_S
-AC_PROG_LIBTOOL
+#AC_PROG_LIBTOOL
 
 # Checks for libraries.
 
@@ -33,6 +36,7 @@ AT_WITH_QT
 AC_CONFIG_FILES([Makefile
                  doc/Makefile
                  quazip/Makefile
+                 quazip/quazip.pc
                  src/Makefile
                  src/jalapaquery/Makefile
                  src/plugins/Makefile
