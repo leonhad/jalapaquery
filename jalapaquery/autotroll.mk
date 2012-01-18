@@ -57,10 +57,10 @@ SUFFIXES = .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh \
 # --- #
 
 .ui.ui.hh:
-	$(UIC) $< -o $@
+	$(UIC) $< > $@
 
 .ui.ui.h:
-	$(UIC) $< -o $@
+	$(UIC) $< > $@
 
 # --- #
 # RCC #

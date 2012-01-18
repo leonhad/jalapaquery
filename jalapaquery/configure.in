@@ -2,7 +2,7 @@ m4_include([autotroll.m4])
 
 AC_PREREQ(2.61)
 AC_INIT([jalapaquery], [0.1], [leonhad@gmail.com])
-AM_INIT_AUTOMAKE([foreign -Wall tar-ustar])
+AM_INIT_AUTOMAKE([-Wall tar-ustar])
 AC_CONFIG_SRCDIR([INSTALL])
 AC_CONFIG_HEADER([config.h])
 

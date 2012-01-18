@@ -14,6 +14,27 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
+
+# Makerules.
+# This file is part of AutoTroll.
+# Copyright (C) 2006  Benoit Sigoure.
+#
+# AutoTroll is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
+
+
 VPATH = @srcdir@
 pkgdatadir = $(datadir)/@PACKAGE@
 pkgincludedir = $(includedir)/@PACKAGE@
@@ -33,8 +54,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+DIST_COMMON = $(dist_HEADERS) $(noinst_HEADERS) $(srcdir)/Makefile.am \
+	$(srcdir)/Makefile.in $(top_srcdir)/autotroll.mk
+bin_PROGRAMS = jalapaquery$(EXEEXT)
 subdir = src/jalapaquery
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/autotroll.m4 \
 	$(top_srcdir)/configure.in
@@ -44,8 +67,76 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-SOURCES =
-DIST_SOURCES =
+am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(distdir)"
+PROGRAMS = $(bin_PROGRAMS)
+am_jalapaquery_OBJECTS = jalapaquery-main.$(OBJEXT) \
+	jalapaquery-aboutdialog.$(OBJEXT) \
+	jalapaquery-constants.$(OBJEXT) \
+	jalapaquery-mainwindow.$(OBJEXT) \
+	jalapaquery-newfiledialog.$(OBJEXT) \
+	jalapaquery-plugindialog.$(OBJEXT) \
+	jalapaquery-testitem.$(OBJEXT)
+am__objects_1 = jalapaquery-mainwindow.moc.$(OBJEXT) \
+	jalapaquery-aboutdialog.moc.$(OBJEXT) \
+	jalapaquery-newfiledialog.moc.$(OBJEXT) \
+	jalapaquery-plugindialog.moc.$(OBJEXT) \
+	jalapaquery-resources.qrc.$(OBJEXT)
+nodist_jalapaquery_OBJECTS = $(am__objects_1)
+jalapaquery_OBJECTS = $(am_jalapaquery_OBJECTS) \
+	$(nodist_jalapaquery_OBJECTS)
+am__DEPENDENCIES_1 =
+jalapaquery_DEPENDENCIES = $(am__DEPENDENCIES_1)
+jalapaquery_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(jalapaquery_CXXFLAGS) \
+	$(CXXFLAGS) $(jalapaquery_LDFLAGS) $(LDFLAGS) -o $@
+DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
+depcomp = $(SHELL) $(top_srcdir)/depcomp
+am__depfiles_maybe = depfiles
+am__mv = mv -f
+CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+LTCXXCOMPILE = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
+CXXLD = $(CXX)
+CXXLINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=link $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
+	$(LDFLAGS) -o $@
+SOURCES = $(jalapaquery_SOURCES) $(nodist_jalapaquery_SOURCES)
+DIST_SOURCES = $(jalapaquery_SOURCES)
+am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
+am__vpath_adj = case $$p in \
+    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
+    *) f=$$p;; \
+  esac;
+am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
+am__install_max = 40
+am__nobase_strip_setup = \
+  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
+am__nobase_strip = \
+  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
+am__nobase_list = $(am__nobase_strip_setup); \
+  for p in $$list; do echo "$$p $$p"; done | \
+  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
+  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
+    if (++n[$$2] == $(am__install_max)) \
+      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
+    END { for (dir in files) print dir, files[dir] }'
+am__base_list = \
+  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
+  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
+HEADERS = $(dist_HEADERS) $(noinst_HEADERS)
+ETAGS = etags
+CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
@@ -178,10 +269,69 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-all: all-am
+
+# See autotroll.m4 :)
+SUFFIXES = .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh \
+           .ui .ui.h .ui.hh \
+           .qrc .qrc.cpp .qrc.cc .qrc.cxx .qrc.C
+
+DISTCLEANFILES = $(BUILT_SOURCES)
+jalapaquery_SOURCES = \
+    main.cpp \
+    aboutdialog.cpp \
+    constants.cpp \
+    mainwindow.cpp \
+    newfiledialog.cpp \
+    plugindialog.cpp \
+    testitem.cpp
+
+jalapaquery_CXXFLAGS = $(QT_CXXFLAGS) $(AM_CXXFLAGS) -Iinterface
+jalapaquery_CPPFLAGS = $(QT_CPPFLAGS) $(AM_CPPFLAGS) -Iinterface
+jalapaquery_LDFLAGS = $(QT_LDFLAGS) $(LDFLAGS)
+jalapaquery_LDADD = $(QT_LIBS) $(LDADD)
+nodist_jalapaquery_SOURCES = $(BUILT_SOURCES)
+BUILT_SOURCES = \
+    mainwindow.moc.cpp \
+    aboutdialog.moc.cpp \
+    newfiledialog.moc.cpp \
+    plugindialog.moc.cpp \
+    plugindialog.ui.h \
+    aboutdialog.ui.h \
+    mainwindow.ui.h \
+    newfiledialog.ui.h \
+    resources.qrc.cpp
+
+noinst_HEADERS = \
+    aboutdialog.h \
+    constants.h \
+    mainwindow.h \
+    newfiledialog.h \
+    plugindialog.h \
+    testitem.h
+
+distdir = $(includedir)/jalapaquery
+dist_HEADERS = \
+    interface/modelinterface.h \
+    interface/plugininterface.h \
+    interface/typemodel.h
+
+EXTRA_DIST = plugindialog.ui aboutdialog.ui mainwindow.ui \
+	newfiledialog.ui resources.qrc resources/copy.png \
+	resources/find.png resources/ledgray.png \
+	resources/ledorange.png resources/lock.png \
+	resources/newproject.png resources/paste.png \
+	resources/redo.png resources/term.png resources/zoom_1.png \
+	resources/zoom_out.png resources/cut.png resources/help.png \
+	resources/ledgreen.png resources/ledred.png \
+	resources/newfile.png resources/open.png resources/print.png \
+	resources/save.png resources/undo.png resources/zoom_in.png \
+	resources/zoom.png
+all: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) all-am
 
 .SUFFIXES:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am  $(am__configure_deps)
+.SUFFIXES: .moc.cpp .moc.cc .moc.cxx .moc.C .h .hh .ui .ui.h .ui.hh .qrc .qrc.cpp .qrc.cc .qrc.cxx .qrc.C .cpp .lo .o .obj
+$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(top_srcdir)/autotroll.mk $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -211,18 +361,338 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
+install-binPROGRAMS: $(bin_PROGRAMS)
+	@$(NORMAL_INSTALL)
+	test -z "$(bindir)" || $(MKDIR_P) "$(DESTDIR)$(bindir)"
+	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+	for p in $$list; do echo "$$p $$p"; done | \
+	sed 's/$(EXEEXT)$$//' | \
+	while read p p1; do if test -f $$p || test -f $$p1; \
+	  then echo "$$p"; echo "$$p"; else :; fi; \
+	done | \
+	sed -e 'p;s,.*/,,;n;h' -e 's|.*|.|' \
+	    -e 'p;x;s,.*/,,;s/$(EXEEXT)$$//;$(transform);s/$$/$(EXEEXT)/' | \
+	sed 'N;N;N;s,\n, ,g' | \
+	$(AWK) 'BEGIN { files["."] = ""; dirs["."] = 1 } \
+	  { d=$$3; if (dirs[d] != 1) { print "d", d; dirs[d] = 1 } \
+	    if ($$2 == $$4) files[d] = files[d] " " $$1; \
+	    else { print "f", $$3 "/" $$4, $$1; } } \
+	  END { for (d in files) print "f", d, files[d] }' | \
+	while read type dir files; do \
+	    if test "$$dir" = .; then dir=; else dir=/$$dir; fi; \
+	    test -z "$$files" || { \
+	    echo " $(INSTALL_PROGRAM_ENV) $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL_PROGRAM) $$files '$(DESTDIR)$(bindir)$$dir'"; \
+	    $(INSTALL_PROGRAM_ENV) $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL_PROGRAM) $$files "$(DESTDIR)$(bindir)$$dir" || exit $$?; \
+	    } \
+	; done
+
+uninstall-binPROGRAMS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
+	files=`for p in $$list; do echo "$$p"; done | \
+	  sed -e 'h;s,^.*/,,;s/$(EXEEXT)$$//;$(transform)' \
+	      -e 's/$$/$(EXEEXT)/' `; \
+	test -n "$$list" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(bindir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(bindir)" && rm -f $$files
+
+clean-binPROGRAMS:
+	@list='$(bin_PROGRAMS)'; test -n "$$list" || exit 0; \
+	echo " rm -f" $$list; \
+	rm -f $$list || exit $$?; \
+	test -n "$(EXEEXT)" || exit 0; \
+	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
+	echo " rm -f" $$list; \
+	rm -f $$list
+jalapaquery$(EXEEXT): $(jalapaquery_OBJECTS) $(jalapaquery_DEPENDENCIES) 
+	@rm -f jalapaquery$(EXEEXT)
+	$(jalapaquery_LINK) $(jalapaquery_OBJECTS) $(jalapaquery_LDADD) $(LIBS)
+
+mostlyclean-compile:
+	-rm -f *.$(OBJEXT)
+
+distclean-compile:
+	-rm -f *.tab.c
+
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-aboutdialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-aboutdialog.moc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-constants.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-mainwindow.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-mainwindow.moc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-newfiledialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-newfiledialog.moc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-plugindialog.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-plugindialog.moc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-resources.qrc.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/jalapaquery-testitem.Po@am__quote@
+
+.cpp.o:
+@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ $<
+
+.cpp.obj:
+@am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ `$(CYGPATH_W) '$<'`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+
+.cpp.lo:
+@am__fastdepCXX_TRUE@	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/$*.Tpo $(DEPDIR)/$*.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='$<' object='$@' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LTCXXCOMPILE) -c -o $@ $<
+
+jalapaquery-main.o: main.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-main.o -MD -MP -MF $(DEPDIR)/jalapaquery-main.Tpo -c -o jalapaquery-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-main.Tpo $(DEPDIR)/jalapaquery-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='jalapaquery-main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-main.o `test -f 'main.cpp' || echo '$(srcdir)/'`main.cpp
+
+jalapaquery-main.obj: main.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-main.obj -MD -MP -MF $(DEPDIR)/jalapaquery-main.Tpo -c -o jalapaquery-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-main.Tpo $(DEPDIR)/jalapaquery-main.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='main.cpp' object='jalapaquery-main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-main.obj `if test -f 'main.cpp'; then $(CYGPATH_W) 'main.cpp'; else $(CYGPATH_W) '$(srcdir)/main.cpp'; fi`
+
+jalapaquery-aboutdialog.o: aboutdialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-aboutdialog.o -MD -MP -MF $(DEPDIR)/jalapaquery-aboutdialog.Tpo -c -o jalapaquery-aboutdialog.o `test -f 'aboutdialog.cpp' || echo '$(srcdir)/'`aboutdialog.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-aboutdialog.Tpo $(DEPDIR)/jalapaquery-aboutdialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='aboutdialog.cpp' object='jalapaquery-aboutdialog.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-aboutdialog.o `test -f 'aboutdialog.cpp' || echo '$(srcdir)/'`aboutdialog.cpp
+
+jalapaquery-aboutdialog.obj: aboutdialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-aboutdialog.obj -MD -MP -MF $(DEPDIR)/jalapaquery-aboutdialog.Tpo -c -o jalapaquery-aboutdialog.obj `if test -f 'aboutdialog.cpp'; then $(CYGPATH_W) 'aboutdialog.cpp'; else $(CYGPATH_W) '$(srcdir)/aboutdialog.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-aboutdialog.Tpo $(DEPDIR)/jalapaquery-aboutdialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='aboutdialog.cpp' object='jalapaquery-aboutdialog.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-aboutdialog.obj `if test -f 'aboutdialog.cpp'; then $(CYGPATH_W) 'aboutdialog.cpp'; else $(CYGPATH_W) '$(srcdir)/aboutdialog.cpp'; fi`
+
+jalapaquery-constants.o: constants.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-constants.o -MD -MP -MF $(DEPDIR)/jalapaquery-constants.Tpo -c -o jalapaquery-constants.o `test -f 'constants.cpp' || echo '$(srcdir)/'`constants.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-constants.Tpo $(DEPDIR)/jalapaquery-constants.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='constants.cpp' object='jalapaquery-constants.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-constants.o `test -f 'constants.cpp' || echo '$(srcdir)/'`constants.cpp
+
+jalapaquery-constants.obj: constants.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-constants.obj -MD -MP -MF $(DEPDIR)/jalapaquery-constants.Tpo -c -o jalapaquery-constants.obj `if test -f 'constants.cpp'; then $(CYGPATH_W) 'constants.cpp'; else $(CYGPATH_W) '$(srcdir)/constants.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-constants.Tpo $(DEPDIR)/jalapaquery-constants.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='constants.cpp' object='jalapaquery-constants.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-constants.obj `if test -f 'constants.cpp'; then $(CYGPATH_W) 'constants.cpp'; else $(CYGPATH_W) '$(srcdir)/constants.cpp'; fi`
+
+jalapaquery-mainwindow.o: mainwindow.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-mainwindow.o -MD -MP -MF $(DEPDIR)/jalapaquery-mainwindow.Tpo -c -o jalapaquery-mainwindow.o `test -f 'mainwindow.cpp' || echo '$(srcdir)/'`mainwindow.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-mainwindow.Tpo $(DEPDIR)/jalapaquery-mainwindow.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mainwindow.cpp' object='jalapaquery-mainwindow.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-mainwindow.o `test -f 'mainwindow.cpp' || echo '$(srcdir)/'`mainwindow.cpp
+
+jalapaquery-mainwindow.obj: mainwindow.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-mainwindow.obj -MD -MP -MF $(DEPDIR)/jalapaquery-mainwindow.Tpo -c -o jalapaquery-mainwindow.obj `if test -f 'mainwindow.cpp'; then $(CYGPATH_W) 'mainwindow.cpp'; else $(CYGPATH_W) '$(srcdir)/mainwindow.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-mainwindow.Tpo $(DEPDIR)/jalapaquery-mainwindow.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mainwindow.cpp' object='jalapaquery-mainwindow.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-mainwindow.obj `if test -f 'mainwindow.cpp'; then $(CYGPATH_W) 'mainwindow.cpp'; else $(CYGPATH_W) '$(srcdir)/mainwindow.cpp'; fi`
+
+jalapaquery-newfiledialog.o: newfiledialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-newfiledialog.o -MD -MP -MF $(DEPDIR)/jalapaquery-newfiledialog.Tpo -c -o jalapaquery-newfiledialog.o `test -f 'newfiledialog.cpp' || echo '$(srcdir)/'`newfiledialog.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-newfiledialog.Tpo $(DEPDIR)/jalapaquery-newfiledialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='newfiledialog.cpp' object='jalapaquery-newfiledialog.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-newfiledialog.o `test -f 'newfiledialog.cpp' || echo '$(srcdir)/'`newfiledialog.cpp
+
+jalapaquery-newfiledialog.obj: newfiledialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-newfiledialog.obj -MD -MP -MF $(DEPDIR)/jalapaquery-newfiledialog.Tpo -c -o jalapaquery-newfiledialog.obj `if test -f 'newfiledialog.cpp'; then $(CYGPATH_W) 'newfiledialog.cpp'; else $(CYGPATH_W) '$(srcdir)/newfiledialog.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-newfiledialog.Tpo $(DEPDIR)/jalapaquery-newfiledialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='newfiledialog.cpp' object='jalapaquery-newfiledialog.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-newfiledialog.obj `if test -f 'newfiledialog.cpp'; then $(CYGPATH_W) 'newfiledialog.cpp'; else $(CYGPATH_W) '$(srcdir)/newfiledialog.cpp'; fi`
+
+jalapaquery-plugindialog.o: plugindialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-plugindialog.o -MD -MP -MF $(DEPDIR)/jalapaquery-plugindialog.Tpo -c -o jalapaquery-plugindialog.o `test -f 'plugindialog.cpp' || echo '$(srcdir)/'`plugindialog.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-plugindialog.Tpo $(DEPDIR)/jalapaquery-plugindialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='plugindialog.cpp' object='jalapaquery-plugindialog.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-plugindialog.o `test -f 'plugindialog.cpp' || echo '$(srcdir)/'`plugindialog.cpp
+
+jalapaquery-plugindialog.obj: plugindialog.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-plugindialog.obj -MD -MP -MF $(DEPDIR)/jalapaquery-plugindialog.Tpo -c -o jalapaquery-plugindialog.obj `if test -f 'plugindialog.cpp'; then $(CYGPATH_W) 'plugindialog.cpp'; else $(CYGPATH_W) '$(srcdir)/plugindialog.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-plugindialog.Tpo $(DEPDIR)/jalapaquery-plugindialog.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='plugindialog.cpp' object='jalapaquery-plugindialog.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-plugindialog.obj `if test -f 'plugindialog.cpp'; then $(CYGPATH_W) 'plugindialog.cpp'; else $(CYGPATH_W) '$(srcdir)/plugindialog.cpp'; fi`
+
+jalapaquery-testitem.o: testitem.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-testitem.o -MD -MP -MF $(DEPDIR)/jalapaquery-testitem.Tpo -c -o jalapaquery-testitem.o `test -f 'testitem.cpp' || echo '$(srcdir)/'`testitem.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-testitem.Tpo $(DEPDIR)/jalapaquery-testitem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='testitem.cpp' object='jalapaquery-testitem.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-testitem.o `test -f 'testitem.cpp' || echo '$(srcdir)/'`testitem.cpp
+
+jalapaquery-testitem.obj: testitem.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-testitem.obj -MD -MP -MF $(DEPDIR)/jalapaquery-testitem.Tpo -c -o jalapaquery-testitem.obj `if test -f 'testitem.cpp'; then $(CYGPATH_W) 'testitem.cpp'; else $(CYGPATH_W) '$(srcdir)/testitem.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-testitem.Tpo $(DEPDIR)/jalapaquery-testitem.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='testitem.cpp' object='jalapaquery-testitem.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-testitem.obj `if test -f 'testitem.cpp'; then $(CYGPATH_W) 'testitem.cpp'; else $(CYGPATH_W) '$(srcdir)/testitem.cpp'; fi`
+
+jalapaquery-mainwindow.moc.o: mainwindow.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-mainwindow.moc.o -MD -MP -MF $(DEPDIR)/jalapaquery-mainwindow.moc.Tpo -c -o jalapaquery-mainwindow.moc.o `test -f 'mainwindow.moc.cpp' || echo '$(srcdir)/'`mainwindow.moc.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-mainwindow.moc.Tpo $(DEPDIR)/jalapaquery-mainwindow.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mainwindow.moc.cpp' object='jalapaquery-mainwindow.moc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-mainwindow.moc.o `test -f 'mainwindow.moc.cpp' || echo '$(srcdir)/'`mainwindow.moc.cpp
+
+jalapaquery-mainwindow.moc.obj: mainwindow.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-mainwindow.moc.obj -MD -MP -MF $(DEPDIR)/jalapaquery-mainwindow.moc.Tpo -c -o jalapaquery-mainwindow.moc.obj `if test -f 'mainwindow.moc.cpp'; then $(CYGPATH_W) 'mainwindow.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/mainwindow.moc.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-mainwindow.moc.Tpo $(DEPDIR)/jalapaquery-mainwindow.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='mainwindow.moc.cpp' object='jalapaquery-mainwindow.moc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-mainwindow.moc.obj `if test -f 'mainwindow.moc.cpp'; then $(CYGPATH_W) 'mainwindow.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/mainwindow.moc.cpp'; fi`
+
+jalapaquery-aboutdialog.moc.o: aboutdialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-aboutdialog.moc.o -MD -MP -MF $(DEPDIR)/jalapaquery-aboutdialog.moc.Tpo -c -o jalapaquery-aboutdialog.moc.o `test -f 'aboutdialog.moc.cpp' || echo '$(srcdir)/'`aboutdialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-aboutdialog.moc.Tpo $(DEPDIR)/jalapaquery-aboutdialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='aboutdialog.moc.cpp' object='jalapaquery-aboutdialog.moc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-aboutdialog.moc.o `test -f 'aboutdialog.moc.cpp' || echo '$(srcdir)/'`aboutdialog.moc.cpp
+
+jalapaquery-aboutdialog.moc.obj: aboutdialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-aboutdialog.moc.obj -MD -MP -MF $(DEPDIR)/jalapaquery-aboutdialog.moc.Tpo -c -o jalapaquery-aboutdialog.moc.obj `if test -f 'aboutdialog.moc.cpp'; then $(CYGPATH_W) 'aboutdialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/aboutdialog.moc.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-aboutdialog.moc.Tpo $(DEPDIR)/jalapaquery-aboutdialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='aboutdialog.moc.cpp' object='jalapaquery-aboutdialog.moc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-aboutdialog.moc.obj `if test -f 'aboutdialog.moc.cpp'; then $(CYGPATH_W) 'aboutdialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/aboutdialog.moc.cpp'; fi`
+
+jalapaquery-newfiledialog.moc.o: newfiledialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-newfiledialog.moc.o -MD -MP -MF $(DEPDIR)/jalapaquery-newfiledialog.moc.Tpo -c -o jalapaquery-newfiledialog.moc.o `test -f 'newfiledialog.moc.cpp' || echo '$(srcdir)/'`newfiledialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-newfiledialog.moc.Tpo $(DEPDIR)/jalapaquery-newfiledialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='newfiledialog.moc.cpp' object='jalapaquery-newfiledialog.moc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-newfiledialog.moc.o `test -f 'newfiledialog.moc.cpp' || echo '$(srcdir)/'`newfiledialog.moc.cpp
+
+jalapaquery-newfiledialog.moc.obj: newfiledialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-newfiledialog.moc.obj -MD -MP -MF $(DEPDIR)/jalapaquery-newfiledialog.moc.Tpo -c -o jalapaquery-newfiledialog.moc.obj `if test -f 'newfiledialog.moc.cpp'; then $(CYGPATH_W) 'newfiledialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/newfiledialog.moc.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-newfiledialog.moc.Tpo $(DEPDIR)/jalapaquery-newfiledialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='newfiledialog.moc.cpp' object='jalapaquery-newfiledialog.moc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-newfiledialog.moc.obj `if test -f 'newfiledialog.moc.cpp'; then $(CYGPATH_W) 'newfiledialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/newfiledialog.moc.cpp'; fi`
+
+jalapaquery-plugindialog.moc.o: plugindialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-plugindialog.moc.o -MD -MP -MF $(DEPDIR)/jalapaquery-plugindialog.moc.Tpo -c -o jalapaquery-plugindialog.moc.o `test -f 'plugindialog.moc.cpp' || echo '$(srcdir)/'`plugindialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-plugindialog.moc.Tpo $(DEPDIR)/jalapaquery-plugindialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='plugindialog.moc.cpp' object='jalapaquery-plugindialog.moc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-plugindialog.moc.o `test -f 'plugindialog.moc.cpp' || echo '$(srcdir)/'`plugindialog.moc.cpp
+
+jalapaquery-plugindialog.moc.obj: plugindialog.moc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-plugindialog.moc.obj -MD -MP -MF $(DEPDIR)/jalapaquery-plugindialog.moc.Tpo -c -o jalapaquery-plugindialog.moc.obj `if test -f 'plugindialog.moc.cpp'; then $(CYGPATH_W) 'plugindialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/plugindialog.moc.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-plugindialog.moc.Tpo $(DEPDIR)/jalapaquery-plugindialog.moc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='plugindialog.moc.cpp' object='jalapaquery-plugindialog.moc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-plugindialog.moc.obj `if test -f 'plugindialog.moc.cpp'; then $(CYGPATH_W) 'plugindialog.moc.cpp'; else $(CYGPATH_W) '$(srcdir)/plugindialog.moc.cpp'; fi`
+
+jalapaquery-resources.qrc.o: resources.qrc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-resources.qrc.o -MD -MP -MF $(DEPDIR)/jalapaquery-resources.qrc.Tpo -c -o jalapaquery-resources.qrc.o `test -f 'resources.qrc.cpp' || echo '$(srcdir)/'`resources.qrc.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-resources.qrc.Tpo $(DEPDIR)/jalapaquery-resources.qrc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='resources.qrc.cpp' object='jalapaquery-resources.qrc.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-resources.qrc.o `test -f 'resources.qrc.cpp' || echo '$(srcdir)/'`resources.qrc.cpp
+
+jalapaquery-resources.qrc.obj: resources.qrc.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -MT jalapaquery-resources.qrc.obj -MD -MP -MF $(DEPDIR)/jalapaquery-resources.qrc.Tpo -c -o jalapaquery-resources.qrc.obj `if test -f 'resources.qrc.cpp'; then $(CYGPATH_W) 'resources.qrc.cpp'; else $(CYGPATH_W) '$(srcdir)/resources.qrc.cpp'; fi`
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/jalapaquery-resources.qrc.Tpo $(DEPDIR)/jalapaquery-resources.qrc.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='resources.qrc.cpp' object='jalapaquery-resources.qrc.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(jalapaquery_CPPFLAGS) $(CPPFLAGS) $(jalapaquery_CXXFLAGS) $(CXXFLAGS) -c -o jalapaquery-resources.qrc.obj `if test -f 'resources.qrc.cpp'; then $(CYGPATH_W) 'resources.qrc.cpp'; else $(CYGPATH_W) '$(srcdir)/resources.qrc.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo
 
 clean-libtool:
 	-rm -rf .libs _libs
+install-distHEADERS: $(dist_HEADERS)
+	@$(NORMAL_INSTALL)
+	test -z "$(distdir)" || $(MKDIR_P) "$(DESTDIR)$(distdir)"
+	@list='$(dist_HEADERS)'; test -n "$(distdir)" || list=; \
+	for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  echo "$$d$$p"; \
+	done | $(am__base_list) | \
+	while read files; do \
+	  echo " $(INSTALL_HEADER) $$files '$(DESTDIR)$(distdir)'"; \
+	  $(INSTALL_HEADER) $$files "$(DESTDIR)$(distdir)" || exit $$?; \
+	done
+
+uninstall-distHEADERS:
+	@$(NORMAL_UNINSTALL)
+	@list='$(dist_HEADERS)'; test -n "$(distdir)" || list=; \
+	files=`for p in $$list; do echo $$p; done | sed -e 's|^.*/||'`; \
+	test -n "$$files" || exit 0; \
+	echo " ( cd '$(DESTDIR)$(distdir)' && rm -f" $$files ")"; \
+	cd "$(DESTDIR)$(distdir)" && rm -f $$files
+
+ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
+	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	mkid -fID $$unique
 tags: TAGS
-TAGS:
 
+TAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	set x; \
+	here=`pwd`; \
+	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
+	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	shift; \
+	if test -z "$(ETAGS_ARGS)$$*$$unique"; then :; else \
+	  test -n "$$unique" || unique=$$empty_fix; \
+	  if test $$# -gt 0; then \
+	    $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
+	      "$$@" $$unique; \
+	  else \
+	    $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
+	      $$unique; \
+	  fi; \
+	fi
 ctags: CTAGS
-CTAGS:
+CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
+		$(TAGS_FILES) $(LISP)
+	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
+	unique=`for i in $$list; do \
+	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
+	  done | \
+	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
+	      END { if (nonempty) { for (i in files) print i; }; }'`; \
+	test -z "$(CTAGS_ARGS)$$unique" \
+	  || $(CTAGS) $(CTAGSFLAGS) $(AM_CTAGSFLAGS) $(CTAGS_ARGS) \
+	     $$unique
 
+GTAGS:
+	here=`$(am__cd) $(top_builddir) && pwd` \
+	  && $(am__cd) $(top_srcdir) \
+	  && gtags -i $(GTAGS_ARGS) "$$here"
+
+distclean-tags:
+	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
 
 distdir: $(DISTFILES)
 	@srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*]/\\\\&/g'`; \
@@ -255,10 +725,15 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
-check: check-am
-all-am: Makefile
+check: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) check-am
+all-am: Makefile $(PROGRAMS) $(HEADERS)
 installdirs:
-install: install-am
+	for dir in "$(DESTDIR)$(bindir)" "$(DESTDIR)$(distdir)"; do \
+	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
+	done
+install: $(BUILT_SOURCES)
+	$(MAKE) $(AM_MAKEFLAGS) install-am
 install-exec: install-exec-am
 install-data: install-data-am
 uninstall: uninstall-am
@@ -279,17 +754,21 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
+	-test -z "$(DISTCLEANFILES)" || rm -f $(DISTCLEANFILES)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
 clean: clean-am
 
-clean-am: clean-generic clean-libtool mostlyclean-am
+clean-am: clean-binPROGRAMS clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
-distclean-am: clean-am distclean-generic
+distclean-am: clean-am distclean-compile distclean-generic \
+	distclean-tags
 
 dvi: dvi-am
 
@@ -303,13 +782,13 @@ info: info-am
 
 info-am:
 
-install-data-am:
+install-data-am: install-distHEADERS
 
 install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am:
+install-exec-am: install-binPROGRAMS
 
 install-html: install-html-am
 
@@ -332,12 +811,14 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
 mostlyclean: mostlyclean-am
 
-mostlyclean-am: mostlyclean-generic mostlyclean-libtool
+mostlyclean-am: mostlyclean-compile mostlyclean-generic \
+	mostlyclean-libtool
 
 pdf: pdf-am
 
@@ -347,21 +828,79 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am:
+uninstall-am: uninstall-binPROGRAMS uninstall-distHEADERS
 
-.MAKE: install-am install-strip
+.MAKE: all check install install-am install-strip
 
-.PHONY: all all-am check check-am clean clean-generic clean-libtool \
-	distclean distclean-generic distclean-libtool distdir dvi \
+.PHONY: CTAGS GTAGS all all-am check check-am clean clean-binPROGRAMS \
+	clean-generic clean-libtool ctags distclean distclean-compile \
+	distclean-generic distclean-libtool distclean-tags distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am
+	install-binPROGRAMS install-data install-data-am \
+	install-distHEADERS install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic mostlyclean mostlyclean-compile \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	tags uninstall uninstall-am uninstall-binPROGRAMS \
+	uninstall-distHEADERS
 
+
+ # ------------- #
+ # DOCUMENTATION #
+ # ------------- #
+
+# --- #
+# MOC #
+# --- #
+
+.hh.moc.cpp:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cpp:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.cc:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cc:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.cxx:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.cxx:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+.hh.moc.C:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+.h.moc.C:
+	$(MOC) $(QT_CPPFLAGS) $< -o $@
+
+# --- #
+# UIC #
+# --- #
+
+.ui.ui.hh:
+	$(UIC) $< > $@
+
+.ui.ui.h:
+	$(UIC) $< > $@
+
+# --- #
+# RCC #
+# --- #
+
+.qrc.qrc.cpp:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.cc:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.cxx:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
+
+.qrc.qrc.C:
+	$(RCC) -name `echo "$<" | sed 's/\.qrc$$//'` $< -o $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
