@@ -1,5 +1,5 @@
 #include "newfiledialog.h"
-#include "ui_newfiledialog.h"
+#include "newfiledialog.ui.h"
 #include "modelinterface.h"
 #include <QListWidgetItem>
 #include <QIcon>

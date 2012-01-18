@@ -1,5 +1,5 @@
 #include "plugindialog.h"
-#include "ui_plugindialog.h"
+#include "plugindialog.ui.h"
 #include "modelinterface.h"
 #include <QStringList>
 #include <QTreeWidgetItem>
