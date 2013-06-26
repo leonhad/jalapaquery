@@ -5,9 +5,9 @@
 #include <QString>
 
 class TypeModel {
-    Q_PROPERTY(QString m_name READ name);
-    Q_PROPERTY(QIcon m_icon READ icon);
-    Q_PROPERTY(QString m_description READ description);
+    Q_PROPERTY(QString m_name READ name)
+    Q_PROPERTY(QIcon m_icon READ icon)
+    Q_PROPERTY(QString m_description READ description)
 
 public:
     TypeModel(QIcon icon, QString name, QString description) {

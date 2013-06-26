@@ -1,18 +1,18 @@
 #include "mainwindow.h"
-#include "mainwindow.ui.h"
+#include "ui_mainwindow.h"
 #include "aboutdialog.h"
 #include "newfiledialog.h"
 #include "modelinterface.h"
 #include "plugindialog.h"
-#include <QGraphicsPathItem>
-#include <QGraphicsTextItem>
+#include <QtWidgets/QGraphicsPathItem>
+#include <QtWidgets/QGraphicsTextItem>
 #include <QDir>
 #include <QPluginLoader>
 #include <QSettings>
 #include <QCloseEvent>
 #include <QDebug>
 #include <QIcon>
-#include <QTreeWidgetItem>
+#include <QtWidgets/QTreeWidgetItem>
 
 using namespace std;
 

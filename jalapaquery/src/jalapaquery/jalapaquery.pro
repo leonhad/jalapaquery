@@ -1,5 +1,6 @@
 QT += core \
-    gui
+    gui \
+    widgets
 TARGET = JalapaQuery
 TEMPLATE = app
 DESTDIR = ../../bin
@@ -10,7 +11,8 @@ SOURCES += main.cpp \
     aboutdialog.cpp \
     newfiledialog.cpp \
     plugindialog.cpp \
-    constants.cpp
+    constants.cpp \
+    dialog.cpp
 HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
@@ -19,11 +21,13 @@ HEADERS += mainwindow.h \
     interface/plugininterface.h \
     interface/modelinterface.h \
     interface/typemodel.h \
-    constants.h
+    constants.h \
+    dialog.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
     newfiledialog.ui \
-    plugindialog.ui
+    plugindialog.ui \
+    dialog.ui
 RESOURCES += resources.qrc \
     icons.qrc
 
