@@ -36,9 +36,3 @@ QString DatabasePlugin::pluginVendor()
 {
     return "JalapaQuery.org";
 }
-
-#define DatabasePlugin_iid "org.jalapaquery.DatabasePlugin"
-
-Q_DECLARE_INTERFACE(DatabasePlugin, DatabasePlugin_iid)
-
-//Q_EXPORT_PLUGIN2(databaseplugin, DatabasePlugin);

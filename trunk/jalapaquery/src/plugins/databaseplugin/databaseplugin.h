@@ -10,6 +10,7 @@ class DATABASEPLUGINSHARED_EXPORT DatabasePlugin : public QObject, public ModelI
 {
     Q_OBJECT
     Q_INTERFACES(ModelInterface)
+    Q_PLUGIN_METADATA(IID ModelInterface_iid)
 
 public:
     DatabasePlugin();

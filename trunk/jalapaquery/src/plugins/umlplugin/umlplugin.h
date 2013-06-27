@@ -10,6 +10,7 @@ class UMLPLUGINSHARED_EXPORT UmlPlugin : public QObject, public ModelInterface
 {
     Q_OBJECT
     Q_INTERFACES(ModelInterface)
+    Q_PLUGIN_METADATA(IID ModelInterface_iid)
 
 public:
     UmlPlugin();
