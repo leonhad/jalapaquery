@@ -11,8 +11,8 @@ public:
     virtual QString pluginVendor() = 0;
 };
 
-#define DatabasePlugin_iid "org.jalapaquery.DatabasePlugin"
+#define PluginInterface_iid "org.jalapaquery.PluginInterface"
 
-Q_DECLARE_INTERFACE(DatabasePlugin, DatabasePlugin_iid)
+Q_DECLARE_INTERFACE(PluginInterface, PluginInterface_iid)
 
 #endif // PLUGININTERFACE_H

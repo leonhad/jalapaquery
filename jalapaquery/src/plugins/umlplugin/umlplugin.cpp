@@ -32,8 +32,3 @@ QString UmlPlugin::pluginVendor()
 {
     return "JalapaQuery.org";
 }
-
-#define UmlPlugin_iid "org.jalapaquery.UmlPlugin"
-
-Q_DECLARE_INTERFACE(UmlPlugin, UmlPlugin_iid)
-//Q_EXPORT_PLUGIN2(umlplugin, UmlPlugin);

@@ -11,8 +11,7 @@ SOURCES += main.cpp \
     aboutdialog.cpp \
     newfiledialog.cpp \
     plugindialog.cpp \
-    constants.cpp \
-    dialog.cpp
+    constants.cpp
 HEADERS += mainwindow.h \
     testitem.h \
     aboutdialog.h \
@@ -21,13 +20,11 @@ HEADERS += mainwindow.h \
     interface/plugininterface.h \
     interface/modelinterface.h \
     interface/typemodel.h \
-    constants.h \
-    dialog.h
+    constants.h
 FORMS += mainwindow.ui \
     aboutdialog.ui \
     newfiledialog.ui \
-    plugindialog.ui \
-    dialog.ui
+    plugindialog.ui
 RESOURCES += resources.qrc \
     icons.qrc
 

@@ -15,6 +15,8 @@ public:
     virtual QList<TypeModel *> types() = 0;
 };
 
-Q_DECLARE_INTERFACE(ModelInterface, "com.jalapaquery.ModelInterface/1.0");
+#define ModelInterface_iid "com.jalapaquery.ModelInterface/1.0"
+
+Q_DECLARE_INTERFACE(ModelInterface, ModelInterface_iid)
 
 #endif // MODELINTERFACE_H
