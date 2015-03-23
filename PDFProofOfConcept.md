@@ -1,0 +1,12 @@
+# Introduction #
+
+This proof of concept aims to study the PDF native creation.
+
+# Current Status #
+
+Finished.
+
+# Details #
+
+  * Use Qt Print System (<a href='http://doc.qt.nokia.com/latest/qprinter.html'>QPrinter</a>)
+  * Set the <a href='http://doc.qt.nokia.com/latest/qprinter.html#setOutputFormat'>setOutputFormat</a>(QPrinter::PdfFormat)

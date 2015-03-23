@@ -1,0 +1,22 @@
+# Introduction #
+
+This proof of concept aims to study the Database connector and Database metadata recovery.
+
+# Current Status #
+
+Finished.
+
+# Details #
+
+  * In QSqlDatabase class, use the method <a href='http://doc.qt.nokia.com/latest/qsqldatabase.html#tables'>tables()</a> to get table names.
+  * Use the method <a href='http://doc.qt.nokia.com/latest/qsqldatabase.html#record'>record()</a> to get field metadata from <a href='http://doc.qt.nokia.com/latest/qsqldatabase.html'>QSqlDatabase</a> class.
+  * There is no method to get indexes and foreign keys metadata.
+    * One solution is to use database specifics SQL
+    * Use other database connection classes (use this only if there is no solution to <a href='http://doc.qt.nokia.com/latest/qsqldatabase.html'>QSqlDatabase</a>).
+    * Returns the primary index for table tablename with <a href='http://doc.qt.nokia.com/latest/qsqldatabase.html##primaryIndex'>primaryIndex()</a>
+
+
+
+
+
+

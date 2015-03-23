@@ -1,0 +1,13 @@
+# Introduction #
+
+This proof of concept aims to study the Dock Widget in Qt.
+
+# Current Status #
+
+Finished.
+
+# Details #
+
+  * Use the <a href='http://doc.qt.nokia.com/latest/qdockwidget.html'>QDockWidget</a> to create docks.
+  * In <a href='http://doc.qt.nokia.com/latest/qmainwindow.html'>QMainWindow</a>, use <a href='http://doc.qt.nokia.com/latest/qmainwindow.html#addDockWidget'>addDockWidget()</a> method to add the dock widget.
+  * For more info, see the <a href='http://doc.qt.nokia.com/4.7-snapshot/mainwindows-dockwidgets.html'>Qt Dock Widget Example</a>.

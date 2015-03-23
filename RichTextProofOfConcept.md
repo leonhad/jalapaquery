@@ -1,0 +1,13 @@
+# Introduction #
+
+This proof of concept aims to study the Rich Text capabilities in Qt.
+
+# Current Status #
+
+Finished.
+
+# Details #
+
+  * Use <a href='http://doc.qt.nokia.com/latest/qtextedit.html'>QTextEdit</a>
+  * Use <a href='http://doc.qt.nokia.com/latest/qtextedit.html#html-prop'>toHtml</a> to get the formatted text
+  * See Text Edit demo for more info.

@@ -1,0 +1,16 @@
+# Introduction #
+
+This proof of concept aims to study the designer module creation.
+
+# Current Status #
+
+Finished.
+
+# Details #
+
+  * Designer tablet: Use <a href='http://doc.qt.nokia.com/latest/qgraphicsview.html'>QGraphicsView</a> from <a href='http://doc.qt.nokia.com/latest/qtgui.html'>QtGui</a> module.
+  * Table creation and drag: Use <a href='http://doc.qt.nokia.com/latest/qgraphicsitem.html'>QGraphicsItem</a> from <a href='http://doc.qt.nokia.com/latest/qtgui.html'>QtGui</a> module.
+    * Use the <a href='http://doc.qt.nokia.com/latest/qpainter.html#drawText-10'>QPainter::drawText(QRectF,int,QString)</a> for text drawing.
+    * For text size, use <a href='http://doc.qt.nokia.com/latest/qgraphicstextitem.html'>QGraphicsTextItem<a />
+</li></ul><ul><li>Connections: Use <a href='http://doc.qt.nokia.com/stable/qgraphicspathitem.html'>QGraphicsPathItem</a> for line drawing<br>
+<ul><li>For line breaking (redesign), use mouseEvents and redraw it with linePath (delete and reinsert it).
