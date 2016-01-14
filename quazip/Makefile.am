@@ -1,5 +1,3 @@
-include $(top_srcdir)/autotroll.mk
-
 lib_LTLIBRARIES = libquazip.la
 libquazip_la_SOURCES = \
     zip.c \

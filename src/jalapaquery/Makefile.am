@@ -1,5 +1,3 @@
-include $(top_srcdir)/autotroll.mk
-
 bin_PROGRAMS = jalapaquery
 jalapaquery_SOURCES = \
     main.cpp \

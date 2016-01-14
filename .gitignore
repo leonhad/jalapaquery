@@ -1,0 +1,7 @@
+Makefile
+/stamp-h1
+/config.h
+.libs
+.deps
+*.lo
+*.o
