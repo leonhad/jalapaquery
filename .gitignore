@@ -1,3 +1,4 @@
+autom4te.cache
 Makefile
 /stamp-h1
 /config.h
@@ -5,3 +6,5 @@ Makefile
 .deps
 *.lo
 *.o
+config.log
+config.status

@@ -10,15 +10,15 @@ AC_CANONICAL_HOST
 # Checks for programs.
 AC_LANG([C++])
 AC_PROG_CXX
-#AC_PROG_LIBTOOL
+AC_PROG_LIBTOOL
 AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
 AX_CHECK_COMPILE_FLAG([-Wall], [CXXFLAGS="$CXXFLAGS -Wall"])
 AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
 
 AM_PROG_AR
 
-LT_INIT
-LT_LANG([C++])
+# LT_INIT
+# LT_LANG([C++])
 
 # Checks for library functions.
 # Checks for libraries.
