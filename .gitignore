@@ -6,5 +6,7 @@ Makefile
 .deps
 *.lo
 *.o
-config.log
+/config.log
+/config.status
+
 config.status
