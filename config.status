@@ -437,11 +437,11 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/c/Projetos/jalapaquery'
+ac_pwd='/Users/leonardocosta/Projetos/jalapaquery'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
-MKDIR_P='/usr/bin/mkdir -p'
-AWK='gawk'
+MKDIR_P='./install-sh -c -d'
+AWK='awk'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
@@ -560,206 +560,184 @@ SHELL='/bin/sh'
 ECHO='printf %s\n'
 PATH_SEPARATOR=':'
 host_alias=''
-host='x86_64-pc-mingw64'
-host_os='mingw64'
+host='x86_64-apple-darwin15.2.0'
+host_os='darwin15.2.0'
 build_alias=''
-build='x86_64-pc-mingw64'
-build_os='mingw64'
+build='x86_64-apple-darwin15.2.0'
+build_os='darwin15.2.0'
 SED='/usr/bin/sed'
 Xsed='/usr/bin/sed -e 1s/^X//'
 GREP='/usr/bin/grep'
 EGREP='/usr/bin/grep -E'
 FGREP='/usr/bin/grep -F'
-LD='C:/msys64/mingw64/x86_64-w64-mingw32/bin/ld.exe'
-NM='/mingw64/bin/nm -B'
-LN_S='cp -pR'
-max_cmd_len='8192'
+LD='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld'
+NM='/usr/bin/nm'
+LN_S='ln -s'
+max_cmd_len='196608'
 ac_objext='o'
 exeext=''
 lt_unset='unset'
 lt_SP2NL='tr \040 \012'
 lt_NL2SP='tr \015\012 \040\040'
-lt_cv_to_host_file_cmd='func_convert_file_msys_to_w32'
-lt_cv_to_tool_file_cmd='func_convert_file_msys_to_w32'
+lt_cv_to_host_file_cmd='func_convert_file_noop'
+lt_cv_to_tool_file_cmd='func_convert_file_noop'
 reload_flag=' -r'
-reload_cmds='$LD$reload_flag -o $output$reload_objs'
-OBJDUMP='objdump'
-deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
-file_magic_cmd='func_win32_libid'
+reload_cmds='$LTCC $LTCFLAGS -nostdlib $wl-r -o $output$reload_objs'
+OBJDUMP='false'
+deplibs_check_method='pass_all'
+file_magic_cmd='$MAGIC_CMD'
 file_magic_glob=''
-want_nocaseglob='yes'
-DLLTOOL='dlltool'
-sharedlib_from_linklib_cmd='func_cygming_dll_for_implib'
+want_nocaseglob='no'
+DLLTOOL='false'
+sharedlib_from_linklib_cmd='printf %s\n'
 AR='ar'
 AR_FLAGS='cru'
-archiver_list_spec='@'
+archiver_list_spec=''
 STRIP='strip'
 RANLIB='ranlib'
 old_postinstall_cmds='chmod 644 $oldlib~$RANLIB $tool_oldlib'
 old_postuninstall_cmds=''
 old_archive_cmds='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $tool_oldlib'
-lock_old_archive_extraction='no'
+lock_old_archive_extraction='yes'
 CC='gcc'
 CFLAGS='-g -O2'
 compiler='g++'
 GCC='yes'
-lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[	 ][	 ]*\([_A-Za-z][_A-Za-z0-9]*\)\{0,1\}$/\1 \2 \2/p'\'' | sed '\''/ __gnu_lto/d'\'''
-lt_cv_sys_global_symbol_to_cdecl='sed -n -e '\''s/^T .* \(.*\)$/extern int \1();/p'\'' -e '\''s/^[ABCDGIRSTW][ABCDGIRSTW]* .* \(.*\)$/extern char \1;/p'\'''
+lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([BCDEGRST][BCDEGRST]*\)[	 ][	 ]*_\([_A-Za-z][_A-Za-z0-9]*\)$/\1 _\2 \2/p'\'' | sed '\''/ __gnu_lto/d'\'''
+lt_cv_sys_global_symbol_to_cdecl='sed -n -e '\''s/^T .* \(.*\)$/extern int \1();/p'\'' -e '\''s/^[BCDEGRST][BCDEGRST]* .* \(.*\)$/extern char \1;/p'\'''
 lt_cv_sys_global_symbol_to_import=''
-lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '\''s/^: \(.*\) .*$/  {"\1", (void *) 0},/p'\'' -e '\''s/^[ABCDGIRSTW][ABCDGIRSTW]* .* \(.*\)$/  {"\1", (void *) \&\1},/p'\'''
-lt_cv_sys_global_symbol_to_c_name_address_lib_prefix='sed -n -e '\''s/^: \(.*\) .*$/  {"\1", (void *) 0},/p'\'' -e '\''s/^[ABCDGIRSTW][ABCDGIRSTW]* .* \(lib.*\)$/  {"\1", (void *) \&\1},/p'\'' -e '\''s/^[ABCDGIRSTW][ABCDGIRSTW]* .* \(.*\)$/  {"lib\1", (void *) \&\1},/p'\'''
+lt_cv_sys_global_symbol_to_c_name_address='sed -n -e '\''s/^: \(.*\) .*$/  {"\1", (void *) 0},/p'\'' -e '\''s/^[BCDEGRST][BCDEGRST]* .* \(.*\)$/  {"\1", (void *) \&\1},/p'\'''
+lt_cv_sys_global_symbol_to_c_name_address_lib_prefix='sed -n -e '\''s/^: \(.*\) .*$/  {"\1", (void *) 0},/p'\'' -e '\''s/^[BCDEGRST][BCDEGRST]* .* \(lib.*\)$/  {"\1", (void *) \&\1},/p'\'' -e '\''s/^[BCDEGRST][BCDEGRST]* .* \(.*\)$/  {"lib\1", (void *) \&\1},/p'\'''
 lt_cv_nm_interface='BSD nm'
-nm_file_list_spec='@'
+nm_file_list_spec=''
 lt_sysroot=''
-lt_cv_truncate_bin='/usr/bin/dd bs=4096 count=1'
+lt_cv_truncate_bin='/bin/dd bs=4096 count=1'
 objdir='.libs'
 MAGIC_CMD='file'
-lt_prog_compiler_no_builtin_flag=' -fno-builtin'
-lt_prog_compiler_pic=' -DDLL_EXPORT -DPIC'
+lt_prog_compiler_no_builtin_flag=' -fno-builtin -fno-rtti -fno-exceptions'
+lt_prog_compiler_pic=' -fno-common -DPIC'
 lt_prog_compiler_wl='-Wl,'
-lt_prog_compiler_static='-static'
+lt_prog_compiler_static=''
 lt_cv_prog_compiler_c_o='yes'
 need_locks='no'
 MANIFEST_TOOL=':'
-DSYMUTIL=''
-NMEDIT=''
-LIPO=''
-OTOOL=''
-OTOOL64=''
+DSYMUTIL='dsymutil'
+NMEDIT='nmedit'
+LIPO='lipo'
+OTOOL='otool'
+OTOOL64=':'
 libext='a'
-shrext_cmds='.dll'
+shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
 extract_expsyms_cmds=''
-archive_cmds_need_lc='yes'
-enable_shared_with_static_runtimes='yes'
-export_dynamic_flag_spec='$wl--export-all-symbols'
-whole_archive_flag_spec='$wl--whole-archive$convenience $wl--no-whole-archive'
+archive_cmds_need_lc='no'
+enable_shared_with_static_runtimes='no'
+export_dynamic_flag_spec=''
+whole_archive_flag_spec='`for conv in $convenience\"\"; do test  -n \"$conv\" && new_convenience=\"$new_convenience $wl-force_load,$conv\"; done; func_echo_all \"$new_convenience\"`'
 compiler_needs_object='no'
 old_archive_from_new_cmds=''
 old_archive_from_expsyms_cmds=''
-archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-archive_expsym_cmds='if   test DEF = "`$SED -n     -e '\''s/^[	 ]*//'\''     -e '\''/^\(;.*\)*$/d'\''     -e '\''s/^\(EXPORTS\|LIBRARY\)\([	 ].*\)*$/DEF/p'\''     -e q     $export_symbols`" ; then
-          cp $export_symbols $output_objdir/$soname.def;
-        else
-          echo EXPORTS > $output_objdir/$soname.def;
-          cat $export_symbols >> $output_objdir/$soname.def;
-        fi~
-        $CC -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-module_cmds=''
-module_expsym_cmds=''
-with_gnu_ld='yes'
-allow_undefined_flag='unsupported'
+archive_cmds='$CC -dynamiclib $allow_undefined_flag -o $lib $libobjs $deplibs $compiler_flags -install_name $rpath/$soname $verstring $single_module'
+archive_expsym_cmds='sed '\''s|^|_|'\'' < $export_symbols > $output_objdir/$libname-symbols.expsym~$CC -dynamiclib $allow_undefined_flag -o $lib $libobjs $deplibs $compiler_flags -install_name $rpath/$soname $verstring $single_module $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
+module_cmds='$CC $allow_undefined_flag -o $lib -bundle $libobjs $deplibs $compiler_flags'
+module_expsym_cmds='sed -e '\''s|^|_|'\'' < $export_symbols > $output_objdir/$libname-symbols.expsym~$CC $allow_undefined_flag -o $lib -bundle $libobjs $deplibs $compiler_flags $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
+with_gnu_ld='no'
+allow_undefined_flag='$wl-undefined ${wl}dynamic_lookup'
 no_undefined_flag=''
-hardcode_libdir_flag_spec='-L$libdir'
+hardcode_libdir_flag_spec=''
 hardcode_libdir_separator=''
 hardcode_direct='no'
 hardcode_direct_absolute='no'
 hardcode_minus_L='no'
 hardcode_shlibpath_var='unsupported'
-hardcode_automatic='no'
+hardcode_automatic='yes'
 inherit_rpath='no'
-link_all_deplibs='unknown'
+link_all_deplibs='yes'
 always_export_symbols='no'
-export_symbols_cmds='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[BCDGRS][ ]/s/.*[ ]\([^ ]*\)/\1 DATA/;s/^.*[ ]__nm__\([^ ]*\)[ ][^ ]*/\1 DATA/;/^I[ ]/d;/^[AITW][ ]/s/.* //'\'' | sort | uniq > $export_symbols'
-exclude_expsyms='[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname'
+export_symbols_cmds='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
+exclude_expsyms='_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*'
 include_expsyms=''
 prelink_cmds=''
 postlink_cmds=''
 file_list_spec=''
-variables_saved_for_relink='PATH PATH LD_RUN_PATH GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH'
+variables_saved_for_relink='PATH DYLD_LIBRARY_PATH  GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH'
 need_lib_prefix='no'
 need_version='no'
-version_type='windows'
-runpath_var='LD_RUN_PATH'
-shlibpath_var='PATH'
+version_type='darwin'
+runpath_var=''
+shlibpath_var='DYLD_LIBRARY_PATH'
 shlibpath_overrides_runpath='yes'
 libname_spec='lib$name'
-library_names_spec='$libname.dll.a'
-soname_spec='$libname`echo $release | $SED -e s/[.]/-/g`$versuffix$shared_ext'
+library_names_spec='$libname$release$major$shared_ext $libname$shared_ext'
+soname_spec='$libname$release$major$shared_ext'
 install_override_mode=''
-postinstall_cmds='base_file=`basename \$file`~
-      dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
-      dldir=$destdir/`dirname \$dlpath`~
-      test -d \$dldir || mkdir -p \$dldir~
-      $install_prog $dir/$dlname \$dldir/$dlname~
-      chmod a+x \$dldir/$dlname~
-      if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
-        eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
-      fi'
-postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
-      dlpath=$dir/\$dldll~
-       $RM \$dlpath'
+postinstall_cmds=''
+postuninstall_cmds=''
 finish_cmds=''
 finish_eval=''
 hardcode_into_libs='no'
-sys_lib_search_path_spec='C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/5.3.0 C:/msys64/mingw64/lib/gcc C:/msys64/mingw64/x86_64-w64-mingw32/lib C:/msys64/mingw64/lib '
-configure_time_dlsearch_path='/lib /usr/lib'
+sys_lib_search_path_spec='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2  /usr/local/lib'
+configure_time_dlsearch_path='/usr/local/lib /lib /usr/lib'
 configure_time_lt_sys_library_path=''
 hardcode_action='immediate'
 enable_dlopen='unknown'
 enable_dlopen_self='unknown'
 enable_dlopen_self_static='unknown'
-old_striplib='strip --strip-debug'
-striplib='strip --strip-unneeded'
+old_striplib='strip -S'
+striplib='strip -x'
 compiler_lib_search_dirs=''
 predep_objects=''
 postdep_objects=''
 predeps=''
 postdeps=''
 compiler_lib_search_path=''
-LD_CXX='C:/msys64/mingw64/x86_64-w64-mingw32/bin/ld.exe'
+LD_CXX='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld'
 reload_flag_CXX=' -r'
-reload_cmds_CXX='$LD$reload_flag -o $output$reload_objs'
+reload_cmds_CXX='$LTCC $LTCFLAGS -nostdlib $wl-r -o $output$reload_objs'
 old_archive_cmds_CXX='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $tool_oldlib'
 compiler_CXX='g++'
 GCC_CXX='yes'
 lt_prog_compiler_no_builtin_flag_CXX=' -fno-builtin'
-lt_prog_compiler_pic_CXX=' -DDLL_EXPORT -DPIC'
+lt_prog_compiler_pic_CXX=' -fno-common -DPIC'
 lt_prog_compiler_wl_CXX='-Wl,'
-lt_prog_compiler_static_CXX='-static'
+lt_prog_compiler_static_CXX=''
 lt_cv_prog_compiler_c_o_CXX='yes'
 archive_cmds_need_lc_CXX='no'
-enable_shared_with_static_runtimes_CXX='yes'
-export_dynamic_flag_spec_CXX='$wl--export-all-symbols'
-whole_archive_flag_spec_CXX='$wl--whole-archive$convenience $wl--no-whole-archive'
+enable_shared_with_static_runtimes_CXX='no'
+export_dynamic_flag_spec_CXX=''
+whole_archive_flag_spec_CXX='`for conv in $convenience\"\"; do test  -n \"$conv\" && new_convenience=\"$new_convenience $wl-force_load,$conv\"; done; func_echo_all \"$new_convenience\"`'
 compiler_needs_object_CXX='no'
 old_archive_from_new_cmds_CXX=''
 old_archive_from_expsyms_cmds_CXX=''
-archive_cmds_CXX='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-archive_expsym_cmds_CXX='if   test DEF = "`$SED -n     -e '\''s/^[	 ]*//'\''     -e '\''/^\(;.*\)*$/d'\''     -e '\''s/^\(EXPORTS\|LIBRARY\)\([	 ].*\)*$/DEF/p'\''     -e q     $export_symbols`" ; then
-              cp $export_symbols $output_objdir/$soname.def;
-            else
-              echo EXPORTS > $output_objdir/$soname.def;
-              cat $export_symbols >> $output_objdir/$soname.def;
-            fi~
-            $CC -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-module_cmds_CXX=''
-module_expsym_cmds_CXX=''
-with_gnu_ld_CXX='yes'
-allow_undefined_flag_CXX='unsupported'
+archive_cmds_CXX='$CC -dynamiclib $allow_undefined_flag -o $lib $libobjs $deplibs $compiler_flags -install_name $rpath/$soname $verstring $single_module'
+archive_expsym_cmds_CXX='sed '\''s|^|_|'\'' < $export_symbols > $output_objdir/$libname-symbols.expsym~$CC -dynamiclib $allow_undefined_flag -o $lib $libobjs $deplibs $compiler_flags -install_name $rpath/$soname $verstring $single_module $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
+module_cmds_CXX='$CC $allow_undefined_flag -o $lib -bundle $libobjs $deplibs $compiler_flags'
+module_expsym_cmds_CXX='sed -e '\''s|^|_|'\'' < $export_symbols > $output_objdir/$libname-symbols.expsym~$CC $allow_undefined_flag -o $lib -bundle $libobjs $deplibs $compiler_flags $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
+with_gnu_ld_CXX='no'
+allow_undefined_flag_CXX='$wl-undefined ${wl}dynamic_lookup'
 no_undefined_flag_CXX=''
-hardcode_libdir_flag_spec_CXX='-L$libdir'
+hardcode_libdir_flag_spec_CXX=''
 hardcode_libdir_separator_CXX=''
 hardcode_direct_CXX='no'
 hardcode_direct_absolute_CXX='no'
 hardcode_minus_L_CXX='no'
 hardcode_shlibpath_var_CXX='unsupported'
-hardcode_automatic_CXX='no'
+hardcode_automatic_CXX='yes'
 inherit_rpath_CXX='no'
-link_all_deplibs_CXX='unknown'
+link_all_deplibs_CXX='yes'
 always_export_symbols_CXX='no'
-export_symbols_cmds_CXX='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[BCDGRS][ ]/s/.*[ ]\([^ ]*\)/\1 DATA/;s/^.*[ ]__nm__\([^ ]*\)[ ][^ ]*/\1 DATA/;/^I[ ]/d;/^[AITW][ ]/s/.* //'\'' | sort | uniq > $export_symbols'
-exclude_expsyms_CXX='[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname'
+export_symbols_cmds_CXX='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
+exclude_expsyms_CXX='_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*'
 include_expsyms_CXX=''
 prelink_cmds_CXX=''
 postlink_cmds_CXX=''
 file_list_spec_CXX=''
 hardcode_action_CXX='immediate'
-compiler_lib_search_dirs_CXX='C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0 C:/msys64/mingw64/bin/../lib/gcc C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/lib/../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/lib C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../..'
-predep_objects_CXX='C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/lib/../lib/dllcrt2.o C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/crtbegin.o'
-postdep_objects_CXX='C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/crtend.o'
+compiler_lib_search_dirs_CXX=''
+predep_objects_CXX=''
+postdep_objects_CXX=''
 predeps_CXX=''
-postdeps_CXX='-lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt'
-compiler_lib_search_path_CXX='-LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0 -LC:/msys64/mingw64/bin/../lib/gcc -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/lib/../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../../../x86_64-w64-mingw32/lib -LC:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/5.3.0/../../..'
+postdeps_CXX=''
+compiler_lib_search_path_CXX=''
 
 LTCC='gcc'
 LTCFLAGS='-g -O2'
@@ -899,40 +877,52 @@ fi
 
 echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
-S["am__EXEEXT_FALSE"]="#"
-S["am__EXEEXT_TRUE"]=""
+S["am__EXEEXT_FALSE"]=""
+S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
+S["QT_LUPDATE"]=""
+S["QT_LRELEASE"]=""
+S["QT_MOC"]=""
+S["QT_UIC"]=""
+S["QT_LIBS"]=""
+S["QT_DIR"]=""
+S["QT_CXXFLAGS"]=""
+S["X_EXTRA_LIBS"]=""
+S["X_LIBS"]=" -L/usr/X11/lib"
+S["X_PRE_LIBS"]=" -lSM -lICE"
+S["X_CFLAGS"]=" -I/usr/X11/include"
+S["XMKMF"]=""
 S["CXXCPP"]="g++ -E"
 S["CPP"]="gcc -E"
 S["LT_SYS_LIBRARY_PATH"]=""
-S["OTOOL64"]=""
-S["OTOOL"]=""
-S["LIPO"]=""
-S["NMEDIT"]=""
-S["DSYMUTIL"]=""
+S["OTOOL64"]=":"
+S["OTOOL"]="otool"
+S["LIPO"]="lipo"
+S["NMEDIT"]="nmedit"
+S["DSYMUTIL"]="dsymutil"
 S["MANIFEST_TOOL"]=":"
 S["RANLIB"]="ranlib"
-S["ac_ct_AR"]="ar"
-S["AR"]="ar"
-S["DLLTOOL"]="dlltool"
-S["OBJDUMP"]="objdump"
-S["LN_S"]="cp -pR"
-S["NM"]="/mingw64/bin/nm -B"
+S["DLLTOOL"]="false"
+S["OBJDUMP"]="false"
+S["LN_S"]="ln -s"
+S["NM"]="/usr/bin/nm"
 S["ac_ct_DUMPBIN"]=""
 S["DUMPBIN"]=""
-S["LD"]="C:/msys64/mingw64/x86_64-w64-mingw32/bin/ld.exe"
+S["LD"]="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld"
 S["FGREP"]="/usr/bin/grep -F"
 S["EGREP"]="/usr/bin/grep -E"
 S["GREP"]="/usr/bin/grep"
 S["SED"]="/usr/bin/sed"
+S["LIBTOOL"]="$(SHELL) $(top_builddir)/libtool"
 S["am__fastdepCC_FALSE"]="#"
 S["am__fastdepCC_TRUE"]=""
 S["CCDEPMODE"]="depmode=gcc3"
 S["ac_ct_CC"]="gcc"
 S["CFLAGS"]="-g -O2"
 S["CC"]="gcc"
-S["LIBTOOL"]="$(SHELL) $(top_builddir)/libtool"
+S["ac_ct_AR"]="ar"
+S["AR"]="ar"
 S["HAVE_CXX11"]=""
 S["am__fastdepCXX_FALSE"]="#"
 S["am__fastdepCXX_TRUE"]=""
@@ -945,39 +935,43 @@ S["am__quote"]=""
 S["am__include"]="include"
 S["DEPDIR"]=".deps"
 S["OBJEXT"]="o"
-S["EXEEXT"]=".exe"
+S["EXEEXT"]=""
 S["ac_ct_CXX"]="g++"
 S["CPPFLAGS"]=""
 S["LDFLAGS"]=""
 S["CXXFLAGS"]="-g -O2 -std=c++11 -Wall -pipe"
 S["CXX"]="g++"
-S["host_os"]="mingw64"
-S["host_vendor"]="pc"
+S["host_os"]="darwin15.2.0"
+S["host_vendor"]="apple"
 S["host_cpu"]="x86_64"
-S["host"]="x86_64-pc-mingw64"
-S["build_os"]="mingw64"
-S["build_vendor"]="pc"
+S["host"]="x86_64-apple-darwin15.2.0"
+S["build_os"]="darwin15.2.0"
+S["build_vendor"]="apple"
 S["build_cpu"]="x86_64"
-S["build"]="x86_64-pc-mingw64"
+S["build"]="x86_64-apple-darwin15.2.0"
+S["AM_BACKSLASH"]="\\"
+S["AM_DEFAULT_VERBOSITY"]="1"
+S["AM_DEFAULT_V"]="$(AM_DEFAULT_VERBOSITY)"
+S["AM_V"]="$(V)"
 S["am__untar"]="tar -xf -"
 S["am__tar"]="tar --format=ustar -chf - \"$$tardir\""
 S["AMTAR"]="$${TAR-tar}"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
-S["AWK"]="gawk"
-S["mkdir_p"]="/usr/bin/mkdir -p"
-S["MKDIR_P"]="/usr/bin/mkdir -p"
+S["AWK"]="awk"
+S["mkdir_p"]="$(MKDIR_P)"
+S["MKDIR_P"]="./install-sh -c -d"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]="strip"
-S["install_sh"]="${SHELL} /c/Projetos/jalapaquery/install-sh"
-S["MAKEINFO"]="${SHELL} /c/Projetos/jalapaquery/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /c/Projetos/jalapaquery/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /c/Projetos/jalapaquery/missing --run automake-1.11"
-S["AUTOCONF"]="${SHELL} /c/Projetos/jalapaquery/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /c/Projetos/jalapaquery/missing --run aclocal-1.11"
+S["install_sh"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/install-sh"
+S["MAKEINFO"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/missing automake-1.15"
+S["AUTOCONF"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/missing autoconf"
+S["ACLOCAL"]="${SHELL} /Users/leonardocosta/Projetos/jalapaquery/missing aclocal-1.15"
 S["VERSION"]="0.1"
 S["PACKAGE"]="https://github.com/leonhad/pdftools"
-S["CYGPATH_W"]="cygpath -w"
+S["CYGPATH_W"]="echo"
 S["am__isrc"]=""
 S["INSTALL_DATA"]="${INSTALL} -m 644"
 S["INSTALL_SCRIPT"]="${INSTALL}"
@@ -987,8 +981,8 @@ S["host_alias"]=""
 S["build_alias"]=""
 S["LIBS"]="-lz  -liconv"
 S["ECHO_T"]=""
-S["ECHO_N"]="-n"
-S["ECHO_C"]=""
+S["ECHO_N"]=""
+S["ECHO_C"]="\\c"
 S["DEFS"]="-DHAVE_CONFIG_H"
 S["mandir"]="${datarootdir}/man"
 S["localedir"]="${datarootdir}/locale"
@@ -1077,6 +1071,7 @@ D["HAVE_STRINGS_H"]=" 1"
 D["HAVE_INTTYPES_H"]=" 1"
 D["HAVE_STDINT_H"]=" 1"
 D["HAVE_UNISTD_H"]=" 1"
+D["HAVE_DLFCN_H"]=" 1"
 D["LT_OBJDIR"]=" \".libs/\""
 D["HAVE_LIBZ"]=" 1"
   for (key in D) D_is_set[key] = 1
@@ -1403,7 +1398,7 @@ $as_echo "$as_me: executing $ac_file commands" >&6;}
 
   case $ac_file$ac_mode in
     "depfiles":C) test x"$AMDEP_TRUE" != x"" || {
-  # Autoconf 2.62 quotes --file arguments for eval, but not when files
+  # Older Autoconf quotes --file arguments for eval, but not when files
   # are listed without --file.  Let's play safe and only enable the eval
   # if we detect the quoting.
   case $CONFIG_FILES in
@@ -1416,7 +1411,7 @@ $as_echo "$as_me: executing $ac_file commands" >&6;}
     # Strip MF so we end up with the name of the file.
     mf=`echo "$mf" | sed -e 's/:.*$//'`
     # Check whether this is an Automake generated Makefile or not.
-    # We used to match only the files named `Makefile.in', but
+    # We used to match only the files named 'Makefile.in', but
     # some people rename them; so instead we look at the file content.
     # Grep'ing the first line is not enough: some people post-process
     # each Makefile.in and add a new line on top of each file to say so.
@@ -1450,21 +1445,19 @@ $as_echo X"$mf" |
       continue
     fi
     # Extract the definition of DEPDIR, am__include, and am__quote
-    # from the Makefile without running `make'.
+    # from the Makefile without running 'make'.
     DEPDIR=`sed -n 's/^DEPDIR = //p' < "$mf"`
     test -z "$DEPDIR" && continue
     am__include=`sed -n 's/^am__include = //p' < "$mf"`
-    test -z "am__include" && continue
+    test -z "$am__include" && continue
     am__quote=`sed -n 's/^am__quote = //p' < "$mf"`
-    # When using ansi2knr, U may be empty or an underscore; expand it
-    U=`sed -n 's/^U = //p' < "$mf"`
     # Find all dependency output files, they are included files with
     # $(DEPDIR) in their names.  We invoke sed twice because it is the
     # simplest approach to changing $(DEPDIR) to its actual value in the
     # expansion.
     for file in `sed -n "
       s/^$am__include $am__quote\(.*(DEPDIR).*\)$am__quote"'$/\1/p' <"$mf" | \
-	 sed -e 's/\$(DEPDIR)/'"$DEPDIR"'/g' -e 's/\$U/'"$U"'/g'`; do
+	 sed -e 's/\$(DEPDIR)/'"$DEPDIR"'/g'`; do
       # Make sure the directory exists.
       test -f "$dirpart/$file" && continue
       fdir=`$as_dirname -- "$file" ||
