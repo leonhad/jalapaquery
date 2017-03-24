@@ -1,5 +1,5 @@
 AC_PREREQ(2.62)
-AC_INIT([jalapaquery], [0.1], [leonhad@gmail.com], [https://github.com/leonhad/pdftools])
+AC_INIT([jalapaquery], [0.0.1], [leonhad@gmail.com], [https://github.com/leonhad/pdftools])
 AM_INIT_AUTOMAKE([-Wall tar-ustar no-define nostdinc ])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_MACRO_DIR([m4])
@@ -10,12 +10,11 @@ AC_CANONICAL_HOST
 # Checks for programs.
 AC_LANG([C++])
 AC_PROG_CXX
+AM_PROG_AR
 AC_PROG_LIBTOOL
 AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
 AX_CHECK_COMPILE_FLAG([-Wall], [CXXFLAGS="$CXXFLAGS -Wall"])
 AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
-
-AM_PROG_AR
 
 # LT_INIT
 # LT_LANG([C++])
