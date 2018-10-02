@@ -94,8 +94,8 @@ void MainWindow::aboutDialog()
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
-    event->accept();
     // ignore if canceled
+    event->accept();
 }
 
 void MainWindow::newFile()
@@ -154,12 +154,10 @@ void MainWindow::loadModelPlugins()
     pluginsDir.cd("model");
     foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
         QPluginLoader pluginLoader(pluginsDir.absoluteFilePath(fileName));
-        //pluginLoader.setLoadHints(QLibrary::ExportExternalSymbolsHint);
         QObject *plugin = pluginLoader.instance();
         if (plugin) {
             interface = qobject_cast<ModelInterface *>(plugin);
             if (interface) {
-                //qDebug() << interface->getPluginName() << interface->getPluginVersion() << interface->getPluginVendor();
                 m_model_plugins.append(interface);
             }
         }

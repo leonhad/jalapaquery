@@ -13,12 +13,15 @@ NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
     m_models = models;
     setWindowFlags(Qt::Sheet);
 
-    int loop;
-    for (loop = 0; loop < m_models.size(); loop++) {
+    for (int loop = 0; loop < m_models.size(); loop++) {
         ModelInterface *mi = m_models.at(loop);
         new QListWidgetItem(mi->modelName(), ui->projectType, loop);
     }
     connect(ui->projectType, SIGNAL(itemSelectionChanged()), this, SLOT(modelChanged()));
+
+    if (ui->projectType->count() > 0) {
+        ui->projectType->setCurrentItem(ui->projectType->item(0));
+    }
 }
 
 void NewFileDialog::done(int value)

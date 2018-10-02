@@ -22,3 +22,5 @@ mac: {
 
 RESOURCES += \
     resources.qrc
+
+CONFIG+=sdk_no_version_check

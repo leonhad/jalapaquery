@@ -18,3 +18,5 @@ mac: {
 } else {
     DESTDIR = ../../../bin/plugins/model
 }
+
+CONFIG+=sdk_no_version_check

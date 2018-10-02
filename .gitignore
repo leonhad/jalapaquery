@@ -53,3 +53,6 @@ stamp-h1
 /*.gz
 
 src/testsuit
+
+*.pro.user
+
