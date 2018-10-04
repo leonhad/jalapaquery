@@ -38,21 +38,26 @@ macx: {
     ICON = AppIcon.icns
     QMAKE_INFO_PLIST = AppInfo.plist
 
+    TRANSLATIONSINSTALL.path = Contents/Resources
+    CONFIG+=sdk_no_version_check
+
     TRANSLATIONSINSTALL.files = \
         jalapaquery_pt.qm \
         jalapaquery_en.qm \
         jalapaquery_en_IE.qm \
         jalapaquery_ga.qm
-    TRANSLATIONSINSTALL.path = Contents/Resources
+
     QMAKE_BUNDLE_DATA += TRANSLATIONSINSTALL
 }
-win32::RC_FILE = App.rc
+win32: {
+    RC_FILE = App.rc
+    TRANSLATIONSINSTALL.path = resources
+}
 OTHER_FILES += App.rc \
     AppInfo.plist
+
 TRANSLATIONS = \
     jalapaquery_pt.ts \
     jalapaquery_en.ts \
     jalapaquery_en_IE.ts \
     jalapaquery_ga.ts
-
-CONFIG+=sdk_no_version_check

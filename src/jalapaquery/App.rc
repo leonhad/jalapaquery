@@ -24,11 +24,11 @@ VS_VERSION_INFO VERSIONINFO
                         BLOCK "040904B0"
                         BEGIN
                                 VALUE "CompanyName", "JalapaQuery Team\0"
-                                VALUE "FileDescription", "JalapaQuery. An Entity-Relationship modeling tool\0"
+                                VALUE "FileDescription", "JalapaQuery: An Entity-Relationship Modeling Tool\0"
                                 VALUE "FileVersion", "1.0.0.1\0"
                                 VALUE "InternalName", "jalapaquery.exe\0"
                                 VALUE "LegalCopyright", "LGPL3\0"
-                                VALUE "LegalTrademarks", "JalapaQuery (2011)\0"
+                                VALUE "LegalTrademarks", "JalapaQuery (2018)\0"
                                 VALUE "OriginalFilename", "JalapaQuery.exe\0"
                                 VALUE "ProductName", "JalapaQuery\0"
                                 VALUE "ProductVersion", "0.1\0"
