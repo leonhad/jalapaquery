@@ -56,3 +56,4 @@ src/testsuit
 
 *.pro.user
 
+moc_*.h

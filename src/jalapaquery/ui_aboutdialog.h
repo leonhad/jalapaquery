@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'aboutdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.0
+** Created by: Qt User Interface Compiler version 5.11.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_ABOUTDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPlainTextEdit>
 
@@ -86,7 +83,7 @@ public:
 
     void retranslateUi(QDialog *AboutDialog)
     {
-        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About JalapaQuery", 0));
+        AboutDialog->setWindowTitle(QApplication::translate("AboutDialog", "About JalapaQuery", nullptr));
         thanks->setPlainText(QApplication::translate("AboutDialog", "All copyright are under GPL3 license.\n"
 "This program comes with ABSOLUTELY NO WARRANTY\n"
 "\n"
@@ -95,8 +92,8 @@ public:
 "Brian Gunning <brian.p.gunning@gmail.com>\n"
 "Leonardo Alves da Costa <leonhad@gmail.com>\n"
 "Rafael Nunes Medeiros <mederafael@gmail.com>\n"
-"Thiago Peixoto <thiago.guinho@gmail.com>", 0));
-        copyright->setText(QApplication::translate("AboutDialog", "JalapaQuery Copyright (2011)", 0));
+"Thiago Peixoto <thiago.guinho@gmail.com>", nullptr));
+        copyright->setText(QApplication::translate("AboutDialog", "JalapaQuery Copyright (2011)", nullptr));
     } // retranslateUi
 
 };

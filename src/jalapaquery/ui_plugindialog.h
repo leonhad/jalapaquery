@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'plugindialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.0
+** Created by: Qt User Interface Compiler version 5.11.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,9 +10,7 @@
 #define UI_PLUGINDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QHeaderView>
@@ -63,7 +61,7 @@ public:
 
     void retranslateUi(QDialog *PluginDialog)
     {
-        PluginDialog->setWindowTitle(QApplication::translate("PluginDialog", "About Plugins", 0));
+        PluginDialog->setWindowTitle(QApplication::translate("PluginDialog", "About Plugins", nullptr));
     } // retranslateUi
 
 };

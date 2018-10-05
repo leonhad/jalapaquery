@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newfiledialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.0
+** Created by: Qt User Interface Compiler version 5.11.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,13 +10,10 @@
 #define UI_NEWFILEDIALOG_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
@@ -101,9 +98,9 @@ public:
 
     void retranslateUi(QDialog *NewFileDialog)
     {
-        NewFileDialog->setWindowTitle(QApplication::translate("NewFileDialog", "New Project", 0));
-        projectNameLabel->setText(QApplication::translate("NewFileDialog", "Project Name:", 0));
-        templateLabel->setText(QApplication::translate("NewFileDialog", "Choose a project template:", 0));
+        NewFileDialog->setWindowTitle(QApplication::translate("NewFileDialog", "New Project", nullptr));
+        projectNameLabel->setText(QApplication::translate("NewFileDialog", "Project Name:", nullptr));
+        templateLabel->setText(QApplication::translate("NewFileDialog", "Choose a project template:", nullptr));
     } // retranslateUi
 
 };

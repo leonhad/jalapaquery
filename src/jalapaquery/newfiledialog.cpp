@@ -71,10 +71,11 @@ void NewFileDialog::modelChanged()
     ui->details->clear();
 
     int loop;
-    for (loop = 0; loop < mi->types().size(); loop++) {
+    for (loop = 0; loop < mi->types().size(); loop++)
+    {
         TypeModel *type = mi->types().at(loop);
         new QListWidgetItem(type->icon(), type->name(), ui->fileType, loop);
-    }    
+    }
     connect(ui->fileType, SIGNAL(itemSelectionChanged()), this, SLOT(modelSelected()));
 }
 
