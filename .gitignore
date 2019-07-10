@@ -34,6 +34,8 @@ Makefile
 
 stamp-h1
 
+.DS_Store
+
 .deps
 
 /*~
