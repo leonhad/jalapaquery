@@ -4,17 +4,11 @@
 
 *.lo
 
-/html
-
-/latex
-
 *.gcov
 
 *.gcda
 
 *.gcno
-
-.*
 
 cppunit.xmL
 
@@ -23,10 +17,6 @@ config.h
 config.log
 
 config.status
-
-src/pdftools
-
-test/testsuit
 
 *.log
 
@@ -46,13 +36,9 @@ stamp-h1
 
 .deps
 
-/nbproject
-
 /*~
 
 /*.gz
-
-src/testsuit
 
 *.pro.user
 
