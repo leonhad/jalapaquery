@@ -1,4 +1,4 @@
-#include <qobject.h>
+#include <QtCore/qobject.h>
 class Test : public QObject
 {
 Q_OBJECT

@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Quazip
+Description: QT Zip Bridge.
+Requires: qt4
+Version: 0.0.1
+# Libs: -L${libdir} -lsomething-1.0
+# Cflags: -I${includedir}/something-1.0 -I${libdir}/something-1.0/include

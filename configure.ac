@@ -12,7 +12,7 @@ AC_LANG([C++])
 AC_PROG_CXX
 AM_PROG_AR
 AC_PROG_LIBTOOL
-AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory])
+AX_CXX_COMPILE_STDCXX_11([noext], [mandatory])
 AX_CHECK_COMPILE_FLAG([-Wall], [CXXFLAGS="$CXXFLAGS -Wall"])
 AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
 
@@ -22,7 +22,8 @@ AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
 # Checks for library functions.
 # Checks for libraries.
 AX_CHECK_ZLIB(,[AC_MSG_ERROR([Could not find zlib support])])
-AX_HAVE_QT
+
+PKG_CHECK_MODULES([qt], [Qt5Gui])
 
 AC_CHECK_HEADER([iconv.h],, [AC_MSG_ERROR([Could not find libiconv])])
 AC_CACHE_CHECK([for libiconv], [am_cv_func_iconv], [

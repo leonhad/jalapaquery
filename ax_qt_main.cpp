@@ -1,5 +1,5 @@
 #include "ax_qt_test.h"
-#include <qapplication.h>
+#include <QtWidgets/qapplication.h>
 int main( int argc, char **argv )
 {
   QApplication app( argc, argv );

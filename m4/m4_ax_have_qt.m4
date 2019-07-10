@@ -106,8 +106,8 @@ percent.commands = @echo -n "\$(\$(@))\ "
 QMAKE_EXTRA_TARGETS += percent
 EOF
     qmake $am_have_qt_pro -o $am_have_qt_makefile
-    QT_CXXFLAGS=`make -f $am_have_qt_makefile CXXFLAGS INCPATH`
-    QT_LIBS=`make -f $am_have_qt_makefile LIBS`
+    QT_CXXFLAGS=-I`qmake -query QT_INSTALL_HEADERS`
+    QT_LIBS=-L`qmake -query QT_INSTALL_HEADERS`
     rm $am_have_qt_pro $am_have_qt_makefile
 
     # Look for specific tools in $PATH
@@ -154,7 +154,7 @@ EOF
     AC_CACHE_VAL(ax_cv_qt_test_result,
     [
       cat > ax_qt_test.h << EOF
-#include <qobject.h>
+#include <QtCore/qobject.h>
 class Test : public QObject
 {
 Q_OBJECT
@@ -170,7 +170,7 @@ EOF
 
       cat > ax_qt_main.$ac_ext << EOF
 #include "ax_qt_test.h"
-#include <qapplication.h>
+#include <QtWidgets/qapplication.h>
 int main( int argc, char **argv )
 {
   QApplication app( argc, argv );
