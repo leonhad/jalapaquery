@@ -35,7 +35,7 @@ QRectF TestItem::boundingRect() const
 //    return QRectF(0, 0, 100, 100);
 //}
 
-void TestItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void TestItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     //QGraphicsTextItem *text = new QGraphicsTextItem;
     //text->setPos(50, 50);

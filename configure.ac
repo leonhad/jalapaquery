@@ -24,6 +24,7 @@ AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
 AX_CHECK_ZLIB(,[AC_MSG_ERROR([Could not find zlib support])])
 
 PKG_CHECK_MODULES([qt], [Qt5Gui])
+PKG_CHECK_MODULES([qt], [Qt5Core])
 
 AC_CHECK_HEADER([iconv.h],, [AC_MSG_ERROR([Could not find libiconv])])
 AC_CACHE_CHECK([for libiconv], [am_cv_func_iconv], [
