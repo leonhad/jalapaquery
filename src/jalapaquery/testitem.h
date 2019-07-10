@@ -1,7 +1,7 @@
 #ifndef TESTITEM_H
 #define TESTITEM_H
 
-#include <QGraphicsItem>
+#include <QtWidgets/QGraphicsItem>
 
 class TestItem : public QGraphicsItem
 {

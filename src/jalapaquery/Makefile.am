@@ -15,6 +15,16 @@ jalapaquery_LDADD    = $(QT_LIBS) $(LDADD)
 
 nodist_jalapaquery_SOURCES = $(BUILT_SOURCES)
 
+%.moc.cpp: %.h
+	moc $< -o $@
+
+%.ui.h: %.ui
+	uic $< -o $@
+
+%.qrc.cpp: %.qrc
+	rcc $< -o $@
+
+
 BUILT_SOURCES = \
     mainwindow.moc.cpp \
     aboutdialog.moc.cpp \

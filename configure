@@ -636,8 +636,8 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
-qt_LIBS
-qt_CFLAGS
+QT_LIBS
+QT_CFLAGS
 PKG_CONFIG_LIBDIR
 PKG_CONFIG_PATH
 PKG_CONFIG
@@ -794,8 +794,8 @@ CXXCPP
 PKG_CONFIG
 PKG_CONFIG_PATH
 PKG_CONFIG_LIBDIR
-qt_CFLAGS
-qt_LIBS'
+QT_CFLAGS
+QT_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1461,8 +1461,8 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
-  qt_CFLAGS   C compiler flags for qt, overriding pkg-config
-  qt_LIBS     linker flags for qt, overriding pkg-config
+  QT_CFLAGS   C compiler flags for QT, overriding pkg-config
+  QT_LIBS     linker flags for QT, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -16855,19 +16855,19 @@ $as_echo "no" >&6; }
 fi
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Qt5Gui" >&5
-$as_echo_n "checking for Qt5Gui... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Qt5Widgets" >&5
+$as_echo_n "checking for Qt5Widgets... " >&6; }
 
-if test -n "$qt_CFLAGS"; then
-    pkg_cv_qt_CFLAGS="$qt_CFLAGS"
+if test -n "$QT_CFLAGS"; then
+    pkg_cv_QT_CFLAGS="$QT_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Gui\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "Qt5Gui") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Widgets\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "Qt5Widgets") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_qt_CFLAGS=`$PKG_CONFIG --cflags "Qt5Gui" 2>/dev/null`
+  pkg_cv_QT_CFLAGS=`$PKG_CONFIG --cflags "Qt5Widgets" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16875,107 +16875,16 @@ fi
  else
     pkg_failed=untried
 fi
-if test -n "$qt_LIBS"; then
-    pkg_cv_qt_LIBS="$qt_LIBS"
+if test -n "$QT_LIBS"; then
+    pkg_cv_QT_LIBS="$QT_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Gui\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "Qt5Gui") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Widgets\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "Qt5Widgets") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_qt_LIBS=`$PKG_CONFIG --libs "Qt5Gui" 2>/dev/null`
-		      test "x$?" != "x0" && pkg_failed=yes
-else
-  pkg_failed=yes
-fi
- else
-    pkg_failed=untried
-fi
-
-
-
-if test $pkg_failed = yes; then
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-
-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
-        _pkg_short_errors_supported=yes
-else
-        _pkg_short_errors_supported=no
-fi
-        if test $_pkg_short_errors_supported = yes; then
-	        qt_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "Qt5Gui" 2>&1`
-        else
-	        qt_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "Qt5Gui" 2>&1`
-        fi
-	# Put the nasty error message in config.log where it belongs
-	echo "$qt_PKG_ERRORS" >&5
-
-	as_fn_error $? "Package requirements (Qt5Gui) were not met:
-
-$qt_PKG_ERRORS
-
-Consider adjusting the PKG_CONFIG_PATH environment variable if you
-installed software in a non-standard prefix.
-
-Alternatively, you may set the environment variables qt_CFLAGS
-and qt_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details." "$LINENO" 5
-elif test $pkg_failed = untried; then
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
-is in your PATH or set the PKG_CONFIG environment variable to the full
-path to pkg-config.
-
-Alternatively, you may set the environment variables qt_CFLAGS
-and qt_LIBS to avoid the need to call pkg-config.
-See the pkg-config man page for more details.
-
-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-See \`config.log' for more details" "$LINENO" 5; }
-else
-	qt_CFLAGS=$pkg_cv_qt_CFLAGS
-	qt_LIBS=$pkg_cv_qt_LIBS
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-
-fi
-
-pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for Qt5Core" >&5
-$as_echo_n "checking for Qt5Core... " >&6; }
-
-if test -n "$qt_CFLAGS"; then
-    pkg_cv_qt_CFLAGS="$qt_CFLAGS"
- elif test -n "$PKG_CONFIG"; then
-    if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Core\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "Qt5Core") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_qt_CFLAGS=`$PKG_CONFIG --cflags "Qt5Core" 2>/dev/null`
-		      test "x$?" != "x0" && pkg_failed=yes
-else
-  pkg_failed=yes
-fi
- else
-    pkg_failed=untried
-fi
-if test -n "$qt_LIBS"; then
-    pkg_cv_qt_LIBS="$qt_LIBS"
- elif test -n "$PKG_CONFIG"; then
-    if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"Qt5Core\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "Qt5Core") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_qt_LIBS=`$PKG_CONFIG --libs "Qt5Core" 2>/dev/null`
+  pkg_cv_QT_LIBS=`$PKG_CONFIG --libs "Qt5Widgets" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -16996,22 +16905,22 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        qt_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "Qt5Core" 2>&1`
+	        QT_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "Qt5Widgets" 2>&1`
         else
-	        qt_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "Qt5Core" 2>&1`
+	        QT_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "Qt5Widgets" 2>&1`
         fi
 	# Put the nasty error message in config.log where it belongs
-	echo "$qt_PKG_ERRORS" >&5
+	echo "$QT_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (Qt5Core) were not met:
+	as_fn_error $? "Package requirements (Qt5Widgets) were not met:
 
-$qt_PKG_ERRORS
+$QT_PKG_ERRORS
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively, you may set the environment variables qt_CFLAGS
-and qt_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables QT_CFLAGS
+and QT_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 elif test $pkg_failed = untried; then
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
@@ -17022,15 +16931,15 @@ as_fn_error $? "The pkg-config script could not be found or is too old.  Make su
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively, you may set the environment variables qt_CFLAGS
-and qt_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables QT_CFLAGS
+and QT_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details" "$LINENO" 5; }
 else
-	qt_CFLAGS=$pkg_cv_qt_CFLAGS
-	qt_LIBS=$pkg_cv_qt_LIBS
+	QT_CFLAGS=$pkg_cv_QT_CFLAGS
+	QT_LIBS=$pkg_cv_QT_LIBS
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 
@@ -17102,7 +17011,7 @@ fi
 { $as_echo "$as_me:${as_lineno-$LINENO}: result: $am_cv_func_iconv" >&5
 $as_echo "$am_cv_func_iconv" >&6; }
 
-ac_config_files="$ac_config_files Makefile doc/Makefile quazip/Makefile quazip/quazip.pc src/Makefile src/jalapaquery/Makefile src/plugins/Makefile src/plugins/databaseplugin/Makefile src/plugins/umlplugin/Makefile test/Makefile"
+ac_config_files="$ac_config_files Makefile doc/Makefile src/Makefile src/jalapaquery/Makefile src/plugins/Makefile src/plugins/databaseplugin/Makefile src/plugins/umlplugin/Makefile test/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18219,8 +18128,6 @@ do
     "libtool") CONFIG_COMMANDS="$CONFIG_COMMANDS libtool" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
-    "quazip/Makefile") CONFIG_FILES="$CONFIG_FILES quazip/Makefile" ;;
-    "quazip/quazip.pc") CONFIG_FILES="$CONFIG_FILES quazip/quazip.pc" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "src/jalapaquery/Makefile") CONFIG_FILES="$CONFIG_FILES src/jalapaquery/Makefile" ;;
     "src/plugins/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugins/Makefile" ;;

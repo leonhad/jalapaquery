@@ -1,6 +1,6 @@
 #include "testitem.h"
-#include <QPainter>
-#include <QGraphicsSceneMouseEvent>
+#include <QtGui/QPainter>
+#include <QtWidgets/QGraphicsSceneMouseEvent>
 
 TestItem::TestItem() : QGraphicsItem()
 {

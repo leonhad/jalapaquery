@@ -1,9 +1,10 @@
 /out
-
+src/jalapaquery/jalapaquery
 *.app
-
+*.ui.h
+*.moc.cpp
 *.lo
-
+*.qrc.cpp
 *.gcov
 
 *.gcda

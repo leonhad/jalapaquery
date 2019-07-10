@@ -2,7 +2,7 @@
 #define NEWFILEDIALOG_H
 
 #include <QtWidgets/QDialog>
-#include <QList>
+#include <QtCore/QList>
 
 class ModelInterface;
 class TypeModel;
@@ -16,7 +16,7 @@ class NewFileDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit NewFileDialog(QList<ModelInterface *> models, QWidget *parent = 0);
+    explicit NewFileDialog(QList<ModelInterface *> models, QWidget *parent = nullptr);
     ~NewFileDialog();
     QString projectName();
     TypeModel *typeModel();

@@ -23,8 +23,9 @@ AX_CHECK_COMPILE_FLAG([-pipe], [CXXFLAGS="$CXXFLAGS -pipe"])
 # Checks for libraries.
 AX_CHECK_ZLIB(,[AC_MSG_ERROR([Could not find zlib support])])
 
-PKG_CHECK_MODULES([qt], [Qt5Gui])
-PKG_CHECK_MODULES([qt], [Qt5Core])
+dnl PKG_CHECK_MODULES([QT], [Qt5Gui])
+dnl PKG_CHECK_MODULES([QT], [Qt5Core])
+PKG_CHECK_MODULES([QT], [Qt5Widgets])
 
 AC_CHECK_HEADER([iconv.h],, [AC_MSG_ERROR([Could not find libiconv])])
 AC_CACHE_CHECK([for libiconv], [am_cv_func_iconv], [
@@ -50,8 +51,6 @@ AC_CACHE_CHECK([for libiconv], [am_cv_func_iconv], [
 
 AC_CONFIG_FILES([Makefile
                  doc/Makefile
-                 quazip/Makefile
-                 quazip/quazip.pc
                  src/Makefile
                  src/jalapaquery/Makefile
                  src/plugins/Makefile

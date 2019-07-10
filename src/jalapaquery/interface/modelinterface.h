@@ -1,9 +1,9 @@
 #ifndef MODELINTERFACE_H
 #define MODELINTERFACE_H
 
-#include <QString>
-#include <QtPlugin>
-#include <QList>
+#include <QtCore/QString>
+#include <QtCore/QtPlugin>
+#include <QtCore/QList>
 #include <plugininterface.h>
 #include <typemodel.h>
 
@@ -19,4 +19,4 @@ public:
 
 Q_DECLARE_INTERFACE(ModelInterface, ModelInterface_iid)
 
-#endif // MODELINTERFACE_H
+#endif

@@ -1,8 +1,8 @@
 #include "plugindialog.h"
 #include "ui_plugindialog.h"
 #include "modelinterface.h"
-#include <QStringList>
-#include <QTreeWidgetItem>
+#include <QtCore/QStringList>
+#include <QtWidgets/QTreeWidgetItem>
 
 PluginDialog::PluginDialog(QWidget *parent) :
         QDialog(parent),

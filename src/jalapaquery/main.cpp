@@ -1,10 +1,10 @@
 #include <QtWidgets/QApplication>
-#include <QTranslator>
-#include <QLibraryInfo>
-#include <QDir>
-#include <QLocale>
-#include <QDebug>
-#include <QStyleFactory>
+#include <QtCore/QTranslator>
+#include <QtCore/QLibraryInfo>
+#include <QtCore/QDir>
+#include <QtCore/QLocale>
+#include <QtCore/QDebug>
+#include <QtWidgets/QStyleFactory>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])

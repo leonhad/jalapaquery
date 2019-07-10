@@ -121,7 +121,8 @@ am__objects_1 = jalapaquery-mainwindow.moc.$(OBJEXT) \
 nodist_jalapaquery_OBJECTS = $(am__objects_1)
 jalapaquery_OBJECTS = $(am_jalapaquery_OBJECTS) \
 	$(nodist_jalapaquery_OBJECTS)
-jalapaquery_DEPENDENCIES =
+am__DEPENDENCIES_1 =
+jalapaquery_DEPENDENCIES = $(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -314,6 +315,8 @@ PATH_SEPARATOR = @PATH_SEPARATOR@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
+QT_CFLAGS = @QT_CFLAGS@
+QT_LIBS = @QT_LIBS@
 RANLIB = @RANLIB@
 SED = @SED@
 SET_MAKE = @SET_MAKE@
@@ -365,8 +368,6 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
-qt_CFLAGS = @qt_CFLAGS@
-qt_LIBS = @qt_LIBS@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -990,6 +991,15 @@ uninstall-am: uninstall-binPROGRAMS uninstall-distHEADERS
 
 .PRECIOUS: Makefile
 
+
+%.moc.cpp: %.h
+	moc $< -o $@
+
+%.ui.h: %.ui
+	uic $< -o $@
+
+%.qrc.cpp: %.qrc
+	rcc $< -o $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

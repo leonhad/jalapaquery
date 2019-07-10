@@ -1,9 +1,9 @@
 #include "newfiledialog.h"
 #include "ui_newfiledialog.h"
 #include "modelinterface.h"
-#include <QListWidgetItem>
-#include <QIcon>
-#include <QMessageBox>
+#include <QtWidgets/QListWidgetItem>
+#include <QtGui/QIcon>
+#include <QtWidgets/QMessageBox>
 
 NewFileDialog::NewFileDialog(QList<ModelInterface *> models, QWidget *parent) :
     QDialog(parent),

@@ -1,8 +1,8 @@
 #ifndef TYPEMODEL_H
 #define TYPEMODEL_H
 
-#include <QIcon>
-#include <QString>
+#include <QtGui/QIcon>
+#include <QtCore/QString>
 
 class TypeModel {
     Q_PROPERTY(QString m_name READ name)

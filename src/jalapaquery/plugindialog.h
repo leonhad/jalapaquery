@@ -2,7 +2,7 @@
 #define PLUGINDIALOG_H
 
 #include <QtWidgets/QDialog>
-#include <QList>
+#include <QtCore/QList>
 
 class ModelInterface;
 
@@ -15,7 +15,7 @@ class PluginDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit PluginDialog(QWidget *parent = 0);
+    explicit PluginDialog(QWidget *parent = nullptr);
     ~PluginDialog();
 
     void setModelPlugins(QList<ModelInterface *> list);

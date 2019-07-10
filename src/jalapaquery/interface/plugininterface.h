@@ -1,7 +1,7 @@
 #ifndef PLUGININTERFACE_H
 #define PLUGININTERFACE_H
 
-#include <QString>
+#include <QtCore/QString>
 
 class PluginInterface {
 public:
