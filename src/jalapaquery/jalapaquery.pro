@@ -1,6 +1,4 @@
-QT += core \
-    gui \
-    widgets
+QT += core gui widgets
 TARGET = JalapaQuery
 TEMPLATE = app
 DESTDIR = ../../bin
